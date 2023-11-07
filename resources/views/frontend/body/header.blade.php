@@ -1,554 +1,423 @@
-<header class="header-area header-style-1 header-height-2">
-    <div class="header-top header-top-ptb-1 d-none d-lg-block">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-3 col-lg-4">
-                    <div class="header-info">
-                    <ul>
-                            <li>
-                                <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
-                                <ul class="language-dropdown">
-                                    <li><a href="#"><img src="{{asset('frontend/assets/imgs/theme/flag-fr.png')}}" alt="">Français</a></li>
-                                    <li><a href="#"><img src="{{asset('frontend/assets/imgs/theme/flag-dt.png')}}" alt="">Deutsch</a></li>
-                                    <li><a href="#"><img src="{{asset('frontend/assets/imgs/theme/flag-ru.png')}}" alt="">Pусский</a></li>
-                                </ul>
-                            </li>                                
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-4">
-                    <div class="text-center">
-                        <div id="news-flash" class="d-inline-block">
-                            <ul>
-                                <li>Get great devices up to 50% off <a href="shop.html">View details</a></li>
-                                <li>Supper Value Deals - Save more with coupons</li>
-                                <li>Trendy 25silver jewelry, save up 35% off today <a href="shop.html">Shop now</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4">
-                    <div class="header-info header-info-right">
-                        <ul>                                
-                            <li><i class="fi-rs-key"></i><a href="login.html">Log In </a>  / <a href="register.html">Sign Up</a></li>
+   <!-- header area start -->
+   <header class="font-display">
+    <div id="header-sticky" class="">
+        <div class="top-header bg-secondary">
+            <div class="container px-3 md:px-5 xl:px-0">
+                <div class="py-3.5 flex justify-center sm:justify-between">
+                    <p class="sm:flex gap-2 items-center text-[13px] leading-[110%] text-white opacity-70 hidden">
+                        <span>
+                            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.3334 4.5L6.00002 11.8333L2.66669 8.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span>Free shipping on all orders over $50</span>
+                    </p>
+                    <div>
+                        <ul class="flex gap-6 items-center">
+                            <li class="inline-flex items-center text-white-50 justify-center relative language">
+                                <select class="custom-select" name="state">
+                                    <option value="AL">Eng</option>
+                                    <option value="WY">Bangla</option>
+                                </select>
+                            </li>
+                            <li class="inline-flex items-center justify-center">
+                                <a href="#" class="inline-flex gap-2 items-center text-white opacity-70 text-[13px] leading-[130%]">Faqs</a>
+                            </li>
+                            <li class="inline-flex items-center justify-center">
+                                <a href="#" class="inline-flex gap-2 items-center text-white opacity-70 text-[13px] leading-[130%]">
+                                    <span>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7" clip-path="url(#clip0_906_1673)">
+                                                <path d="M7.99992 14.6667C11.6818 14.6667 14.6666 11.6819 14.6666 8C14.6666 4.3181 11.6818 1.33333 7.99992 1.33333C4.31802 1.33333 1.33325 4.3181 1.33325 8C1.33325 11.6819 4.31802 14.6667 7.99992 14.6667Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M8 5.33333V8" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M8 10.6667H8.00615" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_906_1673">
+                                                    <rect width="16" height="16" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </span>
+                                    <span>Need Help</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
-        <div class="container">
-            <div class="header-wrap">
-                <div class="logo logo-width-1">
-                    <a href="index.html"><img src="{{asset('frontend/assets/imgs/logo/logo.png')}}" alt="logo"></a>
-                </div>
-                <div class="header-right">
-                    <div class="search-style-1">
-                        <form action="#">                                
-                            <input type="text" placeholder="Search for items...">
-                        </form>
-                    </div>
-                    <div class="header-action-right">
-                        <div class="header-action-2">
-                            <div class="header-action-icon-2">
-                                <a href="shop-wishlist.php">
-                                    <img class="svgInject" alt="Surfside Media" src="{{asset('frontend/assets/imgs/theme/icons/icon-heart.svg')}}">
-                                    <span class="pro-count blue">4</span>
-                                </a>
-                            </div>
-                            <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="cart.html">
-                                    <img alt="Surfside Media" src="{{asset('frontend/assets/imgs/theme/icons/icon-cart.svg')}}">
-                                    <span class="pro-count blue">2</span>
-                                </a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                    <ul>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="product-details.html"><img alt="Surfside Media" src="{{asset('frontend/assets/imgs/shop/thumbnail-3.jpg')}}"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="product-details.html">Daisy Casual Bag</a></h4>
-                                                <h4><span>1 × </span>$800.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="product-details.html"><img alt="Surfside Media" src="{{asset('frontend/assets/imgs/shop/thumbnail-2.jpg')}}"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="product-details.html">Corduroy Shirts</a></h4>
-                                                <h4><span>1 × </span>$3200.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="shopping-cart-footer">
-                                        <div class="shopping-cart-total">
-                                            <h4>Total <span>$4000.00</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-button">
-                                            <a href="cart.html" class="outline">View cart</a>
-                                            <a href="checkout.html">Checkout</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="header-bottom header-bottom-bg-color sticky-bar">
-        <div class="container">
-            <div class="header-wrap header-space-between position-relative">
-                <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{asset('frontend/assets/imgs/logo/logo.png')}}" alt="logo"></a>
-                </div>
-                <div class="header-nav d-none d-lg-flex">
-                    <div class="main-categori-wrap d-none d-lg-block">
-                        <a class="categori-button-active" href="#">
-                            <span class="fi-rs-apps"></span> Browse Categories
+        <div class="main-header bg-grayscales-500 lg:border-none border-b border-grayscales-700">
+            <div class="container px-3 md:px-5 xl:px-0">
+                <div class="flex justify-between items-center py-5">
+                    <div>
+                        <a href="index.html">
+                            <img src="{{asset('frontend/assets/images/all-img/logo.png')}}" alt="">
                         </a>
-                        <div class="categori-dropdown-wrap categori-dropdown-active-large">
-                            <ul>
-                                <li class="has-children">
-                                    <a href="shop.html"><i class="surfsidemedia-font-dress"></i>Women's Clothing</a>
-                                    <div class="dropdown-menu">
-                                        <ul class="mega-menu d-lg-flex">
-                                            <li class="mega-menu-col col-lg-7">
-                                                <ul class="d-lg-flex">
-                                                    <li class="mega-menu-col col-lg-6">
-                                                        <ul>
-                                                            <li><span class="submenu-title">Hot & Trending</span></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Dresses</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Blouses & Shirts</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Hoodies & Sweatshirts</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Women's Sets</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Suits & Blazers</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Bodysuits</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Tanks & Camis</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Coats & Jackets</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="mega-menu-col col-lg-6">
-                                                        <ul>
-                                                            <li><span class="submenu-title">Bottoms</span></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Leggings</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Skirts</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Shorts</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Jeans</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Pants & Capris</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Bikini Sets</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Cover-Ups</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Swimwear</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="mega-menu-col col-lg-5">
-                                                <div class="header-banner2">
-                                                    <img src="{{asset('frontend/assets/imgs/banner/menu-banner-2.jpg')}}" alt="menu_banner1">
-                                                    <div class="banne_info">
-                                                        <h6>10% Off</h6>
-                                                        <h4>New Arrival</h4>
-                                                        <a href="#">Shop now</a>
-                                                    </div>
-                                                </div>
-                                                <div class="header-banner2">
-                                                    <img src="{{asset('frontend/assets/imgs/banner/menu-banner-3.jpg')}}" alt="menu_banner2">
-                                                    <div class="banne_info">
-                                                        <h6>15% Off</h6>
-                                                        <h4>Hot Deals</h4>
-                                                        <a href="#">Shop now</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="has-children">
-                                    <a href="shop.html"><i class="surfsidemedia-font-tshirt"></i>Men's Clothing</a>
-                                    <div class="dropdown-menu">
-                                        <ul class="mega-menu d-lg-flex">
-                                            <li class="mega-menu-col col-lg-7">
-                                                <ul class="d-lg-flex">
-                                                    <li class="mega-menu-col col-lg-6">
-                                                        <ul>
-                                                            <li><span class="submenu-title">Jackets & Coats</span></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Down Jackets</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Jackets</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Parkas</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Faux Leather Coats</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Trench</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Wool & Blends</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Vests & Waistcoats</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Leather Coats</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="mega-menu-col col-lg-6">
-                                                        <ul>
-                                                            <li><span class="submenu-title">Suits & Blazers</span></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Blazers</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Suit Jackets</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Suit Pants</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Suits</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Vests</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Tailor-made Suits</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Cover-Ups</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="mega-menu-col col-lg-5">
-                                                <div class="header-banner2">
-                                                    <img src="{{asset('frontend/assets/imgs/banner/menu-banner-4.jpg')}}" alt="menu_banner1">
-                                                    <div class="banne_info">
-                                                        <h6>10% Off</h6>
-                                                        <h4>New Arrival</h4>
-                                                        <a href="#">Shop now</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="has-children">
-                                    <a href="shop.html"><i class="surfsidemedia-font-smartphone"></i> Cellphones</a>
-                                    <div class="dropdown-menu">
-                                        <ul class="mega-menu d-lg-flex">
-                                            <li class="mega-menu-col col-lg-7">
-                                                <ul class="d-lg-flex">
-                                                    <li class="mega-menu-col col-lg-6">
-                                                        <ul>
-                                                            <li><span class="submenu-title">Hot & Trending</span></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Cellphones</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">iPhones</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Refurbished Phones</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Mobile Phone</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Mobile Phone Parts</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Phone Bags & Cases</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Communication Equipments</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Walkie Talkie</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="mega-menu-col col-lg-6">
-                                                        <ul>
-                                                            <li><span class="submenu-title">Accessories</span></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Screen Protectors</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Wire Chargers</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Wireless Chargers</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Car Chargers</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Power Bank</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Armbands</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Dust Plug</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">Signal Boosters</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="mega-menu-col col-lg-5">
-                                                <div class="header-banner2">
-                                                    <img src="{{asset('frontend/assets/imgs/banner/menu-banner-5.jpg')}}" alt="menu_banner1">
-                                                    <div class="banne_info">
-                                                        <h6>10% Off</h6>
-                                                        <h4>New Arrival</h4>
-                                                        <a href="#">Shop now</a>
-                                                    </div>
-                                                </div>
-                                                <div class="header-banner2">
-                                                    <img src="{{asset('frontend/assets/imgs/banner/menu-banner-6.jpg')}}" alt="menu_banner2">
-                                                    <div class="banne_info">
-                                                        <h6>15% Off</h6>
-                                                        <h4>Hot Deals</h4>
-                                                        <a href="#">Shop now</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-desktop"></i>Computer & Office</a></li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>Consumer Electronics</a></li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-diamond"></i>Jewelry & Accessories</a></li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a></li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
-                                <li>
-                                    <ul class="more_slide_open" style="display: none;">
-                                        <li><a href="shop.html"><i class="surfsidemedia-font-desktop"></i>Beauty, Health</a></li>
-                                        <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>Bags and Shoes</a></li>
-                                        <li><a href="shop.html"><i class="surfsidemedia-font-diamond"></i>Consumer Electronics</a></li>
-                                        <li><a href="shop.html"><i class="surfsidemedia-font-home"></i>Automobiles & Motorcycles</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <div class="more_categories">Show more...</div>
+                    </div>
+                    <div class="lg:max-w-[413px] lg:block hidden w-full">
+                        <div class="relative">
+                            <input type="text" id="search" placeholder="search here..." class="block w-full bg-white focus:outline-none border-0 px-4 py-3 rounded-lg focus:ring-2 ring-[#029FAE]">
+                            <label for="search" class="absolute right-4 top-3">
+                                <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.5833 17.4167C14.6334 17.4167 17.9167 14.1334 17.9167 10.0833C17.9167 6.03325 14.6334 2.75 10.5833 2.75C6.53325 2.75 3.25 6.03325 3.25 10.0833C3.25 14.1334 6.53325 17.4167 10.5833 17.4167Z" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M19.75 19.25L15.7625 15.2625" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </label>
                         </div>
                     </div>
-                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
-                        <nav>
-                            <ul>
-                                <li><a class="active" href="index.html">Home </a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="{{ URL('/shop') }}">Shop</a></li>
-                                <li class="position-static"><a href="#">Our Collections <i class="fi-rs-angle-down"></i></a>
-                                    <ul class="mega-menu">
-                                        <li class="sub-mega-menu sub-mega-menu-width-22">
-                                            <a class="menu-title" href="#">Women's Fashion</a>
-                                            <ul>
-                                                <li><a href="product-details.html">Dresses</a></li>
-                                                <li><a href="product-details.html">Blouses & Shirts</a></li>
-                                                <li><a href="product-details.html">Hoodies & Sweatshirts</a></li>
-                                                <li><a href="product-details.html">Wedding Dresses</a></li>
-                                                <li><a href="product-details.html">Prom Dresses</a></li>
-                                                <li><a href="product-details.html">Cosplay Costumes</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega-menu sub-mega-menu-width-22">
-                                            <a class="menu-title" href="#">Men's Fashion</a>
-                                            <ul>
-                                                <li><a href="product-details.html">Jackets</a></li>
-                                                <li><a href="product-details.html">Casual Faux Leather</a></li>
-                                                <li><a href="product-details.html">Genuine Leather</a></li>
-                                                <li><a href="product-details.html">Casual Pants</a></li>
-                                                <li><a href="product-details.html">Sweatpants</a></li>
-                                                <li><a href="product-details.html">Harem Pants</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega-menu sub-mega-menu-width-22">
-                                            <a class="menu-title" href="#">Technology</a>
-                                            <ul>
-                                                <li><a href="product-details.html">Gaming Laptops</a></li>
-                                                <li><a href="product-details.html">Ultraslim Laptops</a></li>
-                                                <li><a href="product-details.html">Tablets</a></li>
-                                                <li><a href="product-details.html">Laptop Accessories</a></li>
-                                                <li><a href="product-details.html">Tablet Accessories</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega-menu sub-mega-menu-width-34">
-                                            <div class="menu-banner-wrap">
-                                                <a href="product-details.html"><img src="{{asset('frontend/assets/imgs/banner/menu-banner.jpg')}}" alt="Surfside Media"></a>
-                                                <div class="menu-banner-content">
-                                                    <h4>Hot deals</h4>
-                                                    <h3>Don't miss<br> Trending</h3>
-                                                    <div class="menu-banner-price">
-                                                        <span class="new-price text-success">Save to 50%</span>
+                    <div class="lg:block hidden">
+                        <ul class="flex items-center gap-3">
+                            <li class="relative">
+                                <a href="#" class="inline-flex gap-2 bg-white rounded-lg p-[11px]" id="addToCart">
+                                    <span><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2.52087 2.97916L4.42754 3.30916L5.31029 13.8261C5.3442 14.2399 5.5329 14.6258 5.83873 14.9066C6.14457 15.1875 6.54506 15.3427 6.96029 15.3413H16.9611C17.3587 15.3418 17.7431 15.1986 18.0436 14.9383C18.344 14.6779 18.5404 14.3178 18.5965 13.9242L19.4673 7.91266C19.4905 7.75279 19.482 7.58991 19.4422 7.43333C19.4024 7.27675 19.3322 7.12955 19.2354 7.00015C19.1387 6.87074 19.0175 6.76167 18.8786 6.67917C18.7397 6.59667 18.5859 6.54235 18.426 6.51933C18.3673 6.51291 4.73371 6.50833 4.73371 6.50833" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M12.948 9.89542H15.4899" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.55786 18.5194C6.62508 18.5165 6.69219 18.5273 6.75515 18.551C6.81811 18.5748 6.87562 18.611 6.9242 18.6575C6.97279 18.7041 7.01145 18.76 7.03787 18.8219C7.06428 18.8837 7.0779 18.9503 7.0779 19.0176C7.0779 19.0849 7.06428 19.1515 7.03787 19.2134C7.01145 19.2753 6.97279 19.3312 6.9242 19.3777C6.87562 19.4243 6.81811 19.4605 6.75515 19.4842C6.69219 19.508 6.62508 19.5187 6.55786 19.5158C6.42942 19.5103 6.30808 19.4554 6.21914 19.3626C6.13021 19.2698 6.08057 19.1462 6.08057 19.0176C6.08057 18.8891 6.13021 18.7655 6.21914 18.6726C6.30808 18.5798 6.42942 18.5249 6.55786 18.5194Z" fill="#272343" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8988 18.5194C17.0312 18.5194 17.1583 18.5721 17.252 18.6657C17.3457 18.7594 17.3983 18.8865 17.3983 19.019C17.3983 19.1515 17.3457 19.2786 17.252 19.3723C17.1583 19.4659 17.0312 19.5186 16.8988 19.5186C16.7663 19.5186 16.6392 19.4659 16.5455 19.3723C16.4518 19.2786 16.3992 19.1515 16.3992 19.019C16.3992 18.8865 16.4518 18.7594 16.5455 18.6657C16.6392 18.5721 16.7663 18.5194 16.8988 18.5194Z" fill="#272343" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                    <span>Cart</span>
+                                    <span class="bg-dark-accents text-white rounded-full py-[3px] px-[9px] ml-1 inline-flex justify-center items-center text-[10px] leading-[100%]">2</span>
+                                </a>
+                                <div class="cart-content">
+                                    <ul class="p-6">
+                                        <li class="pb-4">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-1">
+                                                    <div>
+                                                        <img src="{{asset('frontend/assets/images/all-img/cart-01.png')}}" alt="">
                                                     </div>
-                                                    <div class="menu-banner-btn">
-                                                        <a href="product-details.html">Shop now</a>
+                                                    <div class="px-2">
+                                                        <h2 class="text-gray-black"><span>Isolate Sofa Chair</span> <span class="text-[#636270]">x5</span></h2>
+                                                        <p class="text-gray-black font-semibold mb-0">$150.00</p>
                                                     </div>
                                                 </div>
-                                                <div class="menu-banner-discount">
-                                                    <h3>
-                                                        <span>35%</span>
-                                                        off
-                                                    </h3>
+                                                <div>
+                                                    <button class="hover:bg-[#F0F2F3] bg-transparent p-2 hover:text-gray-black rounded-full text-[#9A9CAA] transition-all duration-500">
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10 10L14 14M14 14L18 10M14 14L10 18M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </li>
+                                        <li class="py-4">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-1">
+                                                    <div>
+                                                        <img src="{{asset('frontend/assets/images/all-img/cart-01.png')}}" alt="">
+                                                    </div>
+                                                    <div class="px-2">
+                                                        <h2 class="text-gray-black"><span>Isolate Sofa Chair</span> <span class="text-[#636270]">x5</span></h2>
+                                                        <p class="text-gray-black font-semibold mb-0">$150.00</p>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button class="hover:bg-[#F0F2F3] bg-transparent p-2 hover:text-gray-black rounded-full text-[#9A9CAA] transition-all duration-500">
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10 10L14 14M14 14L18 10M14 14L10 18M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <div class="flex justify-between items-center py-2 mb-4">
+                                            <p class="text-[#636270] text-lg">2 Products</p>
+                                            <p class="text-gray-black text-xl font-medium">$250.00</p>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <a href="shopping-cart.html" class="btn-transparent">View Cart</a>
+                                            <a href="checkout-shopping.html" class="btn-primary">Checkout</a>
+                                        </div>
                                     </ul>
-                                </li>
-                                <li><a href="blog.html">Blog </a></li>                                    
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="#">Dashboard</a></li>
-                                        <li><a href="#">Products</a></li>
-                                        <li><a href="#">Categories</a></li>
-                                        <li><a href="#">Coupons</a></li>
-                                        <li><a href="#">Orders</a></li>
-                                        <li><a href="#">Customers</a></li>
-                                        <li><a href="#">Logout</a></li>                                            
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="hotline d-none d-lg-block">
-                    <p><i class="fi-rs-smartphone"></i><span>Toll Free</span> (+1) 0000-000-000 </p>
-                </div>
-                <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
-                <div class="header-action-right d-block d-lg-none">
-                    <div class="header-action-2">
-                        <div class="header-action-icon-2">
-                            <a href="shop-wishlist.php">
-                                <img alt="Surfside Media" src="{{asset('frontend/assets/imgs/theme/icons/icon-heart.svg')}}">
-                                <span class="pro-count white">4</span>
-                            </a>
-                        </div>
-                        <div class="header-action-icon-2">
-                            <a class="mini-cart-icon" href="cart.html">
-                                <img alt="Surfside Media" src="{{asset('frontend/assets/imgs/theme/icons/icon-cart.svg')}}">
-                                <span class="pro-count white">2</span>
-                            </a>
-                            <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                <ul>
-                                    <li>
-                                        <div class="shopping-cart-img">
-                                            <a href="product-details.html"><img alt="Surfside Media" src="{{asset('frontend/assets/imgs/shop/thumbnail-3.jpg')}}"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="product-details.html">Plain Striola Shirts</a></h4>
-                                            <h3><span>1 × </span>$800.00</h3>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="shopping-cart-img">
-                                            <a href="product-details.html"><img alt="Surfside Media" src="{{asset('frontend/assets/imgs/shop/thumbnail-4.jpg')}}"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="product-details.html">Macbook Pro 2022</a></h4>
-                                            <h3><span>1 × </span>$3500.00</h3>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="shopping-cart-footer">
-                                    <div class="shopping-cart-total">
-                                        <h4>Total <span>$383.00</span></h4>
-                                    </div>
-                                    <div class="shopping-cart-button">
-                                        <a href="cart.html">View cart</a>
-                                        <a href="shop-checkout.php">Checkout</a>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="header-action-icon-2 d-block d-lg-none">
-                            <div class="burger-icon burger-icon-white">
-                                <span class="burger-icon-top"></span>
-                                <span class="burger-icon-mid"></span>
-                                <span class="burger-icon-bottom"></span>
-                            </div>
-                        </div>
+                            </li>
+                            <li class="inline-flex items-center justify-center">
+                                <a href="#" class="bg-white text-gray-black hover:text-[#007580] rounded-lg p-[11px]">
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.63262 10.6315C1.64903 7.56067 2.79762 4.05075 6.02245 3.01217C6.85867 2.74459 7.74676 2.68086 8.61262 2.82629C9.47849 2.97172 10.297 3.32208 10.9999 3.84817C12.3337 2.81692 14.2743 2.46858 15.9683 3.01217C19.1922 4.05075 20.349 7.56067 19.3664 10.6315C17.8355 15.499 10.9999 19.2482 10.9999 19.2482C10.9999 19.2482 4.21478 15.5558 2.63262 10.6315V10.6315Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="relative">
+                                <button class="bg-white text-gray-black hover:text-[#007580] rounded-lg p-[11px] user-profile">
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.9862 14.0672C7.44053 14.0672 4.4137 14.6034 4.4137 16.7503C4.4137 18.8971 7.42128 19.4526 10.9862 19.4526C14.5309 19.4526 17.5587 18.9154 17.5587 16.7695C17.5587 14.6236 14.5502 14.0672 10.9862 14.0672V14.0672Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.9862 11.0055C11.8195 11.0055 12.634 10.7584 13.3268 10.2955C14.0197 9.83255 14.5597 9.17457 14.8785 8.40475C15.1974 7.63492 15.2808 6.78783 15.1183 5.97058C14.9557 5.15334 14.5545 4.40266 13.9653 3.81346C13.3761 3.22426 12.6254 2.82301 11.8081 2.66045C10.9909 2.49789 10.1438 2.58132 9.37397 2.9002C8.60415 3.21907 7.94617 3.75906 7.48324 4.45188C7.02031 5.14471 6.77322 5.95925 6.77322 6.7925C6.76932 7.90581 7.20779 8.97508 7.99218 9.76515C8.77657 10.5552 9.84266 11.0014 10.956 11.0055H10.9862Z" stroke="currentColor" stroke-width="1.429" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <div class="profile-content">
+                                    <ul class="py-3">
+                                        <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
+                                            <li>
+                                                <a href="sign-in.html">Sign In</a>
+                                            </li>
+                                            <li>
+                                                <a href="sign-up.html">Create a Account</a>
+                                            </li>
+                                        </div>
+                                        <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
+                                            <li>
+                                                <a href="account-setting.html">Account Settings</a>
+                                            </li>
+                                            <li>
+                                                <a href="order-history.html">Order History</a>
+                                            </li>
+                                        </div>
+                                        <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
+                                            <li>
+                                                <a href="wishlist.html">Wishlist</a>
+                                            </li>
+                                            <li>
+                                                <a href="shopping-cart.html">Shopping Cart</a>
+                                            </li>
+                                        </div>
+                                        <div class="px-3">
+                                            <li>
+                                                <a href="#">Logout</a>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="lg:hidden inline-block hamburger-btn" id="hamburger-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
-<div class="mobile-header-active mobile-header-wrapper-style">
-    <div class="mobile-header-wrapper-inner">
-        <div class="mobile-header-top">
-            <div class="mobile-header-logo">
-                <a href="index.html"><img src="{{asset('frontend/assets/imgs/logo/logo.png" alt="logo')}}"></a>
-            </div>
-            <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
-                <button class="close-style search-close">
-                    <i class="icon-top"></i>
-                    <i class="icon-bottom"></i>
-                </button>
-            </div>
-        </div>
-        <div class="mobile-header-content-area">
-            <div class="mobile-search search-style-3 mobile-header-border">
-                <form action="#">
-                    <input type="text" placeholder="Search for items…">
-                    <button type="submit"><i class="fi-rs-search"></i></button>
-                </form>
-            </div>
-            <div class="mobile-menu-wrap mobile-header-border">
-                <div class="main-categori-wrap mobile-header-border">
-                    <a class="categori-button-active-2" href="#">
-                        <span class="fi-rs-apps"></span> Browse Categories
-                    </a>
-                    <div class="categori-dropdown-wrap categori-dropdown-active-small">
-                        <ul>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-dress"></i>Women's Clothing</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-tshirt"></i>Men's Clothing</a></li>
-                            <li> <a href="shop.html"><i class="surfsidemedia-font-smartphone"></i> Cellphones</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-desktop"></i>Computer & Office</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>Consumer Electronics</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
-                        </ul>
+    <div class="bottom-header bg-white shadow-[0px_1px_0px_#E1E3E6] relative z-30 hidden lg:block">
+        <div class="container px-3 md:px-5 xl:px-0">
+            <div class="py-3.5 flex justify-between items-center">
+                <div class="flex gap-8 items-center">
+                    <div class="relative">
+                        <button class="max-h-12 inline-flex items-center justify-center gap-4 py-3.5 px-5 border border-grayscales-700 rounded-md custom-dropdown text-gray-black text-sm leading-4 font-medium font-display">
+                            <span class="text-gray-black inline-flex">
+                                <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 2.5H0V0.5H18V2.5Z" fill="currentColor" />
+                                    <path d="M18 8.5H0V6.5H18V8.5Z" fill="currentColor" />
+                                    <path d="M18 14.5H0V12.5H18V14.5Z" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <span class="text-gray-black inline-flex">All Categories</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <ul class="p-3">
+                                <li>
+                                    <a href="#">Wodden</a>
+                                </li>
+                                <li>
+                                    <a href="#">Partex</a>
+                                </li>
+                                <li>
+                                    <a href="#">Plywood</a>
+                                </li>
+                                <li>
+                                    <a href="#">Segun</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <!-- mobile menu start -->
-                <nav>
-                    <ul class="mobile-menu">
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="index.html">Home</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ URL('/shop') }}">shop</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Our Collections</a>
-                            <ul class="dropdown">
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Women's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="product-details.html">Dresses</a></li>
-                                        <li><a href="product-details.html">Blouses & Shirts</a></li>
-                                        <li><a href="product-details.html">Hoodies & Sweatshirts</a></li>
-                                        <li><a href="product-details.html">Women's Sets</a></li>
-                                    </ul>
+
+                    <ul class="lg:flex gap-8 items-center hidden main-menu">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="products.html">Shop</a>
+                        </li>
+                        <li>
+                            <a href="product-details.html">Product</a>
+                        </li>
+                        <li class="relative">
+                            <a href="javascript:void(0);" class="inline-flex gap-2 items-center">Pages
+                                <span>
+                                <img src="{{asset('frontend/assets/images/all-img/select-arrow.png')}}" alt="">     
+                                </span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="404.html">404</a>
                                 </li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Men's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="product-details.html">Jackets</a></li>
-                                        <li><a href="product-details.html">Casual Faux Leather</a></li>
-                                        <li><a href="product-details.html">Genuine Leather</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="account-setting.html">Account Setting</a>
                                 </li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Technology</a>
-                                    <ul class="dropdown">
-                                        <li><a href="product-details.html">Gaming Laptops</a></li>
-                                        <li><a href="product-details.html">Ultraslim Laptops</a></li>
-                                        <li><a href="product-details.html">Tablets</a></li>
-                                        <li><a href="product-details.html">Laptop Accessories</a></li>
-                                        <li><a href="product-details.html">Tablet Accessories</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="sign-in.html">Sign In</a>
+                                </li>
+                                <li>
+                                    <a href="sign-up.html">Sign Up</a>
+                                </li>
+                                <li>
+                                    <a href="forget-password.html">Forget Password</a>
+                                </li>
+                                <li>
+                                    <a href="change-password.html">Change Password</a>
+                                </li>
+                                <li>
+                                    <a href="products.html">Product List</a>
+                                </li>
+                                <li>
+                                    <a href="product-details.html">Product Details</a>
+                                </li>
+                                <li>
+                                    <a href="shopping-cart.html">Shopping Cart</a>
+                                </li>
+                                <li>
+                                    <a href="wishlist.html">Wishlist</a>
+                                </li>
+                                <li>
+                                    <a href="checkout-billing.html">Checkout Billing</a>
+                                </li>
+                                <li>
+                                    <a href="checkout-shopping.html">Checkout Shoping</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="blog.html">Blog</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Language</a>
-                            <ul class="dropdown">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">French</a></li>
-                                <li><a href="#">German</a></li>
-                                <li><a href="#">Spanish</a></li>
-                            </ul>
+                        <li>
+                            <a href="">About</a>
                         </li>
                     </ul>
-                </nav>
-                <!-- mobile menu end -->
-            </div>
-            <div class="mobile-header-info-wrap mobile-header-border">
-                <div class="single-mobile-header-info mt-30">
-                    <a href="contact.html"> Our location </a>
                 </div>
-                <div class="single-mobile-header-info">
-                    <a href="login.html">Log In </a>                        
+                <div>
+                    <p class="text-grayscales-900 inline-flex gap-2 items-center text-sm font-display"><span>Contact:</span><span class="text-secondary font-medium">(808) 555-0111</span></p>
                 </div>
-                <div class="single-mobile-header-info">                        
-                    <a href="register.html">Sign Up</a>
-                </div>
-                <div class="single-mobile-header-info">
-                    <a href="#">(+1) 0000-000-000 </a>
-                </div>
-            </div>
-            <div class="mobile-social-icon">
-                <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-facebook.svg')}}" alt=""></a>
-                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-twitter.svg')}}" alt=""></a>
-                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-instagram.svg')}}" alt=""></a>
-                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-pinterest.svg')}}" alt=""></a>
-                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-youtube.svg')}}" alt=""></a>
             </div>
         </div>
     </div>
-</div>  
+    <!-- Mobile Menu Area Start -->
+    <div class="nav-menu" id="nav-menu">
+        <div class="flex justify-between  items-center px-3 py-4 mb-4">
+            <div>
+                <a href="#">
+                    <img src="{{asset('frontend/assets/images/all-img/logo-sm.png')}}" alt="">
+                </a>
+            </div>
+            <ul class="flex items-center gap-3">
+                <li>
+                    <a href="#" class="inline-flex gap-2 bg-white rounded-lg p-[11px] relative">
+                        <span>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.52087 2.97916L4.42754 3.30916L5.31029 13.8261C5.3442 14.2399 5.5329 14.6258 5.83873 14.9066C6.14457 15.1875 6.54506 15.3427 6.96029 15.3413H16.9611C17.3587 15.3418 17.7431 15.1986 18.0436 14.9383C18.344 14.6779 18.5404 14.3178 18.5965 13.9242L19.4673 7.91266C19.4905 7.75279 19.482 7.58991 19.4422 7.43333C19.4024 7.27675 19.3322 7.12955 19.2354 7.00015C19.1387 6.87074 19.0175 6.76167 18.8786 6.67917C18.7397 6.59667 18.5859 6.54235 18.426 6.51933C18.3673 6.51291 4.73371 6.50833 4.73371 6.50833" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12.948 9.89542H15.4899" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.55786 18.5194C6.62508 18.5165 6.69219 18.5273 6.75515 18.551C6.81811 18.5748 6.87562 18.611 6.9242 18.6575C6.97279 18.7041 7.01145 18.76 7.03787 18.8219C7.06428 18.8837 7.0779 18.9503 7.0779 19.0176C7.0779 19.0849 7.06428 19.1515 7.03787 19.2134C7.01145 19.2753 6.97279 19.3312 6.9242 19.3777C6.87562 19.4243 6.81811 19.4605 6.75515 19.4842C6.69219 19.508 6.62508 19.5187 6.55786 19.5158C6.42942 19.5103 6.30808 19.4554 6.21914 19.3626C6.13021 19.2698 6.08057 19.1462 6.08057 19.0176C6.08057 18.8891 6.13021 18.7655 6.21914 18.6726C6.30808 18.5798 6.42942 18.5249 6.55786 18.5194Z" fill="#272343" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8988 18.5194C17.0312 18.5194 17.1583 18.5721 17.252 18.6657C17.3457 18.7594 17.3983 18.8865 17.3983 19.019C17.3983 19.1515 17.3457 19.2786 17.252 19.3723C17.1583 19.4659 17.0312 19.5186 16.8988 19.5186C16.7663 19.5186 16.6392 19.4659 16.5455 19.3723C16.4518 19.2786 16.3992 19.1515 16.3992 19.019C16.3992 18.8865 16.4518 18.7594 16.5455 18.6657C16.6392 18.5721 16.7663 18.5194 16.8988 18.5194Z" fill="#272343" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="bg-dark-accents absolute -top-1 right-0 text-white rounded-full px-2 py-1.5 inline-flex justify-center items-center text-[10px] leading-[100%]">2</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="bg-white text-gray-black flex hover:text-[#007580] rounded-lg p-[11px]">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.63262 10.6315C1.64903 7.56067 2.79762 4.05075 6.02245 3.01217C6.85867 2.74459 7.74676 2.68086 8.61262 2.82629C9.47849 2.97172 10.297 3.32208 10.9999 3.84817C12.3337 2.81692 14.2743 2.46858 15.9683 3.01217C19.1922 4.05075 20.349 7.56067 19.3664 10.6315C17.8355 15.499 10.9999 19.2482 10.9999 19.2482C10.9999 19.2482 4.21478 15.5558 2.63262 10.6315V10.6315Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="relative">
+                    <button class="bg-white text-gray-black hover:text-[#007580] rounded-lg p-[11px] user-profile">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.9862 14.0672C7.44053 14.0672 4.4137 14.6034 4.4137 16.7503C4.4137 18.8971 7.42128 19.4526 10.9862 19.4526C14.5309 19.4526 17.5587 18.9154 17.5587 16.7695C17.5587 14.6236 14.5502 14.0672 10.9862 14.0672V14.0672Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.9862 11.0055C11.8195 11.0055 12.634 10.7584 13.3268 10.2955C14.0197 9.83255 14.5597 9.17457 14.8785 8.40475C15.1974 7.63492 15.2808 6.78783 15.1183 5.97058C14.9557 5.15334 14.5545 4.40266 13.9653 3.81346C13.3761 3.22426 12.6254 2.82301 11.8081 2.66045C10.9909 2.49789 10.1438 2.58132 9.37397 2.9002C8.60415 3.21907 7.94617 3.75906 7.48324 4.45188C7.02031 5.14471 6.77322 5.95925 6.77322 6.7925C6.76932 7.90581 7.20779 8.97508 7.99218 9.76515C8.77657 10.5552 9.84266 11.0014 10.956 11.0055H10.9862Z" stroke="currentColor" stroke-width="1.429" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="profile-content">
+                        <ul>
+                            <li>
+                                <a href="#">Wodden</a>
+                            </li>
+                            <li>
+                                <a href="#">Partex</a>
+                            </li>
+                            <li>
+                                <a href="#">Plywood</a>
+                            </li>
+                            <li>
+                                <a href="#">Segun</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <span class="hamburger-btn-close bg-[#F7F7F9] text-black w-[44px] h-[44px] rounded-full flex items-center justify-center" id="hamburger-btn-close">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M1 1L11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="px-3 mb-4">
+            <div class="lg:max-w-[413px] w-full">
+                <div class="relative">
+                    <input type="text" placeholder="search here..." class="block w-full bg-grayscales-500 focus:outline-none border-0 px-4 py-3 rounded-lg">
+                    <span class="absolute right-4 top-3">
+                        <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.5833 17.4167C14.6334 17.4167 17.9167 14.1334 17.9167 10.0833C17.9167 6.03325 14.6334 2.75 10.5833 2.75C6.53325 2.75 3.25 6.03325 3.25 10.0833C3.25 14.1334 6.53325 17.4167 10.5833 17.4167Z" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M19.75 19.25L15.7625 15.2625" stroke="#272343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- menu -->
+        <div>
+            <nav class="tabs flex flex-row">
+                <button data-target="panel-1" class="tab rounded-none w-1/2 active text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none text-blue-500 border-b-2 font-medium border-blue-500">
+                    Menu
+                </button>
+                <button data-target="panel-2" class="tab rounded-none w-1/2 ext-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none border-b-2 font-medium border-blue-500">
+                    Categories
+                </button>
+            </nav>
+        </div>
+
+        <div id="panels">
+            <div class="panel-1 tab-content active">
+                <ul class="flex flex-col items-center">
+                    <li class="w-full block">
+                        <a href="" class="border-b border-[#029FAE] block px-3 py-2">Home</a>
+                    </li>
+                    <li class="w-full block">
+                        <a href="" class="border-b border-[#029FAE] block px-3 py-2">Shop</a>
+                    </li>
+                    <li class="w-full block">
+                        <a href="" class="border-b border-[#029FAE] block px-3 py-2">Product</a>
+                    </li>
+                    <li class="w-full block">
+                        <a href="" class="border-b border-[#029FAE] block px-3 py-2">Pages</a>
+                    </li>
+                    <li class="w-full block">
+                        <a href="" class="border-b border-[#029FAE] block px-3 py-2">About</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-2 tab-content py-5">
+                <ul>
+                    <li>
+                        <a href="#" class="border-b border-[#029FAE] block px-3 py-2">Wodden</a>
+                    </li>
+                    <li>
+                        <a href="#" class="border-b border-[#029FAE] block px-3 py-2">Partex</a>
+                    </li>
+                    <li>
+                        <a href="#" class="border-b border-[#029FAE] block px-3 py-2">Plywood</a>
+                    </li>
+                    <li>
+                        <a href="#" class="border-b border-[#029FAE] block px-3 py-2">Segun</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu Area End -->
+    <div class="overlay" id="overlay"></div>
+</header>
+<!-- header area end -->
