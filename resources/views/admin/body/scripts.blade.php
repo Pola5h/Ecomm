@@ -16,8 +16,11 @@
 <!-- Tabler Core -->
 <script src="{{ URL::asset('../backend/assets/dist/js/tabler.min.js?1684106062')}}" defer></script>
 <script src="{{ URL::asset('../backend/assets/dist/js/demo.min.js?1684106062')}}" defer></script>
+
+
 <script src="{{ URL::asset('../backend/assets/dist/libs/tinymce/tinymce.min.js?1684106062')}}" defer></script>
 
+<script src="{{ URL::asset('../backend/assets/dist/libs/dropzone/dist/dropzone-min.js?1684106062')}}" defer></script>
 
 
 {{-- theme script --}}
@@ -967,7 +970,7 @@
 		});
 </script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+	document.addEventListener("DOMContentLoaded", function () {
         var el;
         window.TomSelect && (new TomSelect(el = document.getElementById('select-statesx'), {
             copyClassesToDropdown: false,
@@ -1017,8 +1020,8 @@
 	  tinyMCE.init(options);
 	})
 	// @formatter:on
-  </script>
-  <script>
+</script>
+<script>
 	// @formatter:off
 	document.addEventListener("DOMContentLoaded", function () {
 	  let options = {
@@ -1044,4 +1047,22 @@
 	  tinyMCE.init(options);
 	})
 	// @formatter:on
+</script>
+<script>
+	// @formatter:off
+	document.addEventListener("DOMContentLoaded", function() {
+	  new Dropzone("#dropzone-default")
+	})
+  </script>
+  <script>
+	// @formatter:off
+	document.addEventListener("DOMContentLoaded", function() {
+	  new Dropzone("#dropzone-multiple")
+	})
+  </script>
+  <script>
+	// @formatter:off
+	document.addEventListener("DOMContentLoaded", function() {
+	  new Dropzone("#dropzone-custom")
+	})
   </script>

@@ -2,34 +2,77 @@
 @section('admin')
 
 <div class="page-body">
-    <div class="container-xl d-flex flex-column justify-content-center">
+    <div class="container-xl">
+
+        <div class="row row-cards">
+
+            <div class="col-md-6 col-xl-9">
 
 
-        <div class="col-md-12" style="display: flex; justify-content: center; align-items: center;">
-            <form method="post" action="{{ route('admin.product.store') }}" enctype="multipart/form-data">
-                @csrf
 
+                <div class="mb-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <h3 class="card-title">Thumbnil</h3>
+                        <form class="dropzone" id="dropzone-default" action="./" autocomplete="off" novalidate>
+                          <div class="fallback">
+                            <input name="file" type="file"  />
+                          </div>
+                          <div class="dz-message">
+                            <h3 class="dropzone-msg-title">Input images for product Thumbnil</h3>
+                            <span class="dropzone-msg-desc">Click orDrop files here to upload</span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
 
-                <div class="col-md-6 col-xl-8">
-                    <div class="mb-3 ">
-                        <div class="card card-body">
-                            <div class="col-auto mb-3">
-                                <img src="{ isset($image) ? URL::asset('../backend/assets/uploads/' . $image) : URL::asset('../backend/assets/static/logo.svg') }"
-                                    width="200" class="img-icon" />
+                <form method="post" action="{{ route('admin.product.store') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3 card card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="form-label required">
+                                    Name
+                                </div>
+                                <input type="text" class="form-control" name="name" placeholder="Required..." />
                             </div>
-                            <div class="col-auto mb-3">
-                                <label class="form-label required">Thumbnil</label>
-                                <input type="file" class="form-control" name="image" required />
+
+                            <div class="col-md-3 mb-3">
+                                <div class="form-label required">
+                                    Price
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text"> $ </span>
+                                    <input type="text" class="form-control" placeholder="Enter price"
+                                        autocomplete="off">
+                                </div>
                             </div>
-                            
+
+                            <div class="col-md-3 mb-3">
+                                <div class="form-label required">
+                                    Discount
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text"> % </span>
+                                    <input type="text" class="form-control" placeholder="Enter discount"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <div class="form-label required">
+                                    Stock Amount
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text"> ? </span>
+                                    <input type="text" class="form-control" placeholder="Enter stock amount"
+                                        autocomplete="off">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <div class="card card-body">
-                            <label class="form-label required">Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Required..." />
-                        </div>
-                    </div>
+
                     <div class="mb-3 card card-body">
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -56,46 +99,6 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="mb-3 card card-body">
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <div class="form-label required">
-                                    Price
-                                </div>
-                                <div class="input-group">
-                                    <span class="input-group-text"> $ </span>
-                                    <input type="text" class="form-control" placeholder="Enter price"
-                                        autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="form-label required">
-                                    Discount
-                                </div>
-                                <div class="input-group">
-                                    <span class="input-group-text"> % </span>
-                                    <input type="text" class="form-control" placeholder="Enter discount"
-                                        autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="form-label required">
-                                    Stock Amount
-                                </div>
-                                <div class="input-group">
-                                    <span class="input-group-text"> ? </span>
-                                    <input type="text" class="form-control" placeholder="Enter stock amount"
-                                        autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
 
                     <div class="mb-3 card card-body">
                         <div class="row">
@@ -129,61 +132,36 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="mb-3">
                         <div class="card card-body">
-
-                            <label class="form-label required">Short
-                                Description</label>
-
-                                <textarea id="tinymce-mytextarea"></textarea>
-
+                            <label class="form-label required">Short Description</label>
+                            <textarea id="tinymce-mytextarea"></textarea>
                         </div>
                     </div>
-
                     <div class="mb-3">
                         <div class="card card-body">
-
                             <label class="form-label required">Long Description</label>
-
                             <textarea id="tinymce-mytextarea2"></textarea>
-
                         </div>
                     </div>
+                </form>
 
-
-
-
-                    <div class="col-auto mb-3">
-                        <div class="card card-body">
-
-                            <label class="form-label required">Gallery</label>
-                            <input type="file" class="form-control" name="product_gallery[]" id="gallery-upload"
-                                multiple required />
-                        </div>
+                <div class="mb-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <h3 class="card-title">Galary Images</h3>
+                        <form class="dropzone" id="dropzone-multiple" action="./" autocomplete="off" novalidate>
+                          <div class="fallback">
+                            <input name="file" type="file"  multiple  />
+                          </div>
+                          <div class="dz-message">
+                            <h3 class="dropzone-msg-title">Input images for product galary</h3>
+                            <span class="dropzone-msg-desc">Click orDrop files here to upload</span>
+                          </div>
+                        </form>
+                      </div>
                     </div>
-
-                    <div id="carousel-controls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner" id="image-preview">
-                            <!-- Images will be inserted here -->
-                        </div>
-                        <a class="carousel-control-prev" href="#carousel-controls" role="button" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carousel-controls" role="button" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </a>
-                    </div>
-
-                </div>
-
-
-
-
+                  </div>
 
                 <div class="card-footer  text-center">
                     <div class="d-flex" style="justify-content: center;">
@@ -192,64 +170,33 @@
                         </button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <div class="card">
+                 
+                    <div class="card-body">
+                        <h3 class="card-title">Steps vertical</h3>
 
+                      <ul class="steps steps-counter steps-vertical">
+                        <li class="step-item">Step one</li>
+                        <li class="step-item">Step two</li>
+                        <li class="step-item active">Step three</li>
+                        <li class="step-item">Step four</li>
+                        <li class="step-item">Step five</li>
+                      </ul>
+                    </div>
+                  </div>
+
+
+            </div>
+
+        </div>
     </div>
 
 </div>
 
-
-
 </div>
 </div>
-<script>
-    const fileInput = document.querySelector('input[type="file"]');
-    const imgPreview = document.querySelector('.col-auto img');
-
-    // Get the existing image source, if any.
-    const existingImageSrc = imgPreview.getAttribute('src');
-
-    // Listen for the change event on the file input field.
-    fileInput.addEventListener('change', function() {
-        // If the user has selected an image, preview it.
-        if (fileInput.files.length > 0) {
-            const fileReader = new FileReader();
-            fileReader.onload = function() {
-                imgPreview.src = fileReader.result;
-            };
-            fileReader.readAsDataURL(fileInput.files[0]);
-        } else {
-            // If the user has not selected an image, show the existing image or the default image.
-            imgPreview.src = existingImageSrc || '{{ URL::asset('../backend/assets/static/logo.svg') }}';
-        }
-    });
-</script>
-
-{{-- gallery script --}}
-
-
-<script>
-    document.querySelector('#gallery-upload').addEventListener('change', function() {
-        var preview = document.querySelector('#image-preview');
-        preview.innerHTML = ''; // Clear the preview
-        Array.from(this.files).forEach(function(file, index) {
-            var div = document.createElement('div');
-            div.className = 'carousel-item' + (index === 0 ? ' active' : '');
-            var img = document.createElement('img');
-            img.className = 'd-block w-100';
-            img.alt = '';
-            img.src = URL.createObjectURL(file);
-            img.onload = function() {
-                URL.revokeObjectURL(img.src); // Free memory
-            }
-            div.appendChild(img);
-            preview.appendChild(div);
-        });
-    });
-</script>
-{{-- ck script --}}
-
 
 
 @endsection

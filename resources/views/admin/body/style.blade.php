@@ -9,7 +9,7 @@
 <link href="{{ URL::asset('../backend/assets/dist/css/tabler-payments.min.css?1684106062') }}" rel="stylesheet" />
 <link href="{{ URL::asset('../backend/assets/dist/css/tabler-vendors.min.css?1684106062') }}" rel="stylesheet" />
 <link href="{{ URL::asset('../backend/assets/dist/css/demo.min.css?1684106062') }}" rel="stylesheet" />
-
+<link href="{{ URL::asset('../backend/assets/dist/libs/dropzone/dist/dropzone.css?1684106062') }}" rel="stylesheet" />
 
 <!--ckeditor 5 -->
 <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
