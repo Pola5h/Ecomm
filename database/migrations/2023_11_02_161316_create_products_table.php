@@ -16,17 +16,16 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('thumbnail');
             $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->string('short_description')->nullable();
             $table->text('description')->nullable();
-            $table->decimal('regular_price', 8, 2);
-            $table->decimal('sale_price', 8, 2)->nullable();
-            $table->string('SKU');
-            $table->enum('stock_status', ['instock', 'outofstock']);
+            $table->decimal('price', 8, 2);
+            $table->decimal('discount')->nullable();
+            $table->boolean('status')->default(true);
             $table->boolean('featured')->default(false);
-            $table->unsignedInteger('quantity')->default(10);
-            $table->string('image');
-            $table->text('images')->nullable();
+            $table->unsignedInteger('stock_quantity')->nullable();
             $table->timestamps();
 
         });

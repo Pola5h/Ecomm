@@ -19,9 +19,11 @@ class CategoryFactory extends Factory
     {
         $category_name = $this->faker->unique()->words($nb = 2, $asText = true);
         $slug = Str::slug($category_name, '-');
+        $icon = $this->faker->imageUrl($width = 640, $height = 480);
         return [
             'name' => $category_name,
-            'slug' => $slug
+            'slug' => $slug,
+            'icon' => $icon
         ];
     }
 }

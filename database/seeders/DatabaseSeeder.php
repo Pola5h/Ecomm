@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,8 +18,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-     \App\Models\Category::factory(10)->create();
-     \App\Models\Product::factory(20)->create();
+    //  \App\Models\Category::factory(10)->create();
+    //  \App\Models\Product::factory(20)->create();
 
 
         // \App\Models\User::factory()->create([
@@ -34,7 +35,13 @@ class DatabaseSeeder extends Seeder
                 'user_type' => '1',
                 'about' => 'This is admin',
                 'image' => 'admin.jpg',
+                'status' => true,
+                'address' => null,
+                'phone' => '1234567890', // Add phone number
+                'email_verified_at' => null,
+                'remember_token' => Str::random(10), // Add remember token
                 'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name' => 'User',
@@ -43,9 +50,16 @@ class DatabaseSeeder extends Seeder
                 'user_type' => '2',
                 'about' => 'This is user',
                 'image' => 'user.jpg',
+                'status' => true,
+                'address' => null,
+                'phone' => '0987654321', // Add phone number
+                'email_verified_at' => null,
+                'remember_token' => Str::random(10), // Add remember token
                 'created_at' => now(),
+                'updated_at' => now(),
             ],
         ];
+        
 
         User::insert($users);
  

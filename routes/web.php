@@ -35,14 +35,16 @@ Route::get('/dashboard', function () {
 
 
 
-Route::group(['middleware' => ['auth', 'check_user:1'], 'as' => 'admin.'], function () {
-    Route::resource('blank-page', \App\Http\Controllers\BasicController::class);
-    Route::resource('blog', \App\Http\Controllers\backend\BlogController::class);
-    Route::post('blog_ckeditor', [\App\Http\Controllers\backend\BlogController::class, 'ckeditor'])->name('blog.ckeditor');
-    Route::post('blog_remove_image', [\App\Http\Controllers\backend\BlogController::class, 'removeImage'])->name('blog.removeImage');
+Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::resource('category', \App\Http\Controllers\backend\CategoryController::class);
+    Route::resource('brand', \App\Http\Controllers\backend\BrandController::class);
+    Route::resource('product', \App\Http\Controllers\backend\ProductController::class);
+
+
+ 
 });
 
-Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'user', 'as' => 'user.'], function () {
+Route::group(['middleware' => ['auth', 'check_user:2'],  'as' => 'user.'], function () {
 });
 
 

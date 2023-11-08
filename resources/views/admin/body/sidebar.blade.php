@@ -63,19 +63,82 @@
 
                         </div>
                     </div>
-                
+
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{URL('admin/category')}}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-justified" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4 6l16 0"></path>
+                                <path d="M4 12l16 0"></path>
+                                <path d="M4 18l12 0"></path>
+                             </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Manage Category
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{URL('admin/brand')}}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-packages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M7 16.5l-5 -3l5 -3l5 3v5.5l-5 3z"></path>
+                                <path d="M2 13.5v5.5l5 3"></path>
+                                <path d="M7 16.545l5 -3.03"></path>
+                                <path d="M17 16.5l-5 -3l5 -3l5 3v5.5l-5 3z"></path>
+                                <path d="M12 19l5 3"></path>
+                                <path d="M17 16.5l5 -3"></path>
+                                <path d="M12 13.5v-5.5l-5 -3l5 -3l5 3v5.5"></path>
+                                <path d="M7 5.03v5.455"></path>
+                                <path d="M12 8l5 -3"></path>
+                             </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Manage Brand
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{URL('admin/product')}}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                <path d="M17 17h-11v-14h-2"></path>
+                                <path d="M6 5l14 1l-1 7h-13"></path>
+                             </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Manage Product
+                        </span>
+                    </a>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                         data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ballpen" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ballpen"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M14 6l7 7l-4 4"></path>
-                                <path d="M5.828 18.172a2.828 2.828 0 0 0 4 0l10.586 -10.586a2 2 0 0 0 0 -2.829l-1.171 -1.171a2 2 0 0 0 -2.829 0l-10.586 10.586a2.828 2.828 0 0 0 0 4z"></path>
+                                <path
+                                    d="M5.828 18.172a2.828 2.828 0 0 0 4 0l10.586 -10.586a2 2 0 0 0 0 -2.829l-1.171 -1.171a2 2 0 0 0 -2.829 0l-10.586 10.586a2.828 2.828 0 0 0 0 4z">
+                                </path>
                                 <path d="M4 20l1.768 -1.768"></path>
-                             </svg>
+                            </svg>
                         </span>
                         <span class="nav-link-title">
                             Manage Blogs
@@ -96,7 +159,7 @@
 
                         </div>
                     </div>
-                
+
                 </li>
             </ul>
         </div>
