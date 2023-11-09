@@ -5,9 +5,10 @@ namespace App\Http\Controllers\backend;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\ProductGallery;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Image;
-use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -69,7 +70,7 @@ class ProductController extends Controller
         $productId = $product->id;
 
         // Redirect or respond as needed
-        return view("admin.product.gallery",compact('productId')); // Replace 'your.route.name' with the actual route name you want to redirect to
+        return view("admin.product.gallery", compact('productId')); // Replace 'your.route.name' with the actual route name you want to redirect to
     }
 
     public function galleryStore(Request $request)
@@ -80,20 +81,23 @@ class ProductController extends Controller
         }
     }
 
-    public function     galleryUpload(Request $request)
+    public function galleryUpload(Request $request)
     {
-
-
         $path = public_path('product/gallery');
-
         !file_exists($path) && mkdir($path, 0777, true);
 
         $file = $request->file('file');
         $name = uniqid() . '_' . trim($file->getClientOriginalName());
         $file->move($path, $name);
 
+        // Assuming you have a model for your product gallery, you can do something like this:
+        $productGallery = new ProductGallery();
+        $productGallery->product_id = $request->input('product'); // Replace 'product_id' with the actual field name
+        $productGallery->image = $name; // Assuming 'image' is the field where you store the file names
+        $productGallery->save();
+
         return response()->json([
-            'name'          => $name,
+            'name' => $name,
             'original_name' => $file->getClientOriginalName(),
         ]);
     }

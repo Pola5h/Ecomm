@@ -43,56 +43,42 @@ $pid =1;
 
 <script>
     console.log('Adding Dropzone options...');
-    
-    var uploadedDocumentMap = {}
+
+    var uploadedDocumentMap = {};
     Dropzone.options.documentDropzone = {
-      url: "{{ route('admin.gallery.upload') }}",
-      maxFilesize: 2, // MB
+      url: "{{ route('admin.gallery.upload', ['product' => $productId]) }}",
+      maxFilesize: 2,
       addRemoveLinks: true,
-      autoProcessQueue: false, // Don't process the files immediately
-      headers: {
-       'X-CSRF-TOKEN': "{{ csrf_token() }}"
-      },
-  
+      autoProcessQueue: false,
+      headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
       success: function (file, response) {
-       $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
-       uploadedDocumentMap[file.name] = response.name
+        $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">');
+        uploadedDocumentMap[file.name] = response.name;
       },
       removedfile: function (file) {
-       file.previewElement.remove()
-       var name = ''
-       if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
-       } else {
-        name = uploadedDocumentMap[file.name]
-       }
-       $('form').find('input[name="document[]"][value="' + name + '"]').remove()
+        file.previewElement.remove();
+        var name = uploadedDocumentMap[file.name] !== undefined ? uploadedDocumentMap[file.name] : file.file_name;
+        $('form').find('input[name="document[]"][value="' + name + '"]').remove();
       },
       init: function () {
-       @if(isset($project) && $project->document)
-        var files =
-         {!! json_encode($project->document) !!}
-        for (var i in files) {
-         var file = files[i]
-         this.options.addedfile.call(this, file)
-         file.previewElement.classList.add('dz-complete')
-         $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
-        }
-       @endif
+        @if(isset($project) && $project->document)
+          var files = {!! json_encode($project->document) !!};
+          for (var i in files) {
+            var file = files[i];
+            this.options.addedfile.call(this, file);
+            file.previewElement.classList.add('dz-complete');
+            $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">');
+          }
+        @endif
       }
     }
     
-    // Get the submit button
     var submitButton = document.querySelector("button[type='submit']");
-    
-    // Process the queue when the submit button is clicked
     submitButton.addEventListener("click", function() {
-      // Make sure Dropzone is defined
       if (Dropzone.instances.length > 0) {
-        var myDropzone = Dropzone.instances[0]; // Get the instance
-        myDropzone.processQueue(); // Process the queue
+        var myDropzone = Dropzone.instances[0];
+        myDropzone.processQueue();
       }
     });
 </script>
-
 @endsection
