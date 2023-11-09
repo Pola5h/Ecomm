@@ -8,24 +8,22 @@
 
             <div class="col-md-6 col-xl-9">
 
-
-
                 <div class="mb-3">
                     <div class="card">
-                      <div class="card-body">
-                        <h3 class="card-title">Thumbnil</h3>
-                        <form class="dropzone" id="dropzone-default" action="./" autocomplete="off" novalidate>
-                          <div class="fallback">
-                            <input name="file" type="file"  />
-                          </div>
-                          <div class="dz-message">
-                            <h3 class="dropzone-msg-title">Input images for product Thumbnil</h3>
-                            <span class="dropzone-msg-desc">Click orDrop files here to upload</span>
-                          </div>
-                        </form>
-                      </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Thumbnail</h3>
+                            <form class="dropzone" id="dropzone-default" action="./" autocomplete="off" novalidate>
+                                <div class="fallback">
+                                    <input name="file" type="file" />
+                                </div>
+                                <div class="dz-message">
+                                    <h3 class="dropzone-msg-title">Input one image for product Thumbnail</h3>
+                                    <span class="dropzone-msg-desc">Click or drop image file here to upload</span>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                  </div>
+                </div>
 
                 <form method="post" action="{{ route('admin.product.store') }}" enctype="multipart/form-data">
                     @csrf
@@ -148,20 +146,20 @@
 
                 <div class="mb-3">
                     <div class="card">
-                      <div class="card-body">
-                        <h3 class="card-title">Galary Images</h3>
-                        <form class="dropzone" id="dropzone-multiple" action="./" autocomplete="off" novalidate>
-                          <div class="fallback">
-                            <input name="file" type="file"  multiple  />
-                          </div>
-                          <div class="dz-message">
-                            <h3 class="dropzone-msg-title">Input images for product galary</h3>
-                            <span class="dropzone-msg-desc">Click orDrop files here to upload</span>
-                          </div>
-                        </form>
-                      </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Gallery Images</h3>
+                            <form class="dropzone" id="dropzone-multiple" action="./" autocomplete="off" novalidate>
+                                <div class="fallback">
+                                    <input name="file" type="file" multiple />
+                                </div>
+                                <div class="dz-message">
+                                    <h3 class="dropzone-msg-title">Input images for product gallery</h3>
+                                    <span class="dropzone-msg-desc">Click or drop files here to upload</span>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                  </div>
+                </div>
 
                 <div class="card-footer  text-center">
                     <div class="d-flex" style="justify-content: center;">
@@ -173,20 +171,18 @@
             </div>
             <div class="col-md-6 col-xl-3">
                 <div class="card">
-                 
+
                     <div class="card-body">
-                        <h3 class="card-title">Steps vertical</h3>
+                        <h3 class="card-title">Product Information</h3>
 
-                      <ul class="steps steps-counter steps-vertical">
-                        <li class="step-item">Step one</li>
-                        <li class="step-item">Step two</li>
-                        <li class="step-item active">Step three</li>
-                        <li class="step-item">Step four</li>
-                        <li class="step-item">Step five</li>
-                      </ul>
+                        <ul class="steps steps-counter steps-vertical">
+                            <li class="step-item">Thumbnil</li>
+                            <li class="step-item">Basic Information</li>
+                            <li class="step-item">gallery Images</li>
+
+                        </ul>
                     </div>
-                  </div>
-
+                </div>
 
             </div>
 
@@ -197,6 +193,5 @@
 
 </div>
 </div>
-
 
 @endsection
