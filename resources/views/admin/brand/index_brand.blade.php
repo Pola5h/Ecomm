@@ -17,7 +17,6 @@
                   <th>SL#</th>
                   <th>Image</th>
                   <th>Name</th>
-                  <th>Description</th>
 
                   <th class="w-1"></th>
                 </tr>
@@ -36,7 +35,6 @@
 
                   <td class="text-muted" data-label="Role">
                     {{$brands->name}} </td>
-                    <td>{{ $brands->description}}</td>
                   <td>
                     <div class="btn-list flex-nowrap">
 
@@ -104,13 +102,13 @@
                       <label class="form-label required">Name</label>
                       <input type="text" class="form-control" name="name" placeholder="Required..." />
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                       <label class="form-label required">Description</label>
 
                       <textarea name="description" class="form-control"
                         rows="5"></textarea>
 
-                    </div>
+                    </div> --}}
 
                   </div>
 
@@ -160,12 +158,12 @@
                         value="{{ !empty($editData->name) ? $editData->name : '' }}" name="name"
                         placeholder="Required..." />
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                       <label class="form-label required">Description</label>
 
                       <textarea class="form-control" name="description" rows="5">{{ !empty($editData->description) ? $editData->description : '' }}</textarea>
 
-                    </div>
+                    </div> --}}
 
 
 

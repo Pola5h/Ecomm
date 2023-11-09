@@ -54,7 +54,7 @@ class BrandController extends Controller
         $brand = new Brand();
         $brand->name = $validatedData['name'];
         $brand->slug = $slug; // Store the slug in the database
-        $brand->description = $validatedData['description'];
+        $brand->description = 'null';
         $brand->image = $imageName; // Use the generated filename
         $brand->save();
 

@@ -20,8 +20,15 @@
 
 <script src="{{ URL::asset('../backend/assets/dist/libs/tinymce/tinymce.min.js?1684106062')}}" defer></script>
 
-<script src="{{ URL::asset('../backend/assets/dist/libs/dropzone/dist/dropzone-min.js?1684106062')}}" defer></script>
 
+
+{{-- dropify --}}
+<script src="{{ URL::asset('../backend/assets/dist/js/dropify.js')}}" defer></script>
+<script>
+	$(document).ready(function () {
+        $('.dropify').dropify();
+    });
+</script>
 
 {{-- theme script --}}
 
@@ -1048,21 +1055,3 @@
 	})
 	// @formatter:on
 </script>
-<script>
-	// @formatter:off
-	document.addEventListener("DOMContentLoaded", function() {
-	  new Dropzone("#dropzone-default")
-	})
-  </script>
-  <script>
-	// @formatter:off
-	document.addEventListener("DOMContentLoaded", function() {
-	  new Dropzone("#dropzone-multiple")
-	})
-  </script>
-  <script>
-	// @formatter:off
-	document.addEventListener("DOMContentLoaded", function() {
-	  new Dropzone("#dropzone-custom")
-	})
-  </script>

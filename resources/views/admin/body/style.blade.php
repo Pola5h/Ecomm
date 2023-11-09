@@ -9,8 +9,12 @@
 <link href="{{ URL::asset('../backend/assets/dist/css/tabler-payments.min.css?1684106062') }}" rel="stylesheet" />
 <link href="{{ URL::asset('../backend/assets/dist/css/tabler-vendors.min.css?1684106062') }}" rel="stylesheet" />
 <link href="{{ URL::asset('../backend/assets/dist/css/demo.min.css?1684106062') }}" rel="stylesheet" />
-<link href="{{ URL::asset('../backend/assets/dist/libs/dropzone/dist/dropzone.css?1684106062') }}" rel="stylesheet" />
-
+{{-- DROPIFY --}}
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Include Dropify CSS and JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 <!--ckeditor 5 -->
 <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
