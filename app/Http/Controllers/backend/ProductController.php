@@ -17,10 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $data = Product::all();
 
-        return view('admin.product.add_product');
-        // return view('admin.product.gallery');
-
+        return view('admin.product.index_product', compact('data'));
     }
 
     /**
@@ -28,7 +27,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.gallery');
+        return view('admin.product.add_product');
+
+        // return view('admin.product.gallery');
     }
 
     /**
@@ -73,12 +74,23 @@ class ProductController extends Controller
         return view("admin.product.gallery", compact('productId')); // Replace 'your.route.name' with the actual route name you want to redirect to
     }
 
+
+
+    public function gallery($id)
+    {
+        $galleryData = ProductGallery::where('product_id', $id)->get();
+        $productId = $id;
+
+        return view('admin.product.gallery', compact('galleryData','productId'));
+    }
+
     public function galleryStore(Request $request)
     {
         foreach ($request->input('document', []) as $file) {
             //your file to be uploaded
             return $file;
         }
+        return redirect()->back();
     }
 
     public function galleryUpload(Request $request)
@@ -95,11 +107,7 @@ class ProductController extends Controller
         $productGallery->product_id = $request->input('product'); // Replace 'product_id' with the actual field name
         $productGallery->image = $name; // Assuming 'image' is the field where you store the file names
         $productGallery->save();
-
-        return response()->json([
-            'name' => $name,
-            'original_name' => $file->getClientOriginalName(),
-        ]);
+     
     }
 
     /**

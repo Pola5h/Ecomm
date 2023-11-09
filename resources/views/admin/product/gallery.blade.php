@@ -29,6 +29,30 @@ $pid =1;
                         </div>
                     </div>
                 </div>
+                @if(isset($galleryData))
+                <div class="card">
+                    <div class="card-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Image URL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($galleryData as $data)
+                                    <tr>
+                                        <td>{{ $data['id'] }}</td>
+                                        <td>{{ $data['image_url'] }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
+            
+             
 
             </div>
         </div>

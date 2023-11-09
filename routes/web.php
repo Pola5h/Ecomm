@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as
     Route::resource('category', \App\Http\Controllers\backend\CategoryController::class);
     Route::resource('brand', \App\Http\Controllers\backend\BrandController::class);
     Route::resource('product', \App\Http\Controllers\backend\ProductController::class);
+    Route::get('product/gallery/{id}', [\App\Http\Controllers\backend\ProductController::class, 'gallery'])->name('gallery');
+
     Route::post('product/gallery/store', [\App\Http\Controllers\backend\ProductController::class, 'galleryStore'])->name('gallery.store');
     Route::post('product/gallery/upload', [\App\Http\Controllers\backend\ProductController::class, 'galleryUpload'])->name('gallery.upload');
 });
