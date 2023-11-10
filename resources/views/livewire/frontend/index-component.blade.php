@@ -284,7 +284,7 @@
 
                     <div class="swiper-slide">
                         <div class="product-card">
-                            <a href="product-details.html">
+                            <a href="{{ route('product',['slug'=>$product->slug]) }}">
                                 <div class="product-thumb">
                                     <img src="{{asset('product/thumbnail/'.$product->thumbnail)}}" alt="">
                                     <span class="badge new">New</span>
@@ -295,7 +295,8 @@
                                         <h3 class="product-price">{{ $product->price }}</h3>
                                     </div>
                                     <div>
-                                        <button class="cart-icon"  wire:click.prevent="CartStore({{$product->id}},'{{$product->name}}',{{$product->price}},{{$product->price}})">
+                                        <button class="cart-icon"
+                                            wire:click.prevent="CartStore({{$product->id}},'{{$product->name}}',{{$product->price}},{{$product->price}})">
                                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -317,7 +318,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="wishlist.html" class="heart-icon">
+                            <a href="wishlist.html" class="heart-icon" title="Your popup text here">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -328,8 +329,8 @@
                             </a>
                         </div>
                     </div>
-@endforeach
-            
+                    @endforeach
+
                 </div>
             </div>
         </div>
@@ -366,19 +367,18 @@
                     <div class="swiper-slide">
                         <div class="product-card-02">
                             <div class="product-thumb">
-                                <a href="products.html"><img
-                                        src="{{asset('category/'.$category->icon)}}" alt=""></a>
+                                <a href="products.html"><img src="{{asset('category/'.$category->icon)}}" alt=""></a>
                             </div>
 
                             <div class="product-info">
-                                <h2><a href="#">{{  $category->name }}</a></h2>
-                                <p>{{$category->products_count  }} Products</p>
+                                <h2><a href="#">{{ $category->name }}</a></h2>
+                                <p>{{$category->products_count }} Products</p>
                             </div>
                         </div>
                     </div>
                     @endforeach
 
-             
+
                 </div>
             </div>
         </div>

@@ -14,7 +14,8 @@ class CartIconComponent extends Component
     {
         Cart::remove($id);
         $this->dispatch('refreshCartComponent');
-
+        $this->dispatch('refreshProductDetailsComponent');
+        
         session()->flash('success_message', 'Item has been removed!');
     }
     public function render()

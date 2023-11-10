@@ -94,7 +94,7 @@
                                                 class="w-5 h-5 inline-flex justify-center items-center text-[#9A9CAA] pl-[14px] select-none minus"
                                                 wire:click.prevent="decreaseQuantity('{{ $item->rowId }}')"
                                                 id="minus">-</span>
-                                            <input type="text"
+                                            <input disabled type="text"
                                                 class="text-[#272343] text-base plus_mines_input select-none"
                                                 value="{{ $item->qty }}" />
                                             <span

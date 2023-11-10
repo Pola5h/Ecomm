@@ -19,6 +19,8 @@ Route::get('/', \App\Livewire\Frontend\IndexComponent::class)->name('home');
 Route::get('/shop', \App\Livewire\Frontend\ShopComponent::class)->name('shop');
 Route::get('/cart', \App\Livewire\Frontend\CartComponent::class)->name('cart');
 Route::get('/checkout', \App\Livewire\Frontend\CheckoutComponent::class)->name('checkout');
+Route::get('/product/{slug}', \App\Livewire\Frontend\ProductDetailsComponent::class)->name('product');
+
 
 
 
@@ -28,7 +30,7 @@ Route::get('forbidden', function () {
 })->name('forbidden');
 Route::get('/dashboard', function () {
     $user = auth()->user();
-    return view($user->user_type === 1 ? 'admin.index' : ($user->user_type === 2 ? 'frontend.index' : 'welcome'));
+    return $user->user_type === 1 ? view('admin.index') : ($user->user_type === 2 ? redirect(route('home')) : view('welcome'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

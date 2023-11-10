@@ -151,7 +151,7 @@
                     @foreach ($products as $product )
 
                     <div class="product-card">
-                        <a href="product-details.html">
+                        <a href="{{ route('product',['slug'=>$product->slug]) }}">
                             <div class="product-thumb">
                                 <img src="{{asset('product/thumbnail/'.$product->thumbnail)}}" alt="">
                                 <span class="badge new">New</span>

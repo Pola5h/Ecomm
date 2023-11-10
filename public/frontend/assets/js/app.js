@@ -120,7 +120,7 @@ var swiper3 = new Swiper(".topCategoriesSwiper", {
 var swiper4 = new Swiper(".featureSwiper", {
     slidesPerView: 1,
     spaceBetween: 24,
-    loop: true,
+    // loop: true,
     navigation: {
         nextEl: ".featureSwiper-button-next",
         prevEl: ".featureSwiper-button-prev",
