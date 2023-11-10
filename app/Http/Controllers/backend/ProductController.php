@@ -69,9 +69,12 @@ class ProductController extends Controller
 
         $product->save();
         $productId = $product->id;
+        $galleryData = ProductGallery::where('product_id', $productId)->get();
+
+        toastr()->success('Product Inserted successfully');
 
         // Redirect or respond as needed
-        return view("admin.product.gallery", compact('productId')); // Replace 'your.route.name' with the actual route name you want to redirect to
+        return view("admin.product.gallery", compact('productId','galleryData')); // Replace 'your.route.name' with the actual route name you want to redirect to
     }
 
 
@@ -80,8 +83,7 @@ class ProductController extends Controller
     {
         $galleryData = ProductGallery::where('product_id', $id)->get();
         $productId = $id;
-
-        return view('admin.product.gallery', compact('galleryData','productId'));
+        return view('admin.product.gallery', compact('galleryData', 'productId'));
     }
 
     public function galleryStore(Request $request)
@@ -90,6 +92,8 @@ class ProductController extends Controller
             //your file to be uploaded
             return $file;
         }
+        toastr()->success('Image Inserted successfully');
+
         return redirect()->back();
     }
 
@@ -107,8 +111,29 @@ class ProductController extends Controller
         $productGallery->product_id = $request->input('product'); // Replace 'product_id' with the actual field name
         $productGallery->image = $name; // Assuming 'image' is the field where you store the file names
         $productGallery->save();
-     
     }
+
+    public function galleryDelete(string $id)
+    {
+        $gallery = ProductGallery::findOrFail($id);
+    
+        // Get the file path of the gallery image.
+        $imagePath = public_path('product/gallery/' . $gallery->image);
+    
+        // Delete the file.
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    
+        // Delete the gallery from the database.
+        $gallery->delete();
+    
+        // Redirect the user back to the previous page.
+        toastr()->success('Image Deleted successfully');
+
+        return redirect()->back();
+    }
+    
 
     /**
      * Display the specified resource.

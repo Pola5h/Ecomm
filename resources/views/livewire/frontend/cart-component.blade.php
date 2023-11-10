@@ -1,436 +1,173 @@
 <div>
-    <main class="main">
-        <div class="page-header breadcrumb-wrap">
-            <div class="container">
-                <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
-                    <span></span> Shop
-                    <span></span> Your Cart
-                </div>
+
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb">
+        <div class="container px-3 md:px-5 xl:px-0">
+            <div class="flex items-center gap-1 py-[1.5px]">
+                <a href="#" class="text-[14px] font-normal leading-[110%] text-dark-gray">Home</a>
+
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.125 5.25L10.875 9L7.125 12.75" stroke="#636270" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+
+                <span
+                    class="text-[14px] font-medium leading-[110%] font-display text-gray-black inline-block">Shop</span>
             </div>
+
+            <h2 class="pt-[13.5px] text-2xl font-semibold text-gray-black font-display">Shop</h2>
         </div>
-        <section class="mt-50 mb-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="table-responsive">
-                            @if(Session::has ('success_message'))
+    </div>
+    <!-- Breadcrumb End -->
 
-                            <div class="alert alert-success">
-                                <strong>Success | {{Session::get('success_message')}}</strong>
-                            </div>
-                            @endif
-                            <table class="table shopping-summery text-center clean">
-                                <thead>
-                                    <tr class="main-heading">
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Subtotal</th>
-                                        <th scope="col">Remove</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+    <section>
+        <div class="container px-3 md:px-5 xl:px-0">
+            <!-- shoping cart List Start -->
+            <div class="shopping-cart-wrapper pt-10 pb-20 flex lg:flex-nowrap flex-wrap items-start gap-6">
+                <!-- shopping cart start -->
+                <div class="shopping-cart lg:w-2/3 w-full">
+                    <div class="px-6 py-6 overflow-x-auto">
+                        @if(Session::has ('success_message'))
 
-                                    @if (Cart::count()>0)
+                        <div class="alert alert-success">
+                            <strong>Success | {{Session::get('success_message')}}</strong>
+                        </div>
+                        @endif
+                        <table class="w-[824px] leading-normal">
+                            <thead>
+                                <tr>
+                                    <th
+                                        class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[240px]">
+                                        Products
+                                    </th>
+                                    <th
+                                        class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[104px]">
+                                        Price
+                                    </th>
+                                    <th
+                                        class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[164px]">
+                                        Quantity
+                                    </th>
+                                    <th
+                                        class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[96px]">
+                                        Sub Total
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                                    @foreach (Cart::content() as $item )
 
-                                    <tr>
-                                        <td class="image product-thumbnail"><img
-                                                src="{{ asset('frontend/assets/imgs/shop/product-')}}{{$item->model->id}}-1.jpg"
-                                                alt="#"></td>
-                                        <td class="product-des product-name">
-                                            <h5 class="product-name"><a href="product-details.html">{{
-                                                    $item->model->name }}</a></h5>
-                                            {{-- <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy
-                                                magndapibus.
-                                            </p> --}}
-                                        </td>
-                                        <td class="price" data-title="Price"><span>${{ $item->model->regular_price }}
-                                            </span></td>
-                                        <td class="text-center" data-title="Stock">
-                                            <div class="detail-qty border radius  m-auto">
-                                                <a href="#" class="qty-down"
-                                                    wire:click.prevent="decreaseQuantity('{{ $item->rowId }}')"><i
-                                                        class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">{{ $item->qty }}</span>
-                                                <a href="#" class="qty-up"
-                                                    wire:click.prevent="increaseQuantity('{{ $item->rowId }}')"><i
-                                                        class="fi-rs-angle-small-up"></i></a>
+                                @if (Cart::count()>0)
+
+                                @foreach (Cart::content() as $item )
+
+                                <tr class="cart-item">
+                                    <td class="py-6 text-sm">
+                                        <div class="flex gap-2 items-center">
+                                            <button class="del" wire:click.prevent="destroy('{{ $item->rowId }}')">
+                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M2 2L6.00003 6M6.00003 6L10 2M6.00003 6L2 10M6.00003 6L10 10"
+                                                        stroke="#9A9CAA" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+
+                                            <div class="w-[70px] h-[70px]">
+                                                <img class="w-full h-full rounded-lg"
+                                                    src="{{asset('product/thumbnail/'.$item->model->thumbnail)}}"
+                                                    alt="" />
                                             </div>
-                                        </td>
-                                        <td class="text-right" data-title="Cart">
-                                            <span>${{ $item->subtotal }} </span>
-                                        </td>
-                                        <td class="action" data-title="Remove"><a href="#"
-                                                wire:click.prevent="destroy('{{ $item->rowId }}')" class="text-muted"><i
-                                                    class="fi-rs-trash"></i></a></td>
-                                    </tr>
-                                    @endforeach
-
-                                    <tr>
-                                        <td colspan="6" class="text-end">
-                                            <a href="#" wire:click.prevent="clear()" class="text-muted"> <i
-                                                    class="fi-rs-cross-small"></i> Clear
-                                                Cart</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            @else
-
-                            <p>No product added</p>
-                            @endif
-                        </div>
-                        <div class="cart-action text-end">
-                            <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
-                            <a class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
-                        </div>
-                        <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
-                        <div class="row mb-50">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="heading_s1 mb-3">
-                                    <h4>Calculate Shipping</h4>
-                                </div>
-                                <p class="mt-15 mb-30">Flat rate: <span class="font-xl text-brand fw-900">5%</span></p>
-                                <form class="field_form shipping_calculator">
-                                    <div class="form-row">
-                                        <div class="form-group col-lg-12">
-                                            <div class="custom_select">
-                                                <select class="form-control select-active">
-                                                    <option value="">Choose a option...</option>
-                                                    <option value="AX">Aland Islands</option>
-                                                    <option value="AF">Afghanistan</option>
-                                                    <option value="AL">Albania</option>
-                                                    <option value="DZ">Algeria</option>
-                                                    <option value="AD">Andorra</option>
-                                                    <option value="AO">Angola</option>
-                                                    <option value="AI">Anguilla</option>
-                                                    <option value="AQ">Antarctica</option>
-                                                    <option value="AG">Antigua and Barbuda</option>
-                                                    <option value="AR">Argentina</option>
-                                                    <option value="AM">Armenia</option>
-                                                    <option value="AW">Aruba</option>
-                                                    <option value="AU">Australia</option>
-                                                    <option value="AT">Austria</option>
-                                                    <option value="AZ">Azerbaijan</option>
-                                                    <option value="BS">Bahamas</option>
-                                                    <option value="BH">Bahrain</option>
-                                                    <option value="BD">Bangladesh</option>
-                                                    <option value="BB">Barbados</option>
-                                                    <option value="BY">Belarus</option>
-                                                    <option value="PW">Belau</option>
-                                                    <option value="BE">Belgium</option>
-                                                    <option value="BZ">Belize</option>
-                                                    <option value="BJ">Benin</option>
-                                                    <option value="BM">Bermuda</option>
-                                                    <option value="BT">Bhutan</option>
-                                                    <option value="BO">Bolivia</option>
-                                                    <option value="BQ">Bonaire, Saint Eustatius and Saba</option>
-                                                    <option value="BA">Bosnia and Herzegovina</option>
-                                                    <option value="BW">Botswana</option>
-                                                    <option value="BV">Bouvet Island</option>
-                                                    <option value="BR">Brazil</option>
-                                                    <option value="IO">British Indian Ocean Territory</option>
-                                                    <option value="VG">British Virgin Islands</option>
-                                                    <option value="BN">Brunei</option>
-                                                    <option value="BG">Bulgaria</option>
-                                                    <option value="BF">Burkina Faso</option>
-                                                    <option value="BI">Burundi</option>
-                                                    <option value="KH">Cambodia</option>
-                                                    <option value="CM">Cameroon</option>
-                                                    <option value="CA">Canada</option>
-                                                    <option value="CV">Cape Verde</option>
-                                                    <option value="KY">Cayman Islands</option>
-                                                    <option value="CF">Central African Republic</option>
-                                                    <option value="TD">Chad</option>
-                                                    <option value="CL">Chile</option>
-                                                    <option value="CN">China</option>
-                                                    <option value="CX">Christmas Island</option>
-                                                    <option value="CC">Cocos (Keeling) Islands</option>
-                                                    <option value="CO">Colombia</option>
-                                                    <option value="KM">Comoros</option>
-                                                    <option value="CG">Congo (Brazzaville)</option>
-                                                    <option value="CD">Congo (Kinshasa)</option>
-                                                    <option value="CK">Cook Islands</option>
-                                                    <option value="CR">Costa Rica</option>
-                                                    <option value="HR">Croatia</option>
-                                                    <option value="CU">Cuba</option>
-                                                    <option value="CW">CuraÇao</option>
-                                                    <option value="CY">Cyprus</option>
-                                                    <option value="CZ">Czech Republic</option>
-                                                    <option value="DK">Denmark</option>
-                                                    <option value="DJ">Djibouti</option>
-                                                    <option value="DM">Dominica</option>
-                                                    <option value="DO">Dominican Republic</option>
-                                                    <option value="EC">Ecuador</option>
-                                                    <option value="EG">Egypt</option>
-                                                    <option value="SV">El Salvador</option>
-                                                    <option value="GQ">Equatorial Guinea</option>
-                                                    <option value="ER">Eritrea</option>
-                                                    <option value="EE">Estonia</option>
-                                                    <option value="ET">Ethiopia</option>
-                                                    <option value="FK">Falkland Islands</option>
-                                                    <option value="FO">Faroe Islands</option>
-                                                    <option value="FJ">Fiji</option>
-                                                    <option value="FI">Finland</option>
-                                                    <option value="FR">France</option>
-                                                    <option value="GF">French Guiana</option>
-                                                    <option value="PF">French Polynesia</option>
-                                                    <option value="TF">French Southern Territories</option>
-                                                    <option value="GA">Gabon</option>
-                                                    <option value="GM">Gambia</option>
-                                                    <option value="GE">Georgia</option>
-                                                    <option value="DE">Germany</option>
-                                                    <option value="GH">Ghana</option>
-                                                    <option value="GI">Gibraltar</option>
-                                                    <option value="GR">Greece</option>
-                                                    <option value="GL">Greenland</option>
-                                                    <option value="GD">Grenada</option>
-                                                    <option value="GP">Guadeloupe</option>
-                                                    <option value="GT">Guatemala</option>
-                                                    <option value="GG">Guernsey</option>
-                                                    <option value="GN">Guinea</option>
-                                                    <option value="GW">Guinea-Bissau</option>
-                                                    <option value="GY">Guyana</option>
-                                                    <option value="HT">Haiti</option>
-                                                    <option value="HM">Heard Island and McDonald Islands</option>
-                                                    <option value="HN">Honduras</option>
-                                                    <option value="HK">Hong Kong</option>
-                                                    <option value="HU">Hungary</option>
-                                                    <option value="IS">Iceland</option>
-                                                    <option value="IN">India</option>
-                                                    <option value="ID">Indonesia</option>
-                                                    <option value="IR">Iran</option>
-                                                    <option value="IQ">Iraq</option>
-                                                    <option value="IM">Isle of Man</option>
-                                                    <option value="IL">Israel</option>
-                                                    <option value="IT">Italy</option>
-                                                    <option value="CI">Ivory Coast</option>
-                                                    <option value="JM">Jamaica</option>
-                                                    <option value="JP">Japan</option>
-                                                    <option value="JE">Jersey</option>
-                                                    <option value="JO">Jordan</option>
-                                                    <option value="KZ">Kazakhstan</option>
-                                                    <option value="KE">Kenya</option>
-                                                    <option value="KI">Kiribati</option>
-                                                    <option value="KW">Kuwait</option>
-                                                    <option value="KG">Kyrgyzstan</option>
-                                                    <option value="LA">Laos</option>
-                                                    <option value="LV">Latvia</option>
-                                                    <option value="LB">Lebanon</option>
-                                                    <option value="LS">Lesotho</option>
-                                                    <option value="LR">Liberia</option>
-                                                    <option value="LY">Libya</option>
-                                                    <option value="LI">Liechtenstein</option>
-                                                    <option value="LT">Lithuania</option>
-                                                    <option value="LU">Luxembourg</option>
-                                                    <option value="MO">Macao S.A.R., China</option>
-                                                    <option value="MK">Macedonia</option>
-                                                    <option value="MG">Madagascar</option>
-                                                    <option value="MW">Malawi</option>
-                                                    <option value="MY">Malaysia</option>
-                                                    <option value="MV">Maldives</option>
-                                                    <option value="ML">Mali</option>
-                                                    <option value="MT">Malta</option>
-                                                    <option value="MH">Marshall Islands</option>
-                                                    <option value="MQ">Martinique</option>
-                                                    <option value="MR">Mauritania</option>
-                                                    <option value="MU">Mauritius</option>
-                                                    <option value="YT">Mayotte</option>
-                                                    <option value="MX">Mexico</option>
-                                                    <option value="FM">Micronesia</option>
-                                                    <option value="MD">Moldova</option>
-                                                    <option value="MC">Monaco</option>
-                                                    <option value="MN">Mongolia</option>
-                                                    <option value="ME">Montenegro</option>
-                                                    <option value="MS">Montserrat</option>
-                                                    <option value="MA">Morocco</option>
-                                                    <option value="MZ">Mozambique</option>
-                                                    <option value="MM">Myanmar</option>
-                                                    <option value="NA">Namibia</option>
-                                                    <option value="NR">Nauru</option>
-                                                    <option value="NP">Nepal</option>
-                                                    <option value="NL">Netherlands</option>
-                                                    <option value="AN">Netherlands Antilles</option>
-                                                    <option value="NC">New Caledonia</option>
-                                                    <option value="NZ">New Zealand</option>
-                                                    <option value="NI">Nicaragua</option>
-                                                    <option value="NE">Niger</option>
-                                                    <option value="NG">Nigeria</option>
-                                                    <option value="NU">Niue</option>
-                                                    <option value="NF">Norfolk Island</option>
-                                                    <option value="KP">North Korea</option>
-                                                    <option value="NO">Norway</option>
-                                                    <option value="OM">Oman</option>
-                                                    <option value="PK">Pakistan</option>
-                                                    <option value="PS">Palestinian Territory</option>
-                                                    <option value="PA">Panama</option>
-                                                    <option value="PG">Papua New Guinea</option>
-                                                    <option value="PY">Paraguay</option>
-                                                    <option value="PE">Peru</option>
-                                                    <option value="PH">Philippines</option>
-                                                    <option value="PN">Pitcairn</option>
-                                                    <option value="PL">Poland</option>
-                                                    <option value="PT">Portugal</option>
-                                                    <option value="QA">Qatar</option>
-                                                    <option value="IE">Republic of Ireland</option>
-                                                    <option value="RE">Reunion</option>
-                                                    <option value="RO">Romania</option>
-                                                    <option value="RU">Russia</option>
-                                                    <option value="RW">Rwanda</option>
-                                                    <option value="ST">São Tomé and Príncipe</option>
-                                                    <option value="BL">Saint Barthélemy</option>
-                                                    <option value="SH">Saint Helena</option>
-                                                    <option value="KN">Saint Kitts and Nevis</option>
-                                                    <option value="LC">Saint Lucia</option>
-                                                    <option value="SX">Saint Martin (Dutch part)</option>
-                                                    <option value="MF">Saint Martin (French part)</option>
-                                                    <option value="PM">Saint Pierre and Miquelon</option>
-                                                    <option value="VC">Saint Vincent and the Grenadines</option>
-                                                    <option value="SM">San Marino</option>
-                                                    <option value="SA">Saudi Arabia</option>
-                                                    <option value="SN">Senegal</option>
-                                                    <option value="RS">Serbia</option>
-                                                    <option value="SC">Seychelles</option>
-                                                    <option value="SL">Sierra Leone</option>
-                                                    <option value="SG">Singapore</option>
-                                                    <option value="SK">Slovakia</option>
-                                                    <option value="SI">Slovenia</option>
-                                                    <option value="SB">Solomon Islands</option>
-                                                    <option value="SO">Somalia</option>
-                                                    <option value="ZA">South Africa</option>
-                                                    <option value="GS">South Georgia/Sandwich Islands</option>
-                                                    <option value="KR">South Korea</option>
-                                                    <option value="SS">South Sudan</option>
-                                                    <option value="ES">Spain</option>
-                                                    <option value="LK">Sri Lanka</option>
-                                                    <option value="SD">Sudan</option>
-                                                    <option value="SR">Suriname</option>
-                                                    <option value="SJ">Svalbard and Jan Mayen</option>
-                                                    <option value="SZ">Swaziland</option>
-                                                    <option value="SE">Sweden</option>
-                                                    <option value="CH">Switzerland</option>
-                                                    <option value="SY">Syria</option>
-                                                    <option value="TW">Taiwan</option>
-                                                    <option value="TJ">Tajikistan</option>
-                                                    <option value="TZ">Tanzania</option>
-                                                    <option value="TH">Thailand</option>
-                                                    <option value="TL">Timor-Leste</option>
-                                                    <option value="TG">Togo</option>
-                                                    <option value="TK">Tokelau</option>
-                                                    <option value="TO">Tonga</option>
-                                                    <option value="TT">Trinidad and Tobago</option>
-                                                    <option value="TN">Tunisia</option>
-                                                    <option value="TR">Turkey</option>
-                                                    <option value="TM">Turkmenistan</option>
-                                                    <option value="TC">Turks and Caicos Islands</option>
-                                                    <option value="TV">Tuvalu</option>
-                                                    <option value="UG">Uganda</option>
-                                                    <option value="UA">Ukraine</option>
-                                                    <option value="AE">United Arab Emirates</option>
-                                                    <option value="GB">United Kingdom (UK)</option>
-                                                    <option value="US">USA (US)</option>
-                                                    <option value="UY">Uruguay</option>
-                                                    <option value="UZ">Uzbekistan</option>
-                                                    <option value="VU">Vanuatu</option>
-                                                    <option value="VA">Vatican</option>
-                                                    <option value="VE">Venezuela</option>
-                                                    <option value="VN">Vietnam</option>
-                                                    <option value="WF">Wallis and Futuna</option>
-                                                    <option value="EH">Western Sahara</option>
-                                                    <option value="WS">Western Samoa</option>
-                                                    <option value="YE">Yemen</option>
-                                                    <option value="ZM">Zambia</option>
-                                                    <option value="ZW">Zimbabwe</option>
-                                                </select>
+                                            <div class="ml-1">
+                                                <p class="mb-0 text-[#272343] text-sm">{{$item->model->name }}</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row row">
-                                        <div class="form-group col-lg-6">
-                                            <input required="required" placeholder="State / Country" name="name"
-                                                type="text">
+                                    </td>
+                                    <td class="py-6 text-sm">
+                                        <p class="mb-0">${{$item->model->price}}</p>
+                                    </td>
+                                    <td class="py-6 text-sm">
+                                        <div
+                                            class="border inline-flex justify-around items-center h-[52px] w-[140px] border-[#D6D9DD] rounded-lg">
+                                            <span
+                                                class="w-5 h-5 inline-flex justify-center items-center text-[#9A9CAA] pl-[14px] select-none minus"
+                                                wire:click.prevent="decreaseQuantity('{{ $item->rowId }}')"
+                                                id="minus">-</span>
+                                            <input type="text"
+                                                class="text-[#272343] text-base plus_mines_input select-none"
+                                                value="{{ $item->qty }}" />
+                                            <span
+                                                class="w-5 h-5 inline-flex justify-center items-center text-[#9A9CAA] pr-[14px] select-none plus"
+                                                wire:click.prevent="increaseQuantity('{{ $item->rowId }}')"
+                                                id="plus">+</span>
                                         </div>
-                                        <div class="form-group col-lg-6">
-                                            <input required="required" placeholder="PostCode / ZIP" name="name"
-                                                type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-lg-12">
-                                            <button class="btn  btn-sm"><i
-                                                    class="fi-rs-shuffle mr-10"></i>Update</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="mb-30 mt-50">
-                                    <div class="heading_s1 mb-3">
-                                        <h4>Apply Coupon</h4>
-                                    </div>
-                                    <div class="total-amount">
-                                        <div class="left">
-                                            <div class="coupon">
-                                                <form action="#" target="_blank">
-                                                    <div class="form-row row justify-content-center">
-                                                        <div class="form-group col-lg-6">
-                                                            <input class="font-medium" name="Coupon"
-                                                                placeholder="Enter Your Coupon">
-                                                        </div>
-                                                        <div class="form-group col-lg-6">
-                                                            <button class="btn  btn-sm"><i
-                                                                    class="fi-rs-label mr-10"></i>Apply</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @if (Cart::count()>0)
+                                    </td>
+                                    <td class="py-6 text-sm">
+                                        <p>${{ $item->subtotal }}</p>
+                                    </td>
+                                </tr>
 
-                            <div class="col-lg-6 col-md-12">
-                                <div class="border p-md-4 p-30 border-radius cart-totals">
-                                    <div class="heading_s1 mb-3">
-                                        <h4>Cart Totals</h4>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="cart_total_label">Cart Subtotal</td>
-                                                    <td class="cart_total_amount"><span
-                                                            class="font-lg fw-900 text-brand">${{ Cart::subtotal()
-                                                            }}</span></td>
-                                                </tr>
+                                @endforeach
 
-                                                {{-- <tr>
-                                                    <td class="cart_total_label">Shipping</td>
-                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free
-                                                        Shipping</td>
-                                                </tr> --}}
-                                                <tr>
-                                                    <td class="cart_total_label">Total</td>
-                                                    <td class="cart_total_amount"><strong><span
-                                                                class="font-xl fw-900 text-brand">${{ Cart::subtotal()
-                                                                }}</span></strong>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <a href="checkout.html" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To
-                                        CheckOut</a>
-                                </div>
-                            </div>
-                            @endif
+                            </tbody>
+                        </table>
+                        @else
+
+                        <p>No product added</p>
+                        @endif
+                    </div>
+                    <hr class="my-0">
+                    <div class="coupon-wrap p-6">
+                        <input type="text" name="" id=""
+                            class="px-5 py-[18px] bg-[#F0F2F3] rounded-lg border-none focus:outline-none coupon-input coupon-btn w-full block focus:ring-2 ring-[#029FAE]"
+                            placeholder="Coupon Code">
+                        <button type="submit"
+                            class="bg-[#007580] hover:bg-[#272343] transition-all duration-300 inline-flex font-semibold text-gray-white coupon-btn px-6 py-[17px] rounded-lg">Apply
+                            Coupon Code</button>
+                        <button class="bg-off-white text-[#272343] coupon-btn font-semibold py-[17px] px-6 rounded-lg"
+                            wire:click.prevent="clear()">Clear Cart</button>
+                    </div>
+
+                </div>
+                <!-- shopping cart end -->
+
+                <!-- Cart Total End -->
+                @if (Cart::count()>0)
+
+                <div class="cart-total p-8 lg:w-1/3 w-full">
+                    <div class="subtotal-info">
+                        <div class="flex justify-between items-center">
+                            <p class="common-hedding">subtotal</p>
+                            <p class="text-gray-black text-[16px] leading-[120%] font-display font-medium">${{ Cart::subtotal()}}</p>
                         </div>
+                        <div class="flex justify-between items-center pt-4">
+                            <p class="common-hedding">Tax</p>
+                            <p class="text-gray-black text-[16px] leading-[120%] font-display font-medium">${{
+                                Cart::tax()
+                                }}</p>
+                        </div>
+
+                      
+                        <hr>
+                        <div class="flex justify-between items-center">
+                            <p class="common-hedding">Total:</p>
+                            <p class="text-gray-black text-[22px] leading-[120%] font-display font-semibold">${{
+                                Cart::total()
+                                }}
+                            </p>
+                        </div>
+                        <button
+                            class="mt-6 bg-accents hover:bg-[#272343] transition-all duration-300 py-[19px] rounded-lg text-[18px] font-bold font-display leading-[110%] text-gray-white text-center w-full">proceed
+                            to Checkout</button>
                     </div>
                 </div>
+                @endif
+
+                <!-- Cart Total Start -->
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- shoping cart List End -->
 </div>

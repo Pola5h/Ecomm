@@ -1,9 +1,7 @@
 @extends('admin.master')
 @section('admin')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
-@php
-$pid =1;
-@endphp
+
 <div class="page-body">
     <div class="container-xl">
 
@@ -15,7 +13,7 @@ $pid =1;
 
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="card-title">Multiple File Upload</h3>
+                            <h3 class="card-title">Upload Your Image</h3>
                             <form action="{{ route('admin.gallery.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -29,30 +27,65 @@ $pid =1;
                         </div>
                     </div>
                 </div>
-                @if(isset($galleryData))
+                @if(count($galleryData) === 0)
                 <div class="card">
                     <div class="card-body">
-                        <table>
+                    <div class="card-header mb-">
+                        <h3 class="card-title">Category List</h3>
+                    </div>
+                    <h3 style="text-align: center; color: red;">No Image to show</h3>
+
+                    </div>
+                 
+                </div>
+           
+                @else
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Image List</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-vcenter table-mobile-md card-table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Image URL</th>
+                                    <th>SL#</th>
+                                    <th>Image</th>
+                                    <th class="w-1"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($galleryData as $data)
-                                    <tr>
-                                        <td>{{ $data['id'] }}</td>
-                                        <td>{{ $data['image_url'] }}</td>
-                                    </tr>
+                                @foreach($galleryData as $key => $data)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td data-label="Name">
+                                        <div class="d-flex py-1 align-items-center">
+                                            <span class="avatar me-2"
+                                                style="background-image: url('{{ $data->image ? asset('product/gallery/' . $data->image) : asset('../backend/assets/static/logo.svg') }}')"></span>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <form action="{{ route('admin.gallery.delete', $data->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger w-100">
+                                                Delete
+                                            </button>
+                                        </form>
+
+                                    </td>
+                                </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
                 </div>
-            @endif
-            
-             
+           
+                @endif
+
+
 
             </div>
         </div>

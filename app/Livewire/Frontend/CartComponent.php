@@ -7,6 +7,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartComponent extends Component
 {
+    protected $listeners =['refreshCartComponent'=>'$refresh'];
 
 
     public function increaseQuantity($rowId)
@@ -14,21 +15,28 @@ class CartComponent extends Component
         $product = Cart::get($rowId);
         $qty = $product->qty + 1;
         Cart::update($rowId, $qty);
+        $this->dispatch('refreshCartIconComponent');
     }
     public function decreaseQuantity($rowId)
     {
         $product = Cart::get($rowId);
         $qty = $product->qty - 1;
         Cart::update($rowId, $qty);
+        $this->dispatch('refreshCartIconComponent');
+
     }
     public function destroy($id)
     {
         Cart::remove($id);
+        $this->dispatch('refreshCartIconComponent');
+
         session()->flash('success_message', 'Item has been removed!');
     }
     public function clear()
     {
         Cart::destroy();
+        $this->dispatch('refreshCartIconComponent');
+
         session()->flash('success_message', 'The Cart is empty!');
     }
 

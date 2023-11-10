@@ -32,9 +32,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-
-
-
 Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('category', \App\Http\Controllers\backend\CategoryController::class);
     Route::resource('brand', \App\Http\Controllers\backend\BrandController::class);
@@ -43,6 +40,7 @@ Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as
 
     Route::post('product/gallery/store', [\App\Http\Controllers\backend\ProductController::class, 'galleryStore'])->name('gallery.store');
     Route::post('product/gallery/upload', [\App\Http\Controllers\backend\ProductController::class, 'galleryUpload'])->name('gallery.upload');
+    Route::delete('product/gallery/delete/{id}', [\App\Http\Controllers\backend\ProductController::class, 'galleryDelete'])->name('gallery.delete');
 });
 
 Route::group(['middleware' => ['auth', 'check_user:2'],  'as' => 'user.'], function () {

@@ -15,16 +15,16 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category', 'category_id');
+        return $this->belongsTo(Category::class);
     }
 
     public function brand()
     {
-        return $this->belongsTo('App\Brand', 'brand_id');
+        return $this->belongsTo(Brand::class);
     }
 
     public function galleries()
     {
-        return $this->hasMany('App\ProductGallery', 'product_id');
+        return $this->hasMany(ProductGallery::class);
     }
 }
