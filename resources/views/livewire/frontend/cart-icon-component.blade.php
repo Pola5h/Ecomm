@@ -21,11 +21,11 @@
             </span>
             <span>Cart</span>
             <span
-                class="bg-dark-accents text-white rounded-full py-[3px] px-[9px] ml-1 inline-flex justify-center items-center text-[10px] leading-[100%]">{{ Cart::count() }}</span>
+                class="bg-dark-accents text-white rounded-full py-[3px] px-[9px] ml-1 inline-flex justify-center items-center text-[10px] leading-[100%]">{{ Cart::instance('cart')->count() }}</span>
         </a>
         <div class="cart-content">
             <ul class="p-6">
-                @foreach (Cart::content() as $item )
+                @foreach (Cart::instance('cart')->content() as $item )
 
                 <li class="pb-4">
                     <div class="flex items-center justify-between">
@@ -56,9 +56,9 @@
                 </li>
              @endforeach
                 <div class="flex justify-between items-center py-2 mb-4">
-                    <p class="text-[#636270] text-lg">    {{ Cart::count() }} {{ Cart::count() > 1 ? 'Products' : 'Product' }}
+                    <p class="text-[#636270] text-lg">    {{ Cart::instance('cart')->count() }} {{ Cart::instance('cart')->count() > 1 ? 'Products' : 'Product' }}
                     </p>
-                    <p class="text-gray-black text-xl font-medium">${{ Cart::total() }}</p>
+                    <p class="text-gray-black text-xl font-medium">${{ Cart::instance('cart')->total() }}</p>
                 </div>
                 <div class="flex justify-between items-center">
                     <a href="{{ url('cart') }}" class="btn-transparent">View Cart</a>

@@ -20,24 +20,24 @@ class ProductDetailsComponent extends Component
     }
     public function increaseQuantity($rowId)
     {
-        $product = Cart::get($rowId);
+        $product = Cart::instance('cart')->get($rowId);
         $qty = $product->qty + 1;
-        Cart::update($rowId, $qty);
+        Cart::instance('cart')->update($rowId, $qty);
         $this->dispatch('refreshCartIconComponent');
     }
     public function CartStore($product_id, $product_name, $product_price)
     {
 
-        Cart::add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+        Cart::instance('cart')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
         $this->dispatch('refreshCartIconComponent');
         Session()->flash('success_message', 'Product added in cart');
         return redirect()->route('cart');
     }
     public function decreaseQuantity($rowId)
     {
-        $product = Cart::get($rowId);
+        $product = Cart::instance('cart')->get($rowId);
         $qty = $product->qty - 1;
-        Cart::update($rowId, $qty);
+        Cart::instance('cart')->update($rowId, $qty);
         $this->dispatch('refreshCartIconComponent');
 
     }

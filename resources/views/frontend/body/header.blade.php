@@ -83,9 +83,9 @@
                     </div>
                     <div class="lg:block hidden">
                         <ul class="flex items-center gap-3">
-                     
 
-@livewire('frontend.cart-icon-component')
+
+                            @livewire('frontend.cart-icon-component')
 
                             <li class="inline-flex items-center justify-center">
                                 <a href="#" class="bg-white text-gray-black hover:text-[#007580] rounded-lg p-[11px]">
@@ -117,9 +117,9 @@
                                 </button>
                                 <div class="profile-content">
                                     <ul class="py-3">
-                                       
+
                                         <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
-                                             
+
                                             <li>
                                                 <a href="{{ url('cart') }}">Shopping Cart</a>
                                             </li>
@@ -130,17 +130,19 @@
                                                 <a href="order-history.html">Order History</a>
                                             </li>
                                         </div>
-                                 
+
                                         <div class="px-3">
                                             <li>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                    style="display: none;">
                                                     @csrf
                                                 </form>
-                                                
-                                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                    Logout 
+
+                                                <a href="#"
+                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    Logout
                                                 </a>
-                                                                                            </li>
+                                            </li>
                                         </div>
                                     </ul>
                                 </div>
@@ -167,9 +169,9 @@
                                             <li>
                                                 <a href="{{ url('login') }}">Sign In</a>
                                             </li>
-                                 
+
                                         </div>
-                                     
+
                                         <div class="px-3">
                                             <li>
                                                 <a href="{{ url('cart') }}">Shoping Cart</a>

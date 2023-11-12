@@ -24,8 +24,8 @@
     <!-- Breadcrumb End -->
     @php
 
-    $rowId = Cart::content()->where('id', $productData->id)->pluck('rowId','qty')->first();
-    $row = Cart::content()->where('id', $productData->id)->first();
+    $rowId = Cart::instance('cart')->content()->where('id', $productData->id)->pluck('rowId','qty')->first();
+    $row = Cart::instance('cart')->content()->where('id', $productData->id)->first();
     $qty = $row->qty ?? 0;
 
     @endphp

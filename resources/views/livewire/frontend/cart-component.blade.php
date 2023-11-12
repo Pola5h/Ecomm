@@ -57,9 +57,9 @@
                             <tbody>
 
 
-                                @if (Cart::count()>0)
+                                @if (Cart::instance('cart')->count()>0)
 
-                                @foreach (Cart::content() as $item )
+                                @foreach (Cart::instance('cart')->content() as $item )
 
                                 <tr class="cart-item">
                                     <td class="py-6 text-sm">
@@ -133,7 +133,7 @@
                 <!-- shopping cart end -->
 
                 <!-- Cart Total End -->
-                @if (Cart::count()>0)
+                @if (Cart::instance('cart')->count()>0)
 
                 <div class="cart-total p-8 lg:w-1/3 w-full">
                     <div class="subtotal-info">
@@ -144,7 +144,7 @@
                         <div class="flex justify-between items-center pt-4">
                             <p class="common-hedding">Tax</p>
                             <p class="text-gray-black text-[16px] leading-[120%] font-display font-medium">${{
-                                Cart::tax()
+                                Cart::instance('cart')->tax()
                                 }}</p>
                         </div>
 
@@ -153,7 +153,7 @@
                         <div class="flex justify-between items-center">
                             <p class="common-hedding">Total:</p>
                             <p class="text-gray-black text-[22px] leading-[120%] font-display font-semibold">${{
-                                Cart::total()
+                                Cart::instance('cart')->total()
                                 }}
                             </p>
                         </div>

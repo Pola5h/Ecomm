@@ -14,7 +14,7 @@ class IndexComponent extends Component
     public function CartStore($product_id, $product_name, $product_price)
     {
 
-        Cart::add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+        Cart::instance('cart')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
         Session()->flash('success_message', 'Product added in cart');
         return redirect()->route('cart');
     }

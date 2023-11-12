@@ -12,7 +12,7 @@ class CartIconComponent extends Component
 
     public function destroy($id)
     {
-        Cart::remove($id);
+        Cart::instance('cart')->remove($id);
         $this->dispatch('refreshCartComponent');
         $this->dispatch('refreshProductDetailsComponent');
         
