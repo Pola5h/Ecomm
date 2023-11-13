@@ -88,7 +88,8 @@
                             @livewire('frontend.cart-icon-component')
 
                             <li class="inline-flex items-center justify-center">
-                                <a href="#" class="bg-white text-gray-black hover:text-[#007580] rounded-lg p-[11px]">
+                                <a href="{{ url('wishlist') }}"
+                                    class="bg-white text-gray-black hover:text-[#007580] rounded-lg p-[11px]">
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -119,12 +120,15 @@
                                     <ul class="py-3">
 
                                         <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
-
+                                            <li>
+                                                <a href="{{ url('user/profile') }}">Profile</a>
+                                            </li>
                                             <li>
                                                 <a href="{{ url('cart') }}">Shopping Cart</a>
                                             </li>
+
                                             <li>
-                                                <a href="wishlist.html">Wishlist</a>
+                                                <a href="{{ url('wishlist') }}">Wishlist</a>
                                             </li>
                                             <li>
                                                 <a href="order-history.html">Order History</a>

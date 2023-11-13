@@ -20,10 +20,7 @@ Route::get('/shop', \App\Livewire\Frontend\ShopComponent::class)->name('shop');
 Route::get('/cart', \App\Livewire\Frontend\CartComponent::class)->name('cart');
 Route::get('/checkout', \App\Livewire\Frontend\CheckoutComponent::class)->name('checkout');
 Route::get('/product/{slug}', \App\Livewire\Frontend\ProductDetailsComponent::class)->name('product');
-
-
-
-
+Route::get('/wishlist', \App\Livewire\Frontend\WishListComponent::class)->name('wishlist');
 
 Route::get('forbidden', function () {
     return view('error.forbidden');
@@ -38,23 +35,25 @@ Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as
     Route::resource('category', \App\Http\Controllers\backend\CategoryController::class);
     Route::resource('brand', \App\Http\Controllers\backend\BrandController::class);
     Route::resource('product', \App\Http\Controllers\backend\ProductController::class);
+    Route::resource('testimonial', \App\Http\Controllers\backend\TestimonialController::class);
     Route::get('product/gallery/{id}', [\App\Http\Controllers\backend\ProductController::class, 'gallery'])->name('gallery');
-
     Route::post('product/gallery/store', [\App\Http\Controllers\backend\ProductController::class, 'galleryStore'])->name('gallery.store');
     Route::post('product/gallery/upload', [\App\Http\Controllers\backend\ProductController::class, 'galleryUpload'])->name('gallery.upload');
     Route::delete('product/gallery/delete/{id}', [\App\Http\Controllers\backend\ProductController::class, 'galleryDelete'])->name('gallery.delete');
 });
 
-Route::group(['middleware' => ['auth', 'check_user:2'],  'as' => 'user.'], function () {
+Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix'=>'user',  'as' => 'user.'], function () {
+    Route::get('profile', \App\Livewire\Frontend\ProfileComponent::class)->name('profile');
+    Route::post('profile/update',[ \App\Livewire\Frontend\AccountSettingComponent::class, 'updateAccount'])->name('profile.update');
+    Route::post('password/update',[ \App\Livewire\Frontend\UserPasswordComponent::class, 'updatePassword'])->name('password.update');
+
+
+
 });
 
 
 
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+
 
 require __DIR__ . '/auth.php';

@@ -149,7 +149,7 @@
                         <div class="flex gap-3 w-full">
                             <div class="xl:w-[343px] add-to-cart-btn">
                                 <button
-                                    wire:click.prevent="CartStore({{$productData->id}},'{{$productData->name}}',{{$productData->price}},{{$productData->price}})"
+                                    wire:click.prevent="CartStore({{$productData->id}},'{{$productData->name}}',{{$productData->price}})"
                                     class="inline-flex gap-3 py-3.5 bg-[#029FAE] hover:bg-[#272343] transition-all duration-300 rounded-lg px-4 xl:w-[343px] w-full items-center justify-center">
                                     <span class="text-white text-base">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

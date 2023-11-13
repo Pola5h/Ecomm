@@ -25,36 +25,38 @@
         </a>
         <div class="cart-content">
             <ul class="p-6">
-                @foreach (Cart::instance('cart')->content() as $item )
-
+                
+                @foreach (Cart::instance('cart')->content() as $item)
                 <li class="pb-4">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-1">
                             <div>
-                                <img src="{{asset('product/thumbnail/'.$item->model->thumbnail)}}"
-                                    alt="">
+                                @if($item->model && $item->model->thumbnail)
+                                    <img src="{{ asset('product/thumbnail/'.$item->model->thumbnail) }}" alt="">
+                                @else
+                                    <!-- Provide a fallback image or handle the case where thumbnail is null -->
+                                    <img src="{{ asset('path/to/fallback-image.jpg') }}" alt="Fallback Image">
+                                @endif
                             </div>
                             <div class="px-2">
-                                <h2 class="text-gray-black"><span>{{ substr($item->model->name,0,20) }}</span>
+                                <h2 class="text-gray-black">
+                                    <span>{{ substr($item->model->name, 0, 20) }}</span>
                                     <span class="text-[#636270]">x{{ $item->qty }}</span>
                                 </h2>
                                 <p class="text-gray-black font-semibold mb-0">${{ $item->subtotal }}</p>
                             </div>
                         </div>
                         <div>
-                            <button
-                            wire:click.prevent="destroy('{{ $item->rowId }}')"   class="hover:bg-[#F0F2F3] bg-transparent p-2 hover:text-gray-black rounded-full text-[#9A9CAA] transition-all duration-500">
-                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 10L14 14M14 14L18 10M14 14L10 18M14 14L18 18"
-                                        stroke="currentColor" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round" />
+                            <button wire:click.prevent="destroy('{{ $item->rowId }}')" class="hover:bg-[#F0F2F3] bg-transparent p-2 hover:text-gray-black rounded-full text-[#9A9CAA] transition-all duration-500">
+                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 10L14 14M14 14L18 10M14 14L10 18M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </button>
                         </div>
                     </div>
                 </li>
-             @endforeach
+            @endforeach
+            
                 <div class="flex justify-between items-center py-2 mb-4">
                     <p class="text-[#636270] text-lg">    {{ Cart::instance('cart')->count() }} {{ Cart::instance('cart')->count() > 1 ? 'Products' : 'Product' }}
                     </p>

@@ -6,6 +6,7 @@ use App\Models\Product;
 use Livewire\Component;
 use App\Models\WishList;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Session\Session;
 
@@ -26,21 +27,38 @@ class ShopComponent extends Component
         Session()->flash('success_message', 'Product added in cart');
         return redirect()->route('cart');
     }
- 
+
+
+
+
+
     public function AddToWishlist($product_id, $product_name, $product_price)
-{
-    // Add the product to the wishlist cart
-    Cart::instance('wishlist')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+    {
+        // Add the product to the wishlist cart
+        // Cart::instance('wishlist')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
 
-    // Insert the product into the wish_lists table
-    $wishList = new WishList();
-    $wishList->user_id = auth()->user()->id; // Assuming you have user authentication
-    $wishList->product_id = $product_id;
-    $wishList->save();
+        // Insert the product into the wish_lists table
 
-    Session()->flash('success_message', 'Product added to wishlist');
-    return redirect()->route('wishlist');
-}
+        if (Auth::check()) {
+            (new WishList(['user_id' => Auth::user()->id, 'product_id' => $product_id]))->save();
+            return redirect()->route('wishlist');
+        } else {
+            // Handle the case where the user is not authenticated
+        }
+    }
+    public function RemoveFromWishlist($product_id)
+    {
+        // Remove the product from the wishlist cart
+        // Cart::instance('wishlist')->remove($product_id);
+
+        // Remove the product from the wish_lists table
+        if (Auth::check()) {
+            WishList::where('user_id', Auth::user()->id)->where('product_id', $product_id)->delete();
+            return redirect()->route('wishlist');
+        } else {
+            // Handle the case where the user is not authenticated
+        }
+    }
 
     public function render()
     {
