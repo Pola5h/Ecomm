@@ -4,10 +4,11 @@ namespace App\Livewire\Frontend;
 
 use Livewire\Component;
 
-class CheckoutComponent extends Component
+class CheckOutComponent extends Component
 {
+    
     public function render()
     {
-        return view('livewire.frontend.checkout-component');
+        return view('livewire.frontend.check-out-component');
     }
 }

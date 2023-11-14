@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', \App\Livewire\Frontend\IndexComponent::class)->name('home');
 Route::get('/shop', \App\Livewire\Frontend\ShopComponent::class)->name('shop');
 Route::get('/cart', \App\Livewire\Frontend\CartComponent::class)->name('cart');
-Route::get('/checkout', \App\Livewire\Frontend\CheckoutComponent::class)->name('checkout');
 Route::get('/product/{slug}', \App\Livewire\Frontend\ProductDetailsComponent::class)->name('product');
-Route::get('/wishlist', \App\Livewire\Frontend\WishListComponent::class)->name('wishlist');
 
 Route::get('forbidden', function () {
     return view('error.forbidden');
@@ -42,13 +40,12 @@ Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as
     Route::delete('product/gallery/delete/{id}', [\App\Http\Controllers\backend\ProductController::class, 'galleryDelete'])->name('gallery.delete');
 });
 
-Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix'=>'user',  'as' => 'user.'], function () {
+Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'user',  'as' => 'user.'], function () {
     Route::get('profile', \App\Livewire\Frontend\ProfileComponent::class)->name('profile');
-    Route::post('profile/update',[ \App\Livewire\Frontend\AccountSettingComponent::class, 'updateAccount'])->name('profile.update');
-    Route::post('password/update',[ \App\Livewire\Frontend\UserPasswordComponent::class, 'updatePassword'])->name('password.update');
-
-
-
+    Route::post('profile/update', [\App\Livewire\Frontend\AccountSettingComponent::class, 'updateAccount'])->name('profile.update');
+    Route::post('updateImage', [\App\Http\Controllers\frontend\UpdateImageController::class, 'updateProfilePhoto'])->name('updateProfilePhoto');
+    Route::get('/wishlist', \App\Livewire\Frontend\WishListComponent::class)->name('wishlist');
+    Route::get('/checkout',\App\Livewire\Frontend\CheckOutComponent::class)->name('checkout');
 });
 
 
