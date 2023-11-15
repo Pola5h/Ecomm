@@ -45,7 +45,10 @@ Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'user',  'as
     Route::post('profile/update', [\App\Livewire\Frontend\AccountSettingComponent::class, 'updateAccount'])->name('profile.update');
     Route::post('updateImage', [\App\Http\Controllers\frontend\UpdateImageController::class, 'updateProfilePhoto'])->name('updateProfilePhoto');
     Route::get('/wishlist', \App\Livewire\Frontend\WishListComponent::class)->name('wishlist');
-    Route::get('/checkout',\App\Livewire\Frontend\CheckOutComponent::class)->name('checkout');
+    Route::get('/checkout', \App\Livewire\Frontend\CheckOutComponent::class)->name('checkout');
+    Route::get('/order-details', \App\Livewire\Frontend\OrderDetailsComponent::class)->name('order.details');
+    Route::get('stripe', [\App\Http\Controllers\frontend\StripeController::class, 'stripe'])->name('stripe');
+    Route::post('stripe/post', [\App\Http\Controllers\frontend\StripeController::class, 'stripePost'])->name('stripe.post');
 });
 
 

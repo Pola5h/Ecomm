@@ -12,4 +12,17 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function shippingInformation()
+    {
+        return $this->hasOne(ShippingInformation::class);
+    }
+    public function billingInformation()
+    {
+        return $this->hasOne(BillingInformation::class);
+    }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

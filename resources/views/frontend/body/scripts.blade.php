@@ -9,3 +9,30 @@
     el.parentNode.style.display='none';
     };
 </script>
+<script>
+    $('.test').change(function(){
+   
+     if($(this).is(":checked")) {
+         $('.changeme').removeClass('hidden');
+     } else {
+         $('.changeme').addClass('hidden');
+     }
+ });
+
+//         $("#change-color").change(function() {
+//     if(this.checked) {
+//         $("#dynamic-color").addClass('new-class');
+//     } else {
+//         $("#dynamic-color").removeClass("new-class")
+//     }
+//   });
+
+$("#chkFacility3").click(function () {
+         if ($(this).is(":checked")) {
+             $("#div3").removeClass('hidden');
+         } else {
+             $("#div3").addClass('hidden');
+         }
+     });
+
+</script>

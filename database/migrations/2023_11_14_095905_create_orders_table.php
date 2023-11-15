@@ -15,18 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('order_id')->unique();
             $table->unsignedBigInteger('user_id');
-            $table->string('tran_id')->unique();
-            $table->decimal('total');
-            $table->string('payment_status')->default(1)->comment('1: on cash, 2: online');
-            $table->string('payment_type');
+            $table->string('tran_id')->unique()->nullable();
+            $table->decimal('total', 12, 2);
+            $table->integer('payment_status')->nullable()->comment('1: Pending, 2: Paid ');
+            $table->integer('payment_type')->default(1)->comment('1: on cash, 2: online');
             $table->integer('order_status')->default(1)->comment('1: Pending, 2: Shipped, 3: Delivered, 4: Cancelled, 5: On Hold, 6: Returned');
-            $table->boolean('shipping_status');
-            // If shipping_status is true, these fields are required; otherwise, they can be empty.
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            $table->string('address')->nullable();
-            $table->string('phone_number')->nullable();
-        
             $table->timestamps();
         });
     }

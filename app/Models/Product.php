@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-   
-
 
     protected $table = 'products';
 
@@ -26,5 +24,9 @@ class Product extends Model
     public function galleries()
     {
         return $this->hasMany(ProductGallery::class);
+    }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }
