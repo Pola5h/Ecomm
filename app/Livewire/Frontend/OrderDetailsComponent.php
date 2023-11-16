@@ -14,12 +14,12 @@ class OrderDetailsComponent extends Component
 {
     public function render(Request $request)
     {
-        $Order = Order::find( $request-> id);
-        $OrderItems =OrderItem::where('order_id', $request-> id)->get();
-        
-        $billinginfo = BillingInformation::where('order_id', $request-> id)->first();
-$sippinginfo = ShippingInformation::where('order_id', $request-> id)->first();
+        $Order = Order::find($request->id);
+        $OrderItems = OrderItem::where('order_id', $request->id)->get();
 
-        return view('livewire.frontend.order-details-component', compact('Order','OrderItems','billinginfo','sippinginfo'));
+        $billinginfo = BillingInformation::where('order_id', $request->id)->first();
+        $sippinginfo = ShippingInformation::where('order_id', $request->id)->first();
+
+        return view('livewire.frontend.order-details-component', compact('Order', 'OrderItems', 'billinginfo', 'sippinginfo'));
     }
 }

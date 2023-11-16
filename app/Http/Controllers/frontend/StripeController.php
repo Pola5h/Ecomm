@@ -62,9 +62,9 @@ class StripeController extends Controller
                 $order->total = Cart::instance('cart')->total();
                 $order->order_status = 1;
                 $order->save();
-        
+
                 $items = Cart::instance('cart')->content();
-        
+
                 foreach ($items as $item) {
                     $orderItem = new OrderItem;
                     $orderItem->order_id = $order->id;
@@ -73,9 +73,9 @@ class StripeController extends Controller
                     $orderItem->sub_total = $item->qty * $item->price;
                     $orderItem->save();
                 }
-        
+
                 Cart::instance('cart')->destroy();
-        
+
                 $billing = new BillingInformation();
                 $billing->order_id = $order->id;
                 $billing->name = $request->b_name;
@@ -83,7 +83,7 @@ class StripeController extends Controller
                 $billing->phone = $request->b_phone;
                 $billing->email = $request->b_email;
                 $billing->save();
-        
+
                 if ($request->shipping_status == 'yes') {
                     $shipping = new ShippingInformation();
                     $shipping->order_id = $order->id;
@@ -95,8 +95,8 @@ class StripeController extends Controller
                 }
                 // Flash success message
                 toastr()->success('Payment successful');
-                // Redirect back to previous page
-                return back();
+
+                return redirect()->route('user.order.details', ['id' => $order->id]);
             } catch (Exception $exception) {
                 // Handle payment failure
                 $order->user_id = Auth::user()->id;
@@ -106,9 +106,9 @@ class StripeController extends Controller
                 $order->total = Cart::instance('cart')->total();
                 $order->order_status = 1;
                 $order->save();
-        
+
                 $items = Cart::instance('cart')->content();
-        
+
                 foreach ($items as $item) {
                     $orderItem = new OrderItem;
                     $orderItem->order_id = $order->id;
@@ -117,9 +117,9 @@ class StripeController extends Controller
                     $orderItem->sub_total = $item->qty * $item->price;
                     $orderItem->save();
                 }
-        
+
                 Cart::instance('cart')->destroy();
-        
+
                 $billing = new BillingInformation();
                 $billing->order_id = $order->id;
                 $billing->name = $request->b_name;
@@ -127,7 +127,7 @@ class StripeController extends Controller
                 $billing->phone = $request->b_phone;
                 $billing->email = $request->b_email;
                 $billing->save();
-        
+
                 if ($request->shipping_status == 'yes') {
                     $shipping = new ShippingInformation();
                     $shipping->order_id = $order->id;
@@ -138,7 +138,7 @@ class StripeController extends Controller
                     $shipping->save();
                 }
                 toastr()->error('Payment Failed');
-                return back();
+                return redirect()->route('user.order.details', ['id' => $order->id]);
             }
         } else {
             // For non-Stripe payments, set payment status and type
@@ -149,9 +149,9 @@ class StripeController extends Controller
             $order->total = Cart::instance('cart')->total();
             $order->order_status = 1;
             $order->save();
-    
+
             $items = Cart::instance('cart')->content();
-    
+
             foreach ($items as $item) {
                 $orderItem = new OrderItem;
                 $orderItem->order_id = $order->id;
@@ -160,9 +160,9 @@ class StripeController extends Controller
                 $orderItem->sub_total = $item->qty * $item->price;
                 $orderItem->save();
             }
-    
+
             Cart::instance('cart')->destroy();
-    
+
             $billing = new BillingInformation();
             $billing->order_id = $order->id;
             $billing->name = $request->b_name;
@@ -170,7 +170,7 @@ class StripeController extends Controller
             $billing->phone = $request->b_phone;
             $billing->email = $request->b_email;
             $billing->save();
-    
+
             if ($request->shipping_status == 'yes') {
                 $shipping = new ShippingInformation();
                 $shipping->order_id = $order->id;
@@ -181,11 +181,10 @@ class StripeController extends Controller
                 $shipping->save();
             }
 
-                // Flash success message
-                toastr()->success('Order successful');
-                // Redirect back to previous page
-                return back();
+            // Flash success message
+            toastr()->success('Order successful');
+            // Redirect back to previous page
+            return redirect()->route('user.order.details', ['id' => $order->id]);
         }
-
     }
 }
