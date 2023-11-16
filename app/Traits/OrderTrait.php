@@ -34,16 +34,31 @@ trait OrderTrait
 
 public function createStripeCharge($order, $request)
 {
+
     // Set Stripe API key
     Stripe::setApiKey(env('STRIPE_SECRET'));
 
     try {
         // Process Stripe payment
         $charge = Charge::create([
-            "amount" => floatval(Cart::instance('cart')->total()), // Amount in cents
+
+            // "amount" => (int)(Cart::instance('cart')->total()), 
+            "amount" => (int)(Cart::instance('cart')->total() * 100), // Amount in cents
+
             "currency" => "USD",
             "source" => $request->stripeToken,
             "description" => "Payment for testing purpose", // Use a more descriptive description
+
+            // "billing_details"=> [
+            //     "email"=> Auth::user()->email,
+            //     "name"=> Auth::user()->name,
+            //     "address"=> [
+            //         "line1"=> null,
+            //         "city"=> null,
+            //         "postal_code"=> null,
+            //         "country"=> null,
+            //     ],
+            // ],
             "metadata" => [
                 "order" => $order->order_id,
                 'customer_id' => Auth::user()->id,
