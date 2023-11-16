@@ -27,7 +27,7 @@ class WishListComponent extends Component
     {
         WishList::findOrFail($id)->delete();
         $this->dispatch('refreshWishlistComponent');
-        return redirect()->route('wishlist');
+        return redirect()->route('user.wishlist');
 
     }
     public function render()

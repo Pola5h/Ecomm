@@ -138,7 +138,7 @@
                                                 </div>
                                             </td>
                                             <td class="text-sm">
-                                                <p class="mb-0">${{ $orderItem->price }}</p>
+                                                <p class="mb-0">${{ $orderItem->sub_total }}</p>
                                             </td>
                                             <td class="text-sm">
                                                 <p>x1</p>

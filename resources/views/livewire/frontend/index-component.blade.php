@@ -3,14 +3,17 @@
     <section
         class="banner-section 2xl:mx-[90px] bg-grayscales-500 rounded-bl-[20px] rounded-br-[20px] font-display relative z-10">
         <div class="swiper bannerSwiper xl:pt-20 py-6 xl:pb-28 relative z-50">
+
+
+            @foreach ( $heroData as $hero )
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="container px-3 md:px-5 flex flex-col md:flex-row items-center">
                         <div class="md:w-1/2 w-full">
-                            <p class="text-gray-black text-sm tracking-[0.12em] mb-2">Welcome to Comforty</p>
+                            <p class="text-gray-black text-sm tracking-[0.12em] mb-2">{{ $hero->small_title }}</p>
                             <h1
                                 class="xl:text-[68px] text-xl md:text-3xl xl:leading-[110%] text-gray-black font-semibold mb-6">
-                                Best Furniture Collection for your interior.</h1>
+                                {{ $hero->big_title }}</h1>
                             <div>
                                 <a href="#" class="btn-primary">
                                     <span>Shop Now</span>
@@ -24,74 +27,24 @@
                             </div>
                         </div>
                         <div class="md:w-1/2 w-full flex justify-center items-center relative">
-                            <img src="{{asset('frontend/assets/images/all-img/chair.png')}}" alt="">
+                            <img src="{{asset('hero/'.$hero->banner)}}" alt="">
                             <div class="inline-block absolute top-0 right-0">
                                 <img src="{{asset('frontend/assets/images/all-img/discount.png')}}" alt="">
-                                <p class="absolute top-[33px] text-[#F05C52] text-4xl font-bold right-9">15%</p>
+                                <p class="absolute top-[33px] text-[#F05C52] text-4xl font-bold right-9">{{(int)$hero->discount }}%</p>
                                 <p class="absolute text-sm font-normal top-[68px] right-10">Discount</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="container px-3 md:px-5 flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 w-full">
-                            <p class="text-gray-black text-sm tracking-[0.12em] mb-2">Welcome to chairy</p>
-                            <h1
-                                class="xl:text-[68px] text-xl md:text-3xl xl:leading-[110%] text-gray-black font-semibold mb-6">
-                                Best Furniture Collection for your interior.</h1>
-                            <div>
-                                <a href="#" class="btn-primary">
-                                    <span>Shop Now</span>
-                                    <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M15.5 7.5L20 12M20 12L15.5 16.5M20 12H4" stroke="white"
-                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="md:w-1/2 w-full flex justify-center items-center relative">
-                            <img src="{{asset('frontend/assets/images/all-img/chair.png')}}" alt="">
-                            <div class="inline-block absolute top-0 right-0">
-                                <img src="{{asset('frontend/assets/images/all-img/discount.png')}}" alt="">
-                                <p class="absolute top-[33px] text-[#F05C52] text-4xl font-bold right-9">15%</p>
-                                <p class="absolute text-sm font-normal top-[68px] right-10">Discount</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="container px-3 md:px-5 flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 w-full">
-                            <p class="text-gray-black text-sm tracking-[0.12em] mb-2">Welcome to chairy</p>
-                            <h1
-                                class="xl:text-[68px] text-xl md:text-3xl xl:leading-[110%] text-gray-black font-semibold mb-6">
-                                Best Furniture Collection for your interior.</h1>
-                            <div>
-                                <a href="#" class="btn-primary">
-                                    <span>Shop Now</span>
-                                    <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M15.5 7.5L20 12M20 12L15.5 16.5M20 12H4" stroke="white"
-                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="md:w-1/2 w-full flex justify-center items-center relative">
-                            <img src="{{asset('frontend/assets/images/all-img/chair.png')}}" alt="">
-                            <div class="inline-block absolute top-0 right-0">
-                                <img src="{{asset('frontend/assets/images/all-img/discount.png')}}" alt="">
-                                <p class="absolute top-[33px] text-[#F05C52] text-4xl font-bold right-9">15%</p>
-                                <p class="absolute text-sm font-normal top-[68px] right-10">Discount</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
+            @endforeach
+
+
+
+
+
+
             <div class="swiper-button-next banner-slider-button"></div>
             <div class="swiper-button-prev banner-slider-button"></div>
             <div class="swiper-pagination"></div>
@@ -336,7 +289,7 @@
                                 </svg>
                             </a>
                             @else
-                            <a href="wishlist.html" class="heart-icon">
+                            <button text='Please login first' class="heart-icon">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -345,7 +298,9 @@
                                         stroke-linejoin="round" />
                                     <!-- Set the fill attribute based on $isInWishlist -->
                                 </svg>
-                            </a>
+                            </button>
+
+
                             @endauth
 
 
@@ -856,7 +811,7 @@
                                     <div>
                                         <h4
                                             class="xl:text-[20px] xl:leading-[140%] text-sm md:text-base text-gray-black capitalize font-medium font-display">
-                                            {{  $testimonial->client_name  }}</h4>
+                                            {{ $testimonial->client_name }}</h4>
                                         <p
                                             class="text-[#9A9CAA] lg:text-[16px] lg:leading-[140%] text-sm font-normal font-display">
                                             {{ $testimonial->designation }}</p>
@@ -879,8 +834,8 @@
                         <!-- testimonials item end -->
                     </div>
                     @endforeach
-                   
-                 
+
+
                 </div>
             </div>
         </div>

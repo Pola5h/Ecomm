@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Frontend;
 
+use App\Models\Hero;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
-use App\Models\Testimonial;
 use App\Models\WishList;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -52,8 +53,9 @@ class IndexComponent extends Component
     public function render()
     {
         $testimonials = Testimonial::get();
+        $heroData = Hero::get();
         $products = Product::where('featured', 1)->get();
         $topCategory = Category::withCount('products')->get();
-        return view('livewire.frontend.index-component', compact('products', 'topCategory','testimonials'));
+        return view('livewire.frontend.index-component', compact('products', 'topCategory','testimonials','heroData'));
     }
 }

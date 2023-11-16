@@ -41,7 +41,7 @@ class ShopComponent extends Component
 
         if (Auth::check()) {
             (new WishList(['user_id' => Auth::user()->id, 'product_id' => $product_id]))->save();
-            return redirect()->route('wishlist');
+            return redirect()->route('user.wishlist');
         } else {
             // Handle the case where the user is not authenticated
         }
@@ -54,7 +54,7 @@ class ShopComponent extends Component
         // Remove the product from the wish_lists table
         if (Auth::check()) {
             WishList::where('user_id', Auth::user()->id)->where('product_id', $product_id)->delete();
-            return redirect()->route('wishlist');
+            return redirect()->route('user.wishlist');
         } else {
             // Handle the case where the user is not authenticated
         }
