@@ -74,7 +74,7 @@ class ProductController extends Controller
         toastr()->success('Product Inserted successfully');
 
         // Redirect or respond as needed
-        return view("admin.product.gallery", compact('productId','galleryData')); // Replace 'your.route.name' with the actual route name you want to redirect to
+        return view("admin.product.gallery", compact('productId', 'galleryData')); // Replace 'your.route.name' with the actual route name you want to redirect to
     }
 
 
@@ -116,24 +116,24 @@ class ProductController extends Controller
     public function galleryDelete(string $id)
     {
         $gallery = ProductGallery::findOrFail($id);
-    
+
         // Get the file path of the gallery image.
         $imagePath = public_path('product/gallery/' . $gallery->image);
-    
+
         // Delete the file.
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }
-    
+
         // Delete the gallery from the database.
         $gallery->delete();
-    
+
         // Redirect the user back to the previous page.
         toastr()->success('Image Deleted successfully');
 
         return redirect()->back();
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -146,18 +146,64 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+
+
+        $data = Product::Where('slug', $slug)->first();
+        return view('admin.product.edit_product', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+
+
+     public function update(Request $request, string $slug)
+     {
+         // Get the Product instance using the provided product ID
+         $product = Product::where('slug', $slug)->firstOrFail();
+     
+         // Update the product attributes using the incoming request data
+         $product->name = $request->input('name');
+         $product->price = $request->input('price');
+         $product->discount = $request->input('discount');
+         $product->stock_quantity = $request->input('stock_quantity');
+         $product->category_id = $request->input('category_id');
+         $product->brand_id = $request->input('brand_id');
+         $product->featured = $request->input('featured');
+         $product->status = $request->input('status');
+         $product->short_description = $request->input('short_description');
+         $product->description = $request->input('description');
+     
+         // Generate slug if the product name is updated
+         if ($request->input('name') != $product->name) {
+             $product->slug = Str::slug($request->input('name'));
+         }
+     
+         // Handle file upload if a new thumbnail is provided
+         if ($request->hasFile('thumbnail')) {
+             // Delete the existing thumbnail if it exists
+             if (!empty($product->thumbnail)) {
+                 unlink(public_path('product/thumbnail/' . $product->thumbnail));
+             }
+     
+             // Upload and save the new thumbnail
+             $image = $request->file('thumbnail');
+             $imageName = $product->slug . '.' . $image->getClientOriginalExtension();
+             $image->move(public_path('product/thumbnail'), $imageName);
+             $product->thumbnail = $imageName;
+         }
+     
+         // Save the updated product to the database
+         $product->save();
+     
+         toastr()->success('Product Updated successfully');
+     
+         // Redirect or respond as needed
+         return redirect()->route('admin.product.index');
+     }
+     
 
     /**
      * Remove the specified resource from storage.

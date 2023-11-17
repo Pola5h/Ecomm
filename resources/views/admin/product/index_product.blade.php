@@ -8,7 +8,7 @@
             <div class="col-8">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">brand List</h3>
+                  <h3 class="card-title">Product List</h3>
                 </div>
                 <div class="table-responsive">
                   <table class="table table-vcenter table-mobile-md card-table">
@@ -43,7 +43,7 @@
                                 Actions
                               </button>
                               <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="{{ route('admin.brand.edit', $product->slug) }}">
+                                <a class="dropdown-item" href="{{ route('admin.product.edit', $product->slug) }}">
                                   Edit
                                 </a>
                                 <a class="dropdown-item" href="{{ route('admin.gallery', $product->id) }}">

@@ -27,11 +27,6 @@ class ShopComponent extends Component
         Session()->flash('success_message', 'Product added in cart');
         return redirect()->route('cart');
     }
-
-
-
-
-
     public function AddToWishlist($product_id, $product_name, $product_price)
     {
         // Add the product to the wishlist cart
