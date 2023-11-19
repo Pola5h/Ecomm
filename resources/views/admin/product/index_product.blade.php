@@ -49,7 +49,7 @@
                                 <a class="dropdown-item" href="{{ route('admin.gallery', $product->id) }}">
                                     View Gallery
                                   </a>
-                                <form action="{{ route('admin.brand.destroy', $product->slug) }}" method="POST">
+                                <form action="{{ route('admin.product.destroy', $product->slug) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="dropdown-item">

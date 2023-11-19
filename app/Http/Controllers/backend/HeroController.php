@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\Hero;
-use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rules\Unique;
+use Illuminate\Support\Facades\File;
 
 class HeroController extends Controller
 {
@@ -15,9 +15,9 @@ class HeroController extends Controller
      */
     public function index()
     {
-        $data = Testimonial::all();
+        $Datas = Hero::all();
 
-        return view("admin.others.index_hero", compact('data'));
+        return view("admin.others.index_hero", compact('Datas'));
     }
 
     /**
@@ -41,7 +41,6 @@ class HeroController extends Controller
         $hero->big_title = $request->input('big_title');
         $hero->discount = $request->input('discount');
         $str = 'hero' . uniqid();
-
 
         // Handle file upload
         if ($request->hasFile('banner')) {
@@ -87,6 +86,28 @@ class HeroController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+     // Find the hero by its slug
+        $hero = Hero::findorFail($id);
+
+        // Check if the hero exists
+        if (!$hero) {
+            toastr()->error('Hero not found');
+
+            return redirect()->back();
+        }
+
+        // Delete the hero's image
+        $imagePath = public_path('hero/' . $hero->image);
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+
+        // Delete the hero
+        $hero->delete();
+        toastr()->success('hero deleted successfully');
+
+        // Redirect back to the brand index page with a success message
+        return redirect()->back();
+    
     }
 }

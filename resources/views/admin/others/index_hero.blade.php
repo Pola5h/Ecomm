@@ -65,7 +65,7 @@
             </div>
 
         </div>
-        {{-- <div class="row row-cards">
+        <div class="row row-cards">
 
             <div class="col-md-6 col-xl-12">
 
@@ -78,25 +78,42 @@
                             <thead>
                                 <tr>
                                     <th>SL#</th>
-                                    <th>Icon</th>
-                                    <th>Name</th>
+                                    <th>Banner</th>
+                                    <th>Small Title
+                                    </th>
+                                    <th>Big Title
+                                    </th>
+                                    <th>Discount</th>
+                                    <th>status</th>
                                     <th class="w-1"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $key => $categories)
+
+                                @foreach ( $Datas as $key => $data )
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td> {{ $key+1 }}</td>
                                     <td data-label="Name">
                                         <div class="d-flex py-1 align-items-center">
                                             <span class="avatar me-2"
-                                                style="background-image: url('{{ $categories->icon ? asset('category/' . $categories->icon) : asset('../backend/assets/static/logo.svg') }}')"></span>
+                                                style="background-image: url('{{ asset('hero/' . $data->banner) }}')"></span>
 
                                         </div>
                                     </td>
+                                    <td>{{ $data->small_title }}</td>
+                                    <td>{{ $data->big_title }}</td>
+                                    <td>{{ $data->discount }} %</td>
+                                    <td>
+                                        <form action="{{ route('admin.update-hero-status', $data->id) }}" method="POST" id="heroForm">
+                                            @csrf
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="status" value="1" id="status" {{ $data->status == 1 ? 'checked' : '' }}>
+                                            </div>
+                                        </form>
+                                    </td>
+                            
+                                    
 
-                                    <td class="text-muted" data-label="Role">
-                                        {{$categories->name}} </td>
                                     <td>
                                         <div class="btn-list flex-nowrap">
 
@@ -106,13 +123,11 @@
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('admin.category.edit', $categories->slug) }}">
-                                                        Edit
-                                                    </a>
-                                                    <form
-                                                        action="{{ route('admin.category.destroy', $categories->slug) }}"
-                                                        method="POST">
+
+                                                    <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                                        data-bs-target="#modal-team">
+                                                        Discount </a>
+                                                    <form action="{{ route('admin.hero.destroy', $data->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="dropdown-item">
@@ -126,16 +141,57 @@
                                 </tr>
                                 @endforeach
 
+
+
+
                             </tbody>
                         </table>
+                        <div class="modal modal-blur fade" id="modal-team" tabindex="-1" role="dialog"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Add a new team</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row mb-3 align-items-end">
+
+                                            <div class="col">
+                                                <label class="form-label">Name</label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add
+                                            Team</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
 
-        </div> --}}
+        </div>
     </div>
 
 </div>
-
+<script>
+    $(document).ready(function () {
+        $('#status').on('change', function () {
+            if(this.checked) {
+                this.value = 1;
+            } else {
+                this.value = 0;
+            }
+            $('#heroForm').submit();
+        });
+    });
+</script>
 @endsection

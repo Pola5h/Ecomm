@@ -159,57 +159,61 @@ class ProductController extends Controller
      */
 
 
-     public function update(Request $request, string $slug)
-     {
-         // Get the Product instance using the provided product ID
-         $product = Product::where('slug', $slug)->firstOrFail();
-     
-         // Update the product attributes using the incoming request data
-         $product->name = $request->input('name');
-         $product->price = $request->input('price');
-         $product->discount = $request->input('discount');
-         $product->stock_quantity = $request->input('stock_quantity');
-         $product->category_id = $request->input('category_id');
-         $product->brand_id = $request->input('brand_id');
-         $product->featured = $request->input('featured');
-         $product->status = $request->input('status');
-         $product->short_description = $request->input('short_description');
-         $product->description = $request->input('description');
-     
-         // Generate slug if the product name is updated
-         if ($request->input('name') != $product->name) {
-             $product->slug = Str::slug($request->input('name'));
-         }
-     
-         // Handle file upload if a new thumbnail is provided
-         if ($request->hasFile('thumbnail')) {
-             // Delete the existing thumbnail if it exists
-             if (!empty($product->thumbnail)) {
-                 unlink(public_path('product/thumbnail/' . $product->thumbnail));
-             }
-     
-             // Upload and save the new thumbnail
-             $image = $request->file('thumbnail');
-             $imageName = $product->slug . '.' . $image->getClientOriginalExtension();
-             $image->move(public_path('product/thumbnail'), $imageName);
-             $product->thumbnail = $imageName;
-         }
-     
-         // Save the updated product to the database
-         $product->save();
-     
-         toastr()->success('Product Updated successfully');
-     
-         // Redirect or respond as needed
-         return redirect()->route('admin.product.index');
-     }
-     
+    public function update(Request $request, string $slug)
+    {
+        // Get the Product instance using the provided product ID
+        $product = Product::where('slug', $slug)->firstOrFail();
+
+        // Update the product attributes using the incoming request data
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->discount = $request->input('discount');
+        $product->stock_quantity = $request->input('stock_quantity');
+        $product->category_id = $request->input('category_id');
+        $product->brand_id = $request->input('brand_id');
+        $product->featured = $request->input('featured');
+        $product->status = $request->input('status');
+        $product->short_description = $request->input('short_description');
+        $product->description = $request->input('description');
+
+        // Generate slug if the product name is updated
+        if ($request->input('name') != $product->name) {
+            $product->slug = Str::slug($request->input('name'));
+        }
+
+        // Handle file upload if a new thumbnail is provided
+        if ($request->hasFile('thumbnail')) {
+            // Delete the existing thumbnail if it exists
+            if (!empty($product->thumbnail)) {
+                unlink(public_path('product/thumbnail/' . $product->thumbnail));
+            }
+
+            // Upload and save the new thumbnail
+            $image = $request->file('thumbnail');
+            $imageName = $product->slug . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('product/thumbnail'), $imageName);
+            $product->thumbnail = $imageName;
+        }
+
+        // Save the updated product to the database
+        $product->save();
+
+        toastr()->success('Product Updated successfully');
+
+        // Redirect or respond as needed
+        return redirect()->route('admin.product.index');
+    }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
-        //
+        dd($slug);
+        
+
+
+
     }
 }
