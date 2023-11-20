@@ -86,9 +86,13 @@
                                         class="text-[#9A9CAA] font-display text-[14px] leading-[100%] capitalize pb-[10px]">
                                         Payment Method:</p>
                                     <span class="text-gray-black font-display text-[20px] leading-[120%] font-medium">{{
-                                        $Order->payment_type == 1 ? "Cash On Delivery" : ($Order->payment_type == 2 ?
-                                        "Stripe" : "") }}: {{ ['Pending', 'Paid', 'Failed'][$Order->payment_status - 1]
-                                        ?? 'Invalid Status' }}
+                                        $Order->payment_type == 1 ? "Cash On Delivery" : (
+                                            $Order->payment_type == 2 ? "Stripe" : (
+                                                $Order->payment_type == 3 ? "Paypal" : ""
+                                            )
+                                        )
+                                    }}: {{ ['Pending', 'Paid', 'Failed'][$Order->payment_status - 1] ?? 'Invalid Status' }}
+                                    
                                     </span>
                                 </div>
                             </div>

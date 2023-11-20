@@ -1,5 +1,5 @@
 <div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>      
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   <!-- Breadcrumb Start -->
@@ -37,7 +37,7 @@
               <div class="w-full inline-flex mb-5">
                 <textarea name="b_address"
                   class="input-box focus:outline-none  focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out"
-                  placeholder="Address"   id="" cols="10" rows="5">{{ $UserData->address }}</textarea>
+                  placeholder="Address" id="" cols="10" rows="5">{{ $UserData->address }}</textarea>
               </div>
               <div class="flex flex-col sm:flex-row gap-5 items-center mb-5">
                 <div class="w-full">
@@ -57,8 +57,7 @@
               </div> -->
 
               <label class="cursor-pointer flex" for="chkFacility3">
-                <input id="chkFacility3" name="shipping_status" class="cursor-pointer test" type="checkbox"
-                  value="yes">
+                <input id="chkFacility3" name="shipping_status" class="cursor-pointer test" type="checkbox" value="yes">
                 <span class="select-none">Shipping Information</span>
               </label>
 
@@ -77,7 +76,7 @@
               <div class="w-full inline-flex mb-5">
                 <textarea name="s_address"
                   class="input-box focus:outline-none  focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out"
-                  placeholder="Address"  id="" cols="10" rows="5"></textarea>
+                  placeholder="Address" id="" cols="10" rows="5"></textarea>
               </div>
               <div class="flex flex-col sm:flex-row gap-5 items-center">
                 <div class="w-full">
@@ -93,6 +92,8 @@
             </div>
             <hr class="my-0">
             <div class="p-8">
+
+              
               <h2 class="text-start text-2xl text-[#272343] font-semibold mb-6 font-display">Payment</h2>
 
               <div class="flex items-center mb-4 ">
@@ -102,8 +103,6 @@
                   Delivery</label>
               </div>
 
-
-
               <hr>
               <div class="flex items-center gap-[27px] pb-6">
                 <div class="flex items-center">
@@ -111,23 +110,29 @@
                   <label for="default-radio-2"
                     class="ml-2 text-[18px] leading-[110%] font-normal text-gray-black cursor-pointer">Stripe</label>
                 </div>
+                <div class="flex items-center">
+                  <input id="default-radio-3" type="radio" value="3" name="payment_type" class="w-4 h-4">
+                  <label for="default-radio-3"
+                    class="ml-2 text-[18px] leading-[110%] font-normal text-gray-black cursor-pointer">Paypal</label>
+                </div>
               </div>
-              <div id="cardInfo" class="hidden p-8">
-                <h2 class="text-start text-2xl text-[#272343] font-semibold mb-6 font-display">Card Information</h2>
+              <div id="StripeInfo" class="hidden p-8">
+                <h2 class="text-start text-2xl text-[#272343] font-semibold mb-6 font-display">Card Information For
+                  Stripe</h2>
                 <div class="flex flex-col sm:flex-row gap-5 items-center mb-5">
                   <div class="w-full">
-                    <input type="text"  placeholder="Name on Card"
+                    <input type="text" placeholder="Name on Card"
                       class="input-box focus:outline-none focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
                   </div>
                   <div class="w-full">
-                    <input type="number"  placeholder="Card Number"
+                    <input type="number" placeholder="Card Number"
                       class="card-number input-box focus:outline-none focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
                   </div>
 
                 </div>
                 <div class="flex flex-col sm:flex-row gap-5 items-center">
                   <div class="w-full">
-                    <input type="number"  placeholder="CVC / Ex: 311"
+                    <input type="number" placeholder="CVC / Ex: 311"
                       class="card-cvc input-box focus:outline-none  focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
                   </div>
 
@@ -136,23 +141,53 @@
                       class="card-expiry-month input-box focus:outline-none  focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
                   </div>
                   <div class="w-full">
-                    <input type="number"  placeholder="Expiration Year / YYYY"
+                    <input type="number" placeholder="Expiration Year / YYYY"
                       class="card-expiry-year input-box focus:outline-none  focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
                   </div>
                 </div>
               </div>
+              {{-- <div id="paypalInfo" class="hidden p-8">
+                <h2 class="text-start text-2xl text-[#272343] font-semibold mb-6 font-display">Card Information For
+                  Paypal</h2>
+                <div class="flex flex-col sm:flex-row gap-5 items-center mb-5">
+                  <div class="w-full">
+                    <input type="text" placeholder="Name on Card"
+                      class="input-box focus:outline-none focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
+                  </div>
+                  <div class="w-full">
+                    <input type="number" placeholder="Card Number"
+                      class="card-number input-box focus:outline-none focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
+                  </div>
+
+                </div>
+                <div class="flex flex-col sm:flex-row gap-5 items-center">
+                  <div class="w-full">
+                    <input type="number" placeholder="CVC / Ex: 311"
+                      class="card-cvc input-box focus:outline-none  focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
+                  </div>
+
+                  <div class="w-full">
+                    <input type="number" placeholder="Expiration Month / MM"
+                      class="card-expiry-month input-box focus:outline-none  focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
+                  </div>
+                  <div class="w-full">
+                    <input type="number" placeholder="Expiration Year / YYYY"
+                      class="card-expiry-year input-box focus:outline-none  focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
+                  </div>
+                </div>
+              </div> --}}
 
             </div>
           </div>
           <button type="submit"
-          class="w-full flex gap-3 items-center justify-center mt-5 bg-accents hover:bg-[#272343] rounded-lg py-[16px] text-[18px] font-bold font-display leading-[110%] text-gray-white  transition-all duration-300">Place
-          Order <span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.5 7.5L20 12M20 12L15.5 16.5M20 12H4" stroke="white" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </span>
-        </button>
+            class="w-full flex gap-3 items-center justify-center mt-5 bg-accents hover:bg-[#272343] rounded-lg py-[16px] text-[18px] font-bold font-display leading-[110%] text-gray-white  transition-all duration-300">Place
+            Order <span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5 7.5L20 12M20 12L15.5 16.5M20 12H4" stroke="white" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
         </form>
       </div>
       <!-- cart billing end -->
@@ -203,7 +238,6 @@
               ${{Cart::instance('cart')->total() }}</p>
           </div>
 
-         
         </div>
       </div>
       <!-- cart details end -->
@@ -215,59 +249,9 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-
 <!-- Toastr -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-
-
-{{-- <script type="text/javascript">
-$(function() {
-  var $form = $(".require-validation");
-  $('form.require-validation').bind('submit', function(e) {
-    var $form = $(".require-validation"),
-    inputSelector = ['input[type=email]', 'input[type=password]', 'input[type=text]', 'input[type=file]', 'textarea'].join(', '),
-    $inputs = $form.find('.required').find(inputSelector),
-    $errorMessage = $form.find('div.error'),
-    valid = true;
-    $errorMessage.addClass('hide');
-    $('.has-error').removeClass('has-error');
-    $inputs.each(function(i, el) {
-        var $input = $(el);
-        if ($input.val() === '') {
-            $input.parent().addClass('has-error');
-            $errorMessage.removeClass('hide');
-            e.preventDefault();
-        }
-    });
-    if (!$form.data('cc-on-file')) {
-      e.preventDefault();
-      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-      Stripe.createToken({
-          number: $('.card-number').val(),
-          cvc: $('.card-cvc').val(),
-          exp_month: $('.card-expiry-month').val(),
-          exp_year: $('.card-expiry-year').val()
-      }, stripeResponseHandler);
-    }
-  });
-
-  function stripeResponseHandler(status, response) {
-      if (response.error) {
-          $('.error')
-              .removeClass('hide')
-              .find('.alert')
-              .text(response.error.message);
-      } else {
-          /* token contains id, last4, and card type */
-          var token = response['id'];
-          $form.find('input[type=text]').empty();
-          $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-          $form.get(0).submit();
-      }
-  }
-});
-</script> --}}
 <script type="text/javascript">
   $(function () {
       var $form = $(".require-validation");
@@ -292,7 +276,9 @@ $(function() {
 
           if (paymentMethod === '1') {
               return; // Allow default form submission for Cash on Delivery
-          }
+          }    if (paymentMethod === '3') {
+              return; // Allow default form submission for Cash on Delivery
+          }   
 
           if (!$form.data('cc-on-file')) {
               e.preventDefault();
@@ -302,15 +288,27 @@ $(function() {
                   cvc: $('.card-cvc').val(),
                   exp_month: $('.card-expiry-month').val(),
                   exp_year: $('.card-expiry-year').val()
-              }, stripeResponseHandler);
+              }, ResponseHandler);
           }
       });
 
-      function stripeResponseHandler(status, response) {
+      function ResponseHandler(status, response) {
           if (response.error) {
               if (response.error.param === 'number') {
                   // Display Toastr error for card number
                   toastr.error('Card number is invalid. Please check and try again.');
+              }
+              if (response.error.param === 'cvc') {
+                  // Display Toastr error for card number
+                  toastr.error('Card CVC is invalid. Please check and try again.');
+              }
+              if (response.error.param === 'exp_month') {
+                  // Display Toastr error for card number
+                  toastr.error('Card Expire Month is invalid. Please check and try again.');
+              } 
+              if (response.error.param === 'exp_year') {
+                  // Display Toastr error for card number
+                  toastr.error('Card Expire Year is invalid. Please check and try again.');
               } else {
                   // Display a generic error alert
                   $('.error')
@@ -343,9 +341,20 @@ $(function() {
 
 <script>
   document.getElementById('default-radio-1').addEventListener('change', function() {
-      document.getElementById('cardInfo').classList.add('hidden');
+      document.getElementById('StripeInfo').classList.add('hidden');
+      document.getElementById('paypalInfo').classList.add('hidden');
+
   });
   document.getElementById('default-radio-2').addEventListener('change', function() {
-      document.getElementById('cardInfo').classList.remove('hidden');
+      document.getElementById('StripeInfo').classList.remove('hidden');
+      document.getElementById('paypalInfo').classList.add('hidden');
+
+  });
+    document.getElementById('default-radio-3').addEventListener('change', function() {
+      document.getElementById('StripeInfo').classList.add('hidden');
+      document.getElementById('paypalInfo').classList.add('hidden');
+
+      // document.getElementById('paypalInfo').classList.remove('hidden');
+
   });
 </script>

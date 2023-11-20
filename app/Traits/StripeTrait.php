@@ -1,5 +1,4 @@
 <?php
-// OrderTrait.php
 
 namespace App\Traits;
 
@@ -14,7 +13,7 @@ use App\Models\ShippingInformation;
 
 trait StripeTrait
 {
-    public function processOrder($order, $request)
+    public function StripeprocessOrder($order, $request)
     {
         try {
             $this->createStripeCharge($order, $request);
@@ -48,16 +47,7 @@ trait StripeTrait
                 "source" => $request->stripeToken,
                 "description" => "Payment for testing purpose", // Use a more descriptive description
 
-                // "billing_details"=> [
-                //     "email"=> Auth::user()->email,
-                //     "name"=> Auth::user()->name,
-                //     "address"=> [
-                //         "line1"=> null,
-                //         "city"=> null,
-                //         "postal_code"=> null,
-                //         "country"=> null,
-                //     ],
-                // ],
+        
                 "metadata" => [
                     "order" => $order->order_id,
                     'customer_id' => Auth::user()->id,
