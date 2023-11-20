@@ -1,24 +1,23 @@
 <?php
-// StripeController.php
 
 namespace App\Http\Controllers\frontend;
 
 use App\Models\Order;
-use App\Traits\OrderTrait;
+use App\Traits\StripeTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class StripeController extends Controller
+class PaymentController extends Controller
 {
-    use OrderTrait;
 
-    public function stripe()
-    {
-        return view("frontend.stripe.stripe");
-    }
 
-    public function stripePost(Request $request)
+
+    use StripeTrait;
+
+   
+
+    public function PaymentPost(Request $request)
     {
         $order = new Order();
         $order->order_id = uniqid();

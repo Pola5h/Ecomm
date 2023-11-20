@@ -17,7 +17,16 @@ class TestimonialFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            
+
+            'client_name' => $this->faker->name,
+            'image' => $this->faker->imageUrl(), // Assuming you want a random image URL
+            'designation' => $this->faker->jobTitle,
+            'testimonial' => $this->faker->paragraph,
+            'created_at' => now(),
+            'updated_at' => now(),
+
+
         ];
     }
 }

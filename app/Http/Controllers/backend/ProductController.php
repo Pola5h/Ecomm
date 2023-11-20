@@ -210,10 +210,15 @@ class ProductController extends Controller
      */
     public function destroy(string $slug)
     {
-        dd($slug);
-        
+        $product = Product::where('slug', $slug)->firstOrFail();
+    
+        $product->update(['deleted_at' => now()]);
+    
 
+        toastr()->success('Product deleted successfully');
 
-
-    }
+        // Redirect or respond as needed
+        return redirect()->back();
+        }
+    
 }

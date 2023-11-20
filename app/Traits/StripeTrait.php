@@ -1,4 +1,4 @@
-<?php 
+<?php
 // OrderTrait.php
 
 namespace App\Traits;
@@ -6,14 +6,13 @@ namespace App\Traits;
 use Exception;
 use Stripe\Charge;
 use Stripe\Stripe;
-use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\BillingInformation;
 use App\Models\ShippingInformation;
 
-trait OrderTrait
+trait StripeTrait
 {
     public function processOrder($order, $request)
     {
@@ -32,52 +31,52 @@ trait OrderTrait
         return redirect()->route('user.order.details', ['id' => $order->id]);
     }
 
-public function createStripeCharge($order, $request)
-{
+    public function createStripeCharge($order, $request)
+    {
 
-    // Set Stripe API key
-    Stripe::setApiKey(env('STRIPE_SECRET'));
+        // Set Stripe API key
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
-    try {
-        // Process Stripe payment
-        $charge = Charge::create([
+        try {
+            // Process Stripe payment
+            $charge = Charge::create([
 
-            // "amount" => (int)(Cart::instance('cart')->total()), 
-            "amount" => (int)(Cart::instance('cart')->total() * 100), // Amount in cents
+                // "amount" => (int)(Cart::instance('cart')->total()), 
+                "amount" => intval(Cart::instance('cart')->total() * 100), // Amount in cents
 
-            "currency" => "USD",
-            "source" => $request->stripeToken,
-            "description" => "Payment for testing purpose", // Use a more descriptive description
+                "currency" => "USD",
+                "source" => $request->stripeToken,
+                "description" => "Payment for testing purpose", // Use a more descriptive description
 
-            // "billing_details"=> [
-            //     "email"=> Auth::user()->email,
-            //     "name"=> Auth::user()->name,
-            //     "address"=> [
-            //         "line1"=> null,
-            //         "city"=> null,
-            //         "postal_code"=> null,
-            //         "country"=> null,
-            //     ],
-            // ],
-            "metadata" => [
-                "order" => $order->order_id,
-                'customer_id' => Auth::user()->id,
-                "customer_name" => Auth::user()->name, // Add user name as metadata
-                'email' => Auth::user()->email,
-                'address' => Auth::user()->address,
-            ],
-        ]);
+                // "billing_details"=> [
+                //     "email"=> Auth::user()->email,
+                //     "name"=> Auth::user()->name,
+                //     "address"=> [
+                //         "line1"=> null,
+                //         "city"=> null,
+                //         "postal_code"=> null,
+                //         "country"=> null,
+                //     ],
+                // ],
+                "metadata" => [
+                    "order" => $order->order_id,
+                    'customer_id' => Auth::user()->id,
+                    "customer_name" => Auth::user()->name, // Add user name as metadata
+                    'email' => Auth::user()->email,
+                    'address' => Auth::user()->address,
+                ],
+            ]);
 
-        // Update order details based on successful charge
-        $order->tran_id = $charge->id;
-        $order->payment_status = 2;
-        $order->payment_type = 2;
-    } catch (\Exception $exception) {
-        // Handle exception if charge creation fails
-        // You can log the exception, throw it, or handle it as needed
-        throw $exception;
+            // Update order details based on successful charge
+            $order->tran_id = $charge->id;
+            $order->payment_status = 2;
+            $order->payment_type = 2;
+        } catch (\Exception $exception) {
+            // Handle exception if charge creation fails
+            // You can log the exception, throw it, or handle it as needed
+            throw $exception;
+        }
     }
-}
 
     public function saveOrderDetails($order, $request)
     {

@@ -21,7 +21,7 @@
     <div class="flex flex-wrap lg:flex-nowrap items-start gap-6">
       <!-- cart billing start -->
       <div class="cart-total lg:w-2/3 w-full">
-        <form role="form" action="{{ route('user.stripe.post') }}" method="post" class="require-validation"
+        <form role="form" action="{{ route('user.payment.post') }}" method="post" class="require-validation"
           data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
           @csrf
           <div class="billing-info-wrapper">

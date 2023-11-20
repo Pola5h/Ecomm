@@ -28,6 +28,7 @@ Route::get('/dashboard', function () {
     $user = auth()->user();
     return $user->user_type === 1 ? view('admin.index') : ($user->user_type === 2 ? redirect(route('home')) : view('welcome'));
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/search', \App\Livewire\Frontend\SearchComponent::class, 'search')->name('search');
 
 
 Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -70,8 +71,7 @@ Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'user',  'as
     Route::get('/wishlist', \App\Livewire\Frontend\WishListComponent::class)->name('wishlist');
     Route::get('/checkout', \App\Livewire\Frontend\CheckOutComponent::class)->name('checkout');
     Route::get('/order-details', \App\Livewire\Frontend\OrderDetailsComponent::class)->name('order.details');
-    Route::get('stripe', [\App\Http\Controllers\frontend\StripeController::class, 'stripe'])->name('stripe');
-    Route::post('stripe/post', [\App\Http\Controllers\frontend\StripeController::class, 'stripePost'])->name('stripe.post');
+    Route::post('payment/post', [\App\Http\Controllers\frontend\PaymentController::class, 'PaymentPost'])->name('payment.post');
 });
 
 

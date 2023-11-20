@@ -10,6 +10,7 @@ use App\Models\WishList;
 use App\Models\Testimonial;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Notification;
 
 class IndexComponent extends Component
 {
@@ -22,6 +23,7 @@ class IndexComponent extends Component
     {
 
         Cart::instance('cart')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+        // Notification::send($users,new NewBooking($data));
         Session()->flash('success_message', 'Product added in cart');
         return redirect()->route('cart');
     }

@@ -66,9 +66,13 @@
                     </div>
                     <div class="lg:max-w-[413px] lg:block hidden w-full">
                         <div class="relative">
-                            <input type="text" id="search" placeholder="search here..."
-                                class="block w-full bg-white focus:outline-none border-0 px-4 py-3 rounded-lg focus:ring-2 ring-[#029FAE]">
-                            <label for="search" class="absolute right-4 top-3">
+                            <form action="{{ route('search') }}" method="GET" id="search-form">
+                                @csrf
+                                <input type="text" name="query" placeholder="Search here..."
+                                    class="block w-full bg-white focus:outline-none border-0 px-4 py-3 rounded-lg focus:ring-2 ring-[#029FAE]">
+                            </form>
+
+                            {{-- <label for="search" class="absolute right-4 top-3">
                                 <svg width="23" height="22" viewBox="0 0 23 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -78,7 +82,7 @@
                                     <path d="M19.75 19.25L15.7625 15.2625" stroke="#272343" stroke-width="1.5"
                                         stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                            </label>
+                            </label> --}}
                         </div>
                     </div>
                     <div class="lg:block hidden">
@@ -391,9 +395,21 @@
         <div class="px-3 mb-4">
             <div class="lg:max-w-[413px] w-full">
                 <div class="relative">
-                    <input type="text" placeholder="search here..."
-                        class="block w-full bg-grayscales-500 focus:outline-none border-0 px-4 py-3 rounded-lg">
-                    <span class="absolute right-4 top-3">
+
+                    <form action="{{ route('search') }}" method="GET" id="search-form">
+
+                        <input type="text" placeholder="search here..." name="query"
+                            class="block w-full bg-grayscales-500 focus:outline-none border-0 px-4 py-3 rounded-lg">
+                    </form>
+
+
+
+
+
+
+
+
+                    {{-- <span class="absolute right-4 top-3">
                         <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10.5833 17.4167C14.6334 17.4167 17.9167 14.1334 17.9167 10.0833C17.9167 6.03325 14.6334 2.75 10.5833 2.75C6.53325 2.75 3.25 6.03325 3.25 10.0833C3.25 14.1334 6.53325 17.4167 10.5833 17.4167Z"
@@ -401,7 +417,7 @@
                             <path d="M19.75 19.25L15.7625 15.2625" stroke="#272343" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                    </span>
+                    </span> --}}
                 </div>
             </div>
         </div>
@@ -459,5 +475,21 @@
     </div>
     <!-- Mobile Menu Area End -->
     <div class="overlay" id="overlay"></div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var searchInput = document.getElementById('search-form').querySelector('input[name="query"]');
+            
+            searchInput.addEventListener('keypress', function (e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault(); // Prevent the form from submitting normally
+                    document.getElementById('search-form').submit();
+                }
+            });
+        });
+    </script>
 </header>
 <!-- header area end -->
