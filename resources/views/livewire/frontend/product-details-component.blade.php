@@ -1,4 +1,19 @@
 <div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <style>
+        div#social-links {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        div#social-links ul li {
+            display: inline-block;
+        }
+        div#social-links ul li a {
+            margin: 5px;
+            font-size: 20px;
+            color: #222;
+        }
+    </style>
     <!-- Breadcrumb Start -->
     <div class="breadcrumb">
         <div class="container px-3 md:px-5 xl:px-0">
@@ -236,6 +251,9 @@
                     </div>
                     <div class="flex gap-2.5 items-center">
                         <p>Share on</p>
+<div class="row">                        {!! $shareComponent !!}
+</div>
+{{-- 
                         <ul class="m-0 p-0 flex gap-1">
                             <li>
                                 <a href="#"
@@ -319,7 +337,7 @@
                                     </svg>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
 
                 </div>

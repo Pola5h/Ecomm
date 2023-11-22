@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SocialShareButtonsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,7 @@ Route::get('/dashboard', function () {
     return $user->user_type === 1 ? view('admin.index') : ($user->user_type === 2 ? redirect(route('home')) : view('welcome'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/search', \App\Livewire\Frontend\SearchComponent::class, 'search')->name('search');
+Route::get('/social-media-share', [SocialShareButtonsController::class,'ShareWidget']);
 
 
 Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -62,6 +64,11 @@ Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as
 
         return redirect()->route('admin.hero.index');
     })->name('update-hero-status');
+
+    Route::resource('order', \App\Http\Controllers\backend\OrderController::class);
+
+
+
 });
 
 Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'user',  'as' => 'user.'], function () {
@@ -72,19 +79,21 @@ Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'user',  'as
     Route::get('/checkout', \App\Livewire\Frontend\CheckOutComponent::class)->name('checkout');
     Route::get('/order-details', \App\Livewire\Frontend\OrderDetailsComponent::class)->name('order.details');
     Route::post('payment/post', [\App\Http\Controllers\frontend\PaymentController::class, 'PaymentPost'])->name('payment.post');
+    Route::get('payment-success', [\App\Http\Controllers\frontend\PaymentController::class, 'paymentSuccess'])->name('success.payment');
+    Route::get('cancel-payment', [\App\Http\Controllers\frontend\PaymentController::class, 'paymentCancel'])->name('cancel.payment');
 });
 
 
-use App\Http\Controllers\frontend\PaymentController;
+// use App\Http\Controllers\frontend\PaymentController;
 
-Route::controller(PaymentController::class)
-    ->prefix('paypal')
-    ->group(function () {
-        Route::view('payment', 'paypal.index')->name('create.payment');
-        Route::get('handle-payment', 'handlePayment')->name('make.payment');
-        Route::get('cancel-payment', 'paymentCancel')->name('cancel.payment');
-        Route::get('payment-success', 'paymentSuccess')->name('success.payment');
-    });
+// Route::controller(PaymentController::class)
+//     ->prefix('paypal')
+//     ->group(function () {
+//         Route::view('payment', 'paypal.index')->name('create.payment');
+//         Route::get('handle-payment', 'handlePayment')->name('make.payment');
+//         Route::get('cancel-payment', 'paymentCancel')->name('cancel.payment');
+//         Route::get('payment-success', 'paymentSuccess')->name('success.payment');
+//     });
 
 
 

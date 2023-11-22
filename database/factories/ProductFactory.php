@@ -24,19 +24,20 @@ class ProductFactory extends Factory
          $slug = Str::slug($product_name, '-');
  
          return [
-             'name' => $product_name,
-             'slug' => $slug,
-             'thumbnail' => 'product-' . $this->faker->numberBetween(1, 16),
-             'category_id' => $this->faker->numberBetween(1, 5),
-             'brand_id' => $this->faker->numberBetween(1, 5),
-             'short_description' => $this->faker->text(200),
-             'description' => $this->faker->text(500),
-             'price' => $this->faker->numberBetween(10, 500),
-             'discount' => $this->faker->randomFloat(2, 0, 1),
-             'status' => $this->faker->boolean,
-             'featured' => $this->faker->boolean,
-             'stock_quantity' => $this->faker->numberBetween(10, 50),
-         ];
+            'name' => $product_name,
+            'slug' => $slug,
+            'thumbnail' => 't-product-' . $this->faker->randomElement(['01', '02', '03']) . '.png',
+            'category_id' => $this->faker->numberBetween(1, 5),
+            'brand_id' => $this->faker->numberBetween(1, 5),
+            'short_description' => $this->faker->text(200),
+            'description' => $this->faker->text(500),
+            'price' => $this->faker->numberBetween(10, 500),
+            'discount' => $this->faker->randomFloat(2, 0, 1),
+            'status' => $this->faker->boolean,
+            'featured' => $this->faker->boolean,
+            'stock_quantity' => $this->faker->numberBetween(10, 50),
+        ];
+        
      }
      
 }

@@ -169,6 +169,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
+
 
 
 
@@ -187,6 +189,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Share' => Jorenvh\Share\ShareFacade::class,
 
 
     ])->toArray(),

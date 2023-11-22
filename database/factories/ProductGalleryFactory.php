@@ -16,8 +16,12 @@ class ProductGalleryFactory extends Factory
      */
     public function definition(): array
     {
+       
         return [
-            //
+            'product_id' => $this->faker->numberBetween(1, 20), // Adjust the range as needed
+            'image' => 't-product-' . $this->faker->randomElement(['01', '02', '03']) . '.png', // Generate a random image URL, adjust as needed
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

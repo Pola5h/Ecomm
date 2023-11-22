@@ -65,72 +65,85 @@
                         <!-- shopping cart start -->
                         <div class="shopping-cart w-full">
                             <div class="px-6 py-6 overflow-x-auto">
-                                <table class="min-w-[1240px] w-full leading-normal">
-                                    <thead>
-                                        <tr class="">
-                                            <th
-                                                class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[160px]">
-                                                Order
-                                            </th>
-                                            <th
-                                                class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[200px]">
-                                                Date
-                                            </th>
-                                            <th
-                                                class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[140px]">
-                                                Total Product
-                                            </th>
-                                            <th
-                                                class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[120px]">
-                                                Toral price
-                                            </th>
-                                            <th
-                                                class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[100px]">
-                                                Status
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                        @foreach ( $orderData as $order )
-                                        <tr>
-                                            <td class="py-6 text-sm">
-                                                <a href="{{ route('user.order.details', ['id' => $order->id]) }}"
-                                                    class="text-[#007580] text-[14px] block font-display leading-[120%]  font-medium ">#{{ $order->order_id }}</a>
-                                            </td>
-                                            <td class="py-6 text-sm text-[#272343]">
-                                                <a href="#" class="mb-0 block">{{$order->created_at->format('M j, Y')}}
 
-                                                </a>
-                                            </td>
-                                            <td class="py-6 text-sm text-[#272343]">
-                                                <a href="#" class="block">{{ \App\Models\OrderItem::where('order_id', $order->id)->count() }}                                                </a>
-                                            </td>
-                                            <td class="py-6 text-sm text-[#272343]">
-                                                <a href="#" class="block">${{ $order->total }}</a>
-                                            </td>
-                                            <td class="py-6 text-sm">
-                                                @if ($order->order_status==1)
+
+
+                                @if($orderData->isEmpty())
+                                <p>No orders found.</p>
+                            @else
+                            <table class="min-w-[1240px] w-full leading-normal">
+                                <thead>
+                                    <tr class="">
+                                        <th
+                                            class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[160px]">
+                                            Order
+                                        </th>
+                                        <th
+                                            class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[200px]">
+                                            Date
+                                        </th>
+                                        <th
+                                            class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[140px]">
+                                            Total Product
+                                        </th>
+                                        <th
+                                            class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[120px]">
+                                            Toral price
+                                        </th>
+                                        <th
+                                            class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[100px]">
+                                            Status
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ( $orderData as $order )
+                                    <tr>
+                                        <td class="py-6 text-sm">
+                                            <a href="{{ route('user.order.details', ['id' => $order->id]) }}"
+                                                class="text-[#007580] text-[14px] block font-display leading-[120%]  font-medium ">#{{ $order->order_id }}</a>
+                                        </td>
+                                        <td class="py-6 text-sm text-[#272343]">
+                                            <a href="#" class="mb-0 block">{{$order->created_at->format('M j, Y')}}
+
+                                            </a>
+                                        </td>
+                                        <td class="py-6 text-sm text-[#272343]">
+                                            <a href="#" class="block">{{ \App\Models\OrderItem::where('order_id', $order->id)->count() }}                                                </a>
+                                        </td>
+                                        <td class="py-6 text-sm text-[#272343]">
+                                            <a href="#" class="block">${{ $order->total }}</a>
+                                        </td>
+                                        <td class="py-6 text-sm">
+                                            @if ($order->order_status==1)
+                                            <a href="#"
+                                                class="btn-warning px-3 py-2 inline-block text-[#F5813F] text-[14px] leading-[120%] font-display">Pending</a>
+                                                @elseif ($order->order_status==2)
                                                 <a href="#"
-                                                    class="btn-warning px-3 py-2 inline-block text-[#F5813F] text-[14px] leading-[120%] font-display">Pending</a>
-                                                    @elseif ($order->order_status==2)
-                                                    <a href="#"
-                                                    class="btn-success2 px-3 py-2 inline-block text-[#01AD5A] text-[14px] leading-[120%] font-display">Shipped</a>
-                                                    @elseif ($order->order_status==3)
-                                                    <a href="#"
-                                                    class="btn-success2 px-3 py-2 inline-block text-[#01AD5A] text-[14px] leading-[120%] font-display">Delevered</a>
-                                                    @elseif ($order->order_status==4)
-                                                    <a href="#"
-                                                    class="btn-warning px-3 py-2 inline-block text-[#F5813F] text-[14px] leading-[120%] font-display">Canceled</a>
-                                                @endif
-                                                
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                   
-                                    
-                                    </tbody>
-                                </table>
+                                                class="btn-success2 px-3 py-2 inline-block text-[#01AD5A] text-[14px] leading-[120%] font-display">Shipped</a>
+                                                @elseif ($order->order_status==3)
+                                                <a href="#"
+                                                class="btn-success2 px-3 py-2 inline-block text-[#01AD5A] text-[14px] leading-[120%] font-display">Delevered</a>
+                                                @elseif ($order->order_status==4)
+                                                <a href="#"
+                                                class="btn-warning px-3 py-2 inline-block text-[#F5813F] text-[14px] leading-[120%] font-display">Canceled</a>
+                                            @endif
+                                            
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                               
+                                
+                                </tbody>
+                            </table>                              
+                            @endif
+                            
+
+
+
+                              
                             </div>
                         </div>
                     </div>

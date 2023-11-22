@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
-            <a href="#">
+            <a href="{{URL('/')}}">
                 <img src="{{ URL::asset('../backend/assets/static/logo.svg')}}" width="110" height="32" alt="Tabler"
                     class="navbar-brand-image">
             </a>
@@ -183,7 +183,24 @@
                     </div>
 
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{URL('admin/order')}}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-ipad-horizontal-dollar" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M13 20h-8a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v4.5" />
+                                <path d="M9 17h4" />
+                                <path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" />
+                                <path d="M19 21v1m0 -8v1" />
+                              </svg>
+            
+                        </span>
+                        <span class="nav-link-title">
+                            Manage Order
+                        </span>
+                    </a>
+                </li>
 
 
 

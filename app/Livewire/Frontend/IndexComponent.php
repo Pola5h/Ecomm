@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend;
 
+use App\Models\Brand;
 use App\Models\Hero;
 use App\Models\Product;
 use Livewire\Component;
@@ -57,7 +58,9 @@ class IndexComponent extends Component
         $testimonials = Testimonial::get();
         $heroData = Hero::get();
         $products = Product::where('featured', 1)->get();
+        $recentlyAddedProducts = Product::orderBy('created_at', 'desc')->take(5)->get();
+        $brandData = Brand::all();
         $topCategory = Category::withCount('products')->get();
-        return view('livewire.frontend.index-component', compact('products', 'topCategory','testimonials','heroData'));
+        return view('livewire.frontend.index-component', compact('products','brandData','recentlyAddedProducts' ,'topCategory','testimonials','heroData'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend;
 
+use Share;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\WishList;
@@ -73,10 +74,22 @@ class ProductDetailsComponent extends Component
     public function render()
     {
 
+        $shareComponent = Share::page(
+            'lomeyo.com',
+            'Check now',
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()        
+        ->reddit();
+        
+
         $productData = Product::where('slug', $this->slug)->first();
 
         $productGallery = ProductGallery::where('product_id', $productData->id)->get();
 
-        return view('livewire.frontend.product-details-component',compact('productData','productGallery'));
+        return view('livewire.frontend.product-details-component',compact('productData','productGallery','shareComponent'));
     }
 }

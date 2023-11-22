@@ -21,7 +21,7 @@ class PaymentController extends Controller
     public function PaymentPost(Request $request)
     {
         $order = new Order();
-        $order->order_id = uniqid();
+        $orderId = $order->order_id = uniqid();
 
         if ($request->payment_type == 2) {
             return $this->StripeprocessOrder($order, $request);
@@ -29,7 +29,7 @@ class PaymentController extends Controller
 
             $order->payment_status = 2;
             $order->payment_type = 3;
-            return $this->PaypalprocessOrder($order, $request);
+            return $this->PaypalprocessOrder($order, $request,  $orderId);
         } else {
             // For non-Stripe payments
             $order->user_id = Auth::user()->id;

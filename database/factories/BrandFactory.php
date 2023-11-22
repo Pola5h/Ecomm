@@ -19,7 +19,7 @@ class BrandFactory extends Factory
         return [
             'name' => $this->faker->unique()->company,
             'slug' => $this->faker->unique()->slug,
-            'image' => $this->faker->imageUrl(),
+            'image' => 'brand-logo-' . $this->faker->randomElement(['01', '02', '03','04','05','06','07']) . '.png',
             'description' => $this->faker->paragraph,
         ];
     }

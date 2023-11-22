@@ -20,7 +20,7 @@ class TestimonialFactory extends Factory
             
 
             'client_name' => $this->faker->name,
-            'image' => $this->faker->imageUrl(), // Assuming you want a random image URL
+            'image' => 'testimonials.png', // Assuming you want a random image URL
             'designation' => $this->faker->jobTitle,
             'testimonial' => $this->faker->paragraph,
             'created_at' => now(),

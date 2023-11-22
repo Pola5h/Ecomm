@@ -5,11 +5,14 @@ namespace App\Traits;
 use Exception;
 use Stripe\Charge;
 use Stripe\Stripe;
+use App\Models\User;
+use App\Models\Product;
 use App\Models\OrderItem;
-use Illuminate\Support\Facades\Auth;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Notifications\OrderAlart;
 use App\Models\BillingInformation;
 use App\Models\ShippingInformation;
+use Illuminate\Support\Facades\Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 trait StripeTrait
 {
@@ -75,6 +78,11 @@ trait StripeTrait
         $order->order_status = 1;
         $order->save();
 
+        $admins = User::where('user_type', '1')->get();
+        foreach ($admins as $admin) {
+            // Make sure your Admin model uses the Notifiable trait
+            $admin->notify(new OrderAlart($order));
+        }
         $this->saveOrderItems($order);
         $this->saveBillingInformation($order, $request);
 
@@ -88,16 +96,27 @@ trait StripeTrait
     public function saveOrderItems($order)
     {
         $items = Cart::instance('cart')->content();
-
+    
         foreach ($items as $item) {
-            $orderItem = new OrderItem;
-            $orderItem->order_id = $order->id;
-            $orderItem->product_id = $item->id;
-            $orderItem->qty = $item->qty;
-            $orderItem->sub_total = $item->qty * $item->price;
-            $orderItem->save();
+            // Find the product based on the product_id
+            $product = Product::find($item->id);
+    
+            if ($product) {
+                // Create a new order item
+                $orderItem = new OrderItem;
+                $orderItem->order_id = $order->id;
+                $orderItem->product_id = $item->id;
+                $orderItem->qty = $item->qty;
+                $orderItem->sub_total = $item->qty * $item->price;
+                $orderItem->save();
+    
+                // Decrease the stock quantity for the product
+                $product->stock_quantity -= $item->qty;
+                $product->save();
+            } 
         }
     }
+    
 
     public function saveBillingInformation($order, $request)
     {

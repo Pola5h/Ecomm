@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->tinyInteger('user_type')
-            ->nullable()
+            ->default(2)
             ->comment('1: admin, 2: user');
-            $table->text('about');
+            $table->text('about')->nullable();
             $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone')->nullable()->unique();
             $table->string('image')->nullable();
             $table->boolean('status')->default(true);
             $table->text('address')->nullable();

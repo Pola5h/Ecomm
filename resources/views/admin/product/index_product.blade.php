@@ -5,7 +5,7 @@
 
    
         <div class="row row-cards">
-            <div class="col-8">
+            <div class="col-12">
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Product List</h3>
@@ -17,6 +17,13 @@
                         <th>SL#</th>
                         <th>Image</th>
                         <th>Name</th>
+                        <th>Category</th>
+                        <th>Brand</th>
+
+                        <th>Unit Price</th>
+
+                        <th>Qty</th>
+
       
                         <th class="w-1"></th>
                       </tr>
@@ -34,7 +41,14 @@
                         </td>
       
                         <td class="text-muted" data-label="Role">
-                          {{$product->name}} </td>
+                          {{ Str::limit($product->name, 10) }}
+                        </td>
+                        <td class="text-muted" data-label="Role"> {{App\Models\Category::where('id',$product->category_id)->value('name')}} </td>
+                        <td class="text-muted" data-label="Role"> {{App\Models\Brand::where('id',$product->brand_id)->value('name')}} </td>
+
+                        <td class="text-muted" data-label="Role"> ${{$product->price}} </td>
+                        <td class="text-muted" data-label="Role">
+                          {{$product->stock_quantity}} </td>
                         <td>
                           <div class="btn-list flex-nowrap">
       

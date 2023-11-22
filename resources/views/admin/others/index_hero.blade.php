@@ -84,7 +84,7 @@
                                     <th>Big Title
                                     </th>
                                     <th>Discount</th>
-                                    <th>status</th>
+                                    {{-- <th>status</th> --}}
                                     <th class="w-1"></th>
                                 </tr>
                             </thead>
@@ -103,14 +103,14 @@
                                     <td>{{ $data->small_title }}</td>
                                     <td>{{ $data->big_title }}</td>
                                     <td>{{ $data->discount }} %</td>
-                                    <td>
+                                    {{-- <td>
                                         <form action="{{ route('admin.update-hero-status', $data->id) }}" method="POST" id="heroForm">
                                             @csrf
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" name="status" value="1" id="status" {{ $data->status == 1 ? 'checked' : '' }}>
                                             </div>
                                         </form>
-                                    </td>
+                                    </td> --}}
                             
                                     
 
@@ -124,9 +124,7 @@
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
 
-                                                    <a href="#" class="dropdown-item" data-bs-toggle="modal"
-                                                        data-bs-target="#modal-team">
-                                                        Discount </a>
+                                                  
                                                     <form action="{{ route('admin.hero.destroy', $data->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
@@ -146,33 +144,7 @@
 
                             </tbody>
                         </table>
-                        <div class="modal modal-blur fade" id="modal-team" tabindex="-1" role="dialog"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Add a new team</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row mb-3 align-items-end">
-
-                                            <div class="col">
-                                                <label class="form-label">Name</label>
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add
-                                            Team</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
 

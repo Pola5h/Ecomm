@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('tran_id')->unique()->nullable();
             $table->string('total');
             $table->integer('payment_status')->nullable()->comment('1: Pending, 2: Paid ');
-            $table->integer('payment_type')->default(1)->comment('1: on cash, 2: online');
-            $table->integer('order_status')->default(1)->comment('1: Pending, 2: Shipped, 3: Delivered, 4: Cancelled, 5: On Hold, 6: Returned');
+            $table->integer('payment_type')->default(1)->comment('1: on cash, 2: stripe, 3: paypal');
+            $table->integer('order_status')->default(1)->comment('1: Pending, 2: Shipped, 3: Delivered');
             $table->timestamps();
         });
     }

@@ -145,10 +145,10 @@
                                                 <p class="mb-0">${{ $orderItem->sub_total }}</p>
                                             </td>
                                             <td class="text-sm">
-                                                <p>x1</p>
+                                                <p>x{{ $orderItem->qty }}</p>
                                             </td>
                                             <td class="text-sm">
-                                                <p>$145.00</p>
+                                                <p>${{ $orderItem->sub_total }}</p>
                                             </td>
 
                                         </tr>

@@ -122,7 +122,7 @@
                                 </button>
                                 <div class="profile-content">
                                     <ul class="py-3">
-
+                                        @if (Auth::user()->user_type == 2)
                                         <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
                                             <li>
                                                 <a href="{{ url('user/profile') }}">Profile</a>
@@ -134,10 +134,21 @@
                                             <li>
                                                 <a href="{{ url('wishlist') }}">Wishlist</a>
                                             </li>
-                                            <li>
-                                                <a href="order-history.html">Order History</a>
-                                            </li>
+
                                         </div>
+
+
+@elseif (Auth::user()->user_type == 1)
+
+<div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
+    <li>
+        <a href="{{ url('dashboard') }}">Dashboard</a>
+    </li>
+
+
+</div>
+                                        @endif
+
 
                                         <div class="px-3">
                                             <li>
@@ -243,10 +254,8 @@
                         <li>
                             <a href="{{ URL('/shop') }}">Shop</a>
                         </li>
-                        <li>
-                            <a href="product-details.html">Product</a>
-                        </li>
-                        <li class="relative">
+
+                        {{-- <li class="relative">
                             <a href="javascript:void(0);" class="inline-flex gap-2 items-center">Pages
                                 <span>
                                     <img src="{{asset('frontend/assets/images/all-img/select-arrow.png')}}" alt="">
@@ -290,10 +299,10 @@
                                     <a href="checkout-shopping.html">Checkout Shoping</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> --}}
+                        {{-- <li>
                             <a href="">About</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <div>
