@@ -27,8 +27,17 @@ Route::get('forbidden', function () {
 })->name('forbidden');
 Route::get('/dashboard', function () {
     $user = auth()->user();
-    return $user->user_type === 1 ? view('admin.index') : ($user->user_type === 2 ? redirect(route('home')) : view('welcome'));
+
+    switch ($user->user_type) {
+        case 1:
+            return view('admin.index');
+        case 2:
+            return redirect(route('home'));
+        default:
+            return view('welcome');
+    }
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/search', \App\Livewire\Frontend\SearchComponent::class, 'search')->name('search');
 
 
