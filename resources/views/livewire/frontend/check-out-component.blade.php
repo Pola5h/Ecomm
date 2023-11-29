@@ -93,7 +93,7 @@
             <hr class="my-0">
             <div class="p-8">
 
-              
+
               <h2 class="text-start text-2xl text-[#272343] font-semibold mb-6 font-display">Payment</h2>
 
               <div class="flex items-center mb-4 ">

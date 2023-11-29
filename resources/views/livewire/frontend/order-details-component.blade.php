@@ -87,12 +87,13 @@
                                         Payment Method:</p>
                                     <span class="text-gray-black font-display text-[20px] leading-[120%] font-medium">{{
                                         $Order->payment_type == 1 ? "Cash On Delivery" : (
-                                            $Order->payment_type == 2 ? "Stripe" : (
-                                                $Order->payment_type == 3 ? "Paypal" : ""
-                                            )
+                                        $Order->payment_type == 2 ? "Stripe" : (
+                                        $Order->payment_type == 3 ? "Paypal" : ""
                                         )
-                                    }}: {{ ['Pending', 'Paid', 'Failed'][$Order->payment_status - 1] ?? 'Invalid Status' }}
-                                    
+                                        )
+                                        }}: {{ ['Pending', 'Paid', 'Failed'][$Order->payment_status - 1] ?? 'Invalid
+                                        Status' }}
+
                                     </span>
                                 </div>
                             </div>
@@ -196,9 +197,9 @@
                                 </p>
                                 <p class="text-[#636270] text-[14px] leading-[100%] font-display font-normal pb-4">
                                     {{ $sippinginfo->email }}</p>
-                                <span
-                                    class="text-[#636270] text-[14px] leading-[100%] font-display font-normal">  {{ $sippinginfo->phone }}</span>
-                                    @endif
+                                <span class="text-[#636270] text-[14px] leading-[100%] font-display font-normal"> {{
+                                    $sippinginfo->phone }}</span>
+                                @endif
                             </div>
 
                             <div class="px-6 py-6 bg-off-white rounded-lg max-w-[348px] w-full">
@@ -219,7 +220,8 @@
                                     <hr>
                                     <div class="flex justify-between">
                                         <p class="text-[18px] font-display text-dark-gray ">Total:</p>
-                                        <p class="text-[22px] font-display leading-[120%] font-sem">${{ $Order->total }}</p>
+                                        <p class="text-[22px] font-display leading-[120%] font-sem">${{ $Order->total }}
+                                        </p>
                                     </div>
                                 </div>
                             </div>

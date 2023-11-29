@@ -139,7 +139,8 @@
                     <div class="subtotal-info">
                         <div class="flex justify-between items-center">
                             <p class="common-hedding">subtotal</p>
-                            <p class="text-gray-black text-[16px] leading-[120%] font-display font-medium">${{ Cart::subtotal()}}</p>
+                            <p class="text-gray-black text-[16px] leading-[120%] font-display font-medium">${{
+                                Cart::subtotal()}}</p>
                         </div>
                         <div class="flex justify-between items-center pt-4">
                             <p class="common-hedding">Tax</p>
@@ -148,7 +149,7 @@
                                 }}</p>
                         </div>
 
-                      
+
                         <hr>
                         <div class="flex justify-between items-center">
                             <p class="common-hedding">Total:</p>
@@ -157,7 +158,9 @@
                                 }}
                             </p>
                         </div>
-                        <a href="{{route('user.checkout')}}" class="mt-6 bg-accents hover:bg-[#272343] transition-all duration-300 py-[19px] rounded-lg text-[18px] font-bold font-display leading-[110%] text-gray-white text-center w-full">Proceed to Checkout</a>
+                        <a href="{{route('user.checkout')}}"
+                            class="mt-6 bg-accents hover:bg-[#272343] transition-all duration-300 py-[19px] rounded-lg text-[18px] font-bold font-display leading-[110%] text-gray-white text-center w-full">Proceed
+                            to Checkout</a>
 
                     </div>
                 </div>

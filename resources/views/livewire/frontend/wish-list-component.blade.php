@@ -48,7 +48,8 @@
                             <tr>
                                 <td class="py-6 text-sm">
                                     <div class="flex gap-2 items-center">
-                                        <button wire:click.prevent="destroy('{{ $wishlist->id }}')" class="p-2" onclick="dismiss(this);">
+                                        <button wire:click.prevent="destroy('{{ $wishlist->id }}')" class="p-2"
+                                            onclick="dismiss(this);">
                                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M2 2L6.00003 6M6.00003 6L10 2M6.00003 6L2 10M6.00003 6L10 10"
@@ -85,7 +86,9 @@
                                         wire:click.prevent="CartStore({{ $wishlist->product_id }},
                                                                            '{{ \App\Models\Product::where('id', $wishlist->product_id)->pluck('name')->first() }}',
                                                                            {{ \App\Models\Product::where('id', $wishlist->product_id)->pluck('price')->first() }})"
-                                                                           style="{{ optional(\App\Models\Product::find($wishlist->product_id))->stock_quantity <= 0 ? 'background-color: gray;' : '' }}" {{ optional(\App\Models\Product::find($wishlist->product_id))->stock_quantity <= 0 ? 'disabled' : '' }}>
+                                        style="{{ optional(\App\Models\Product::find($wishlist->product_id))->stock_quantity <= 0 ? 'background-color: gray;' : '' }}"
+                                        {{ optional(\App\Models\Product::find($wishlist->product_id))->stock_quantity <=
+                                            0 ? 'disabled' : '' }}>
                                             Add to cart
                                     </button>
                                 </td>

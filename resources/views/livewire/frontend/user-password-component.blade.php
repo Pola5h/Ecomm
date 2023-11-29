@@ -4,7 +4,7 @@
             <h2 class="text-start xl:text-2xl acc-title text-[22px] text-[#272343] font-medium mb-6 font-display">
                 Change Password
             </h2>
-       
+
 
             <form method="POST" action="{{ route('password.update') }}">
                 @csrf

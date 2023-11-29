@@ -1,13 +1,15 @@
 <div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
         div#social-links {
             margin: 0 auto;
             max-width: 500px;
         }
+
         div#social-links ul li {
             display: inline-block;
         }
+
         div#social-links ul li a {
             margin: 5px;
             font-size: 20px;
@@ -251,9 +253,9 @@
                     </div>
                     <div class="flex gap-2.5 items-center">
                         <p>Share on</p>
-<div class="row">                        {!! $shareComponent !!}
-</div>
-{{-- 
+                        <div class="row"> {!! $shareComponent !!}
+                        </div>
+                        {{--
                         <ul class="m-0 p-0 flex gap-1">
                             <li>
                                 <a href="#"
@@ -416,7 +418,8 @@
                             </a>
                             @auth
 
-                            <a wire:click.prevent="{{ $isInWishlist2 ? 'RemoveFromWishlist' : 'AddToWishlist' }}({{$product->id}},'{{$product->name}}',{{$product->price}})"href="#" class="heart-icon">
+                            <a wire:click.prevent="{{ $isInWishlist2 ? 'RemoveFromWishlist' : 'AddToWishlist' }}({{$product->id}},'{{$product->name}}',{{$product->price}})"
+                                href="#" class="heart-icon">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
