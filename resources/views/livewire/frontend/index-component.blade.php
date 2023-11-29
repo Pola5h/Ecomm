@@ -4,7 +4,6 @@
         class="banner-section 2xl:mx-[90px] bg-grayscales-500 rounded-bl-[20px] rounded-br-[20px] font-display relative z-10">
         <div class="swiper bannerSwiper xl:pt-20 py-6 xl:pb-28 relative z-50">
 
-
             @foreach ( $heroData as $hero )
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -40,11 +39,6 @@
 
             </div>
             @endforeach
-
-
-
-
-
 
             <div class="swiper-button-next banner-slider-button"></div>
             <div class="swiper-button-prev banner-slider-button"></div>
@@ -183,13 +177,11 @@
             <div class="swiper brandSwiper overflow-hidden">
                 <div class="swiper-wrapper items-center">
 
-
                     @foreach ($brandData as $brand )
                     <div class="swiper-slide inline-flex items-center justify-center">
                         <a href="#"><img src="{{asset('brand/'.$brand->image)}}" alt=""></a>
                     </div>
                     @endforeach
-
 
                 </div>
             </div>
@@ -289,9 +281,7 @@
                                 </svg>
                             </button>
 
-
                             @endauth
-
 
                         </div>
                     </div>
@@ -344,13 +334,11 @@
                     </div>
                     @endforeach
 
-
                 </div>
             </div>
         </div>
     </section>
     <!-- top categories product section end -->
-
 
     <!-- mixit up section start  -->
     <section class="lg:py-20 sm:py-8 py-6">
@@ -824,7 +812,6 @@
                     </div>
                     @endforeach
 
-
                 </div>
             </div>
         </div>
@@ -923,9 +910,7 @@
                                 </svg>
                             </button>
 
-
                             @endauth
-
 
                         </div>
                     </div>

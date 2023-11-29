@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cart.shoppingcart', function (Blueprint $table) {
+        Schema::create('shoppingcart', function (Blueprint $table) {
             $table->id();
             $table->string('identifier')->nullable();
             $table->string('instance')->nullable();

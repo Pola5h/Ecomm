@@ -30,7 +30,6 @@ Route::get('/dashboard', function () {
     return $user->user_type === 1 ? view('admin.index') : ($user->user_type === 2 ? redirect(route('home')) : view('welcome'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/search', \App\Livewire\Frontend\SearchComponent::class, 'search')->name('search');
-Route::get('/social-media-share', [SocialShareButtonsController::class,'ShareWidget']);
 
 
 Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
