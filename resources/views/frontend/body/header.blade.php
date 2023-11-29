@@ -307,7 +307,7 @@
                 </div>
                 <div>
                     <p class="text-grayscales-900 inline-flex gap-2 items-center text-sm font-display">
-                        <span>Contact:</span><span class="text-secondary font-medium">(808) 555-0111</span>
+                        <span>Contact:</span><span class="text-secondary font-medium">01791296967</span>
                     </p>
                 </div>
             </div>
