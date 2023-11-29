@@ -51,32 +51,7 @@ Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as
     Route::post('product/gallery/store', [\App\Http\Controllers\backend\ProductController::class, 'galleryStore'])->name('gallery.store');
     Route::post('product/gallery/upload', [\App\Http\Controllers\backend\ProductController::class, 'galleryUpload'])->name('gallery.upload');
     Route::delete('product/gallery/delete/{id}', [\App\Http\Controllers\backend\ProductController::class, 'galleryDelete'])->name('gallery.delete');
-    Route::post('/update-hero-status', function (\Illuminate\Http\Request $request) {
-
-
-        dd($request->all());
-        $id = $request->input('id');
-        $status = $request->input('status');
-
-        $data = Hero::find($id);
-
-        if (!$data) {
-            toastr()->error('Status not uptaded');
-
-            return redirect()->route('admin.hero.index');
-        }
-
-        $data->status = $status;
-        $data->save();
-        toastr()->success('Status successfully');
-
-        return redirect()->route('admin.hero.index');
-    })->name('update-hero-status');
-
     Route::resource('order', \App\Http\Controllers\backend\OrderController::class);
-
-
-
 });
 
 Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'user',  'as' => 'user.'], function () {
