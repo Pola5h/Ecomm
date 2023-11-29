@@ -3,9 +3,9 @@
     <section
         class="banner-section 2xl:mx-[90px] bg-grayscales-500 rounded-bl-[20px] rounded-br-[20px] font-display relative z-10">
         <div class="swiper bannerSwiper xl:pt-20 py-6 xl:pb-28 relative z-50">
+            <div class="swiper-wrapper">
 
             @foreach ( $heroData as $hero )
-            <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="container px-3 md:px-5 flex flex-col md:flex-row items-center">
                         <div class="md:w-1/2 w-full">
@@ -37,8 +37,8 @@
                     </div>
                 </div>
 
-            </div>
             @endforeach
+        </div>
 
             <div class="swiper-button-next banner-slider-button"></div>
             <div class="swiper-button-prev banner-slider-button"></div>

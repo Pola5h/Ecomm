@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
       \App\Models\ProductGallery::factory(60)->create();
 
       \App\Models\Testimonial::factory(4)->create();
+      \App\Models\Hero::factory(3)->create();
+
 
 
         // \App\Models\User::factory()->create([
