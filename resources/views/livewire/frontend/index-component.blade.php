@@ -341,7 +341,7 @@
     <!-- top categories product section end -->
 
     <!-- mixit up section start  -->
-    <section class="lg:py-20 sm:py-8 py-6">
+    {{-- <section class="lg:py-20 sm:py-8 py-6">
         <div class="container px-3 md:px-5 xl:px-0">
             <h2
                 class="text-gray-black xl:text-[32px] xl:leading-[110%] text-xl md:text-2xl text-center font-semibold font-display mb-4">
@@ -742,7 +742,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- mixit up section end  -->
 
     <!-- Testimonials section start -->
