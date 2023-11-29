@@ -1,0 +1,5 @@
+---
+deployment:
+ tasks:
+ - export DEPLOYPATH=/home/nexcorei/public_html/ecom.nexcoreit.com
+ - /bin/cp * $DEPLOYPATH
