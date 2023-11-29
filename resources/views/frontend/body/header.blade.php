@@ -60,7 +60,7 @@
             <div class="container px-3 md:px-5 xl:px-0">
                 <div class="flex justify-between items-center py-5">
                     <div>
-                        <a href="index.html">
+                        <a href="#">
                             <img src="{{asset('frontend/assets/images/all-img/logo.png')}}" alt="">
                         </a>
                     </div>
