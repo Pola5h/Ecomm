@@ -17,7 +17,7 @@ class BrandController extends Controller
     {
         $data = Brand::all();
 
-        return view('admin.brand.index_brand', compact('data'));  
+        return view('admin.brand.index_brand', compact('data'));
     }
 
     /**
@@ -81,7 +81,8 @@ class BrandController extends Controller
 
         $data = Brand::all();
         $editData = Brand::where('slug', $slug)->first();
-        return view('admin.brand.index_brand', compact('data', 'editData'));    }
+        return view('admin.brand.index_brand', compact('data', 'editData'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -89,19 +90,19 @@ class BrandController extends Controller
     public function update(Request $request, string $slug)
     {
         // Retrieve the brand by slug
-        $brand = Brand::where('slug', $slug)->first();
+        $brand = Brand::where('slug', $slug)->firstOrFail();
 
         // Validate the form data
         $request->validate([
             'name' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Add any necessary validation rules
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Check if a new image has been uploaded
         if ($request->hasFile('image')) {
             // Handle the new image upload
             $image = $request->file('image');
-            $imageName = Str::slug($request->input('name'), '-') . '.' . $image->getClientOriginalExtension(); // Use the brand name as the image name
+            $imageName = Str::slug($request->input('name'), '-') . '.' . $image->getClientOriginalExtension();
 
             // Specify the directory path
             $imagePath = 'brand/' . $imageName;
@@ -124,8 +125,8 @@ class BrandController extends Controller
         // Check if the name is being changed
         if ($brand->name !== $request->input('name')) {
             // Name is being changed, so check if the new name already exists
-            $existingBrand = Brand::where('name', $request->input('name'))->first();
-            if ($existingBrand && $existingBrand->id !== $brand->id) {
+            $existingBrand = Brand::where('name', $request->input('name'))->where('id', '!=', $brand->id)->first();
+            if ($existingBrand) {
                 // A brand with the same name already exists
                 toastr()->error('Brand with this name already exists.');
                 return redirect()->back();
@@ -141,7 +142,8 @@ class BrandController extends Controller
 
         // Save the updated category
         $brand->save();
-        toastr()->success('Brand Updated successfully');
+
+        toastr()->success('Brand updated successfully');
 
         return redirect()->route('admin.brand.index');
     }
