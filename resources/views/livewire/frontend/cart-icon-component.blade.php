@@ -67,7 +67,7 @@
                 </div>
                 <div class="flex justify-between items-center">
                     <a href="{{ url('cart') }}" class="btn-transparent">View Cart</a>
-                    <a href="checkout-shopping.html" class="btn-primary">Checkout</a>
+                    <a href="{{route('user.checkout')}}" class="btn-primary">Checkout</a>
                 </div>
             </ul>
         </div>
