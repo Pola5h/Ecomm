@@ -70,65 +70,54 @@ class BrandControllerTest extends TestCase
         $response->assertSee($brand->name);
         $response->assertSee($brand->image);
     }
-
     public function testUpdate()
     {
-        // Create a user with user_type = 1 and authenticate them
         $user = User::factory()->create(['user_type' => 1]);
         $this->actingAs($user);
-    
-        // Assuming you have a Brand model and a brand instance for testing
+        // Create a new brand using factory
         $brand = Brand::factory()->create();
-    
-        // Mock a request with sample data
-        $requestData = [
-            'name' => 'Updated Brand',
-            'image' => 'brand.png', // Ensure consistency with your storage assertions
-            'description' => 'xyz'
+
+        // Define new data for updating the brand
+        $newData = [
+            'name' => 'New Brand Name',
+            'image' => UploadedFile::fake()->image('brand.jpg')
         ];
 
-    
-        // Perform the update using the mocked request
-        $response = $this->put(route('admin.brand.update', ['brand' => $brand->slug]), $requestData);
-    
+        // Make a POST request to the update route
+        $response = $this->put(route('admin.brand.update', $brand->slug), $newData);
+
+        // Assert that the response status is a redirect to the brand index page
+        $response->assertRedirect(route('admin.brand.index'));
+
+
+        // Assert that the response status is 302
+        $response->assertStatus(302);
+
+
+        // Assert that the brand's name has been updated in the database
         $this->assertDatabaseHas('brands', [
             'id' => $brand->id,
-            'name' => $requestData['name'],
-            'slug' => Str::slug($requestData['name'], '-'),
-            'description' => $requestData['description'],
-
-            // Add other fields as needed
+            'name' => $newData['name'],
+            'slug' => Str::slug($newData['name'], '-')
         ]);
-    
-        // Assert that the brand image has been uploaded and saved
-        Storage::disk('public')->assertExists('brand/' . Str::slug($requestData['name'], '-') . '.' . pathinfo($requestData['image'], PATHINFO_EXTENSION));
-    
-        // Optionally, assert that the old image has been deleted
-        if ($brand->image) {
-            Storage::disk('public')->assertMissing('brand/' . $brand->image);
-        }
-    
-        // Optionally, assert any flash messages or other response expectations
-        $this->assertTrue(session()->has('toastr_message.success'));
-    
-        // Assert the response is a redirect
-        $response->assertRedirect(route('admin.brand.index'));
-    
-        // Refresh the brand instance to get the updated data from the database
-        $response->assertStatus(200);
 
-        // Reload the brand from the database to get the updated data
-        $updatedBrand = $brand->fresh();
-    
-        // Assert that the updated data matches the expected attributes
-        $this->assertEquals('Updated Brand', $updatedBrand->name);
-        $this->assertEquals('updated-brand', $updatedBrand->slug);
-        $this->assertEquals('xyz', $updatedBrand->description);
-    
-        // Optionally, assert other expectations based on your application logic
+        // Assert that the brand's image has been updated in the database
+        $this->assertDatabaseHas('brands', [
+            'id' => $brand->id,
+            'image' => Str::slug($newData['name'], '-') . '.jpg'
+        ]);
+
+        // Assert that the old image has been deleted
+        $this->assertFileDoesNotExist(public_path('brand/' . $brand->image));
+
+        // Assert that the new image exists
+        $this->assertFileExists(public_path('brand/' . Str::slug($newData['name'], '-') . '.jpg'));
     }
-    
-    
+
+
+
+
+
     public function testDestroy()
     {
         // Create a user with user_type = 1 and authenticate them

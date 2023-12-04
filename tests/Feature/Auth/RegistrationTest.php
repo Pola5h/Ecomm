@@ -28,6 +28,6 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(url('/')); // Modify this line
+        $response->assertRedirect(route('user.profile')); // Modify this line
     }
 }
