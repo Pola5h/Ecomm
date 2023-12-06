@@ -23,7 +23,7 @@
 
 
 {{-- dropify --}}
-<script src="{{ URL::asset('../backend/assets/dist/js/dropify.js')}}" defer></script>
+{{-- <script src="{{ URL::asset('../backend/assets/dist/js/dropify.js')}}" defer></script> --}}
 <script>
 	$(document).ready(function () {
         $('.dropify').dropify();

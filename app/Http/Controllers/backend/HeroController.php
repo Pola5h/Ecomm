@@ -33,29 +33,21 @@ class HeroController extends Controller
      */
     public function store(Request $request)
     {
-        // Create a new instance of the hero model
-        $hero = new Hero();
-
-        // Directly use the incoming request data
-        $hero->small_title = $request->input('small_title');
-        $hero->big_title = $request->input('big_title');
-        $hero->discount = $request->input('discount');
-        $str = 'hero' . uniqid();
-
-        // Handle file upload
+        $hero = new Hero($request->only('small_title', 'big_title', 'discount'));
+    
         if ($request->hasFile('banner')) {
-            $image = $request->file('banner');
-            $imageName = $str . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('hero'), $imageName);
+            $imageName = 'hero' . uniqid() . '.' . $request->file('banner')->getClientOriginalExtension();
+            $request->file('banner')->move(public_path('hero'), $imageName);
             $hero->banner = $imageName;
         }
+    
         $hero->save();
-
-        toastr()->success('hero Inserted successfully');
-
-        // Redirect or respond as needed
+    
+        toastr()->success('Hero Inserted successfully');
+    
         return redirect()->back();
     }
+    
 
     /**
      * Display the specified resource.
