@@ -28,8 +28,6 @@ class ProductControllerTest extends TestCase
         // Add additional assertions if needed
     }
 
-
-
     public function testStore()
     {
         // Create a user with user_type = 1 and authenticate them
@@ -59,10 +57,6 @@ class ProductControllerTest extends TestCase
         // Add additional assertions if needed
     }
     
-
-
-
-
     public function testEdit()
     {
         // Create a user with user_type = 1 and authenticate them
@@ -78,11 +72,8 @@ class ProductControllerTest extends TestCase
         // Assert the response status is 200 (OK)
         $response->assertStatus(200);
     
-
     }
     
-    
-
     public function testDestroy()
     {
         // Create a user with user_type = 1 and authenticate them
@@ -94,7 +85,6 @@ class ProductControllerTest extends TestCase
         // Create a product for testing
         $product = Product::factory()->create();
 
-
         // Delete the product using the route
         $response = $this->delete(route('admin.product.destroy', ['product' => $product->slug]));
 
@@ -103,7 +93,5 @@ class ProductControllerTest extends TestCase
 
         // Add additional assertions if needed
     }
-
-
 
 }

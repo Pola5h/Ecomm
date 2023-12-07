@@ -42,7 +42,6 @@ class OrderController extends Controller
     public function show(string $order_id)
     {
 
-
         $orderData = Order::where('order_id', $order_id)->first();
         $orderTableid = Order::where('order_id', $order_id)->value('id');
         $billingInfo = BillingInformation::where('order_id', $orderTableid)->first();
