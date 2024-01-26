@@ -31,7 +31,6 @@ class ShopComponent extends Component
     {
         // Add the product to the wishlist cart
         // Cart::instance('wishlist')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
-
         // Insert the product into the wish_lists table
 
         if (Auth::check()) {
